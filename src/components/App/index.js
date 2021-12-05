@@ -1,13 +1,11 @@
+import LoginPage from '../LoginPage';
+
 import './styles.scss';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Bienvenue sur Book'O'Wonder !
-        </p>
-      </header>
+      <LoginPage />
     </div>
   );
 }

@@ -4,7 +4,7 @@
 
 // $color--*color*-*light/medium/dark*
 
-$color--grey-dark: #3c3c3c;
+$color--grey-dark: #292929;
 $color--green-light: #b8e8d8;
 $color--blue-light: #e1ecfe;
 $color--yellow-light: #fffec5;
@@ -23,4 +23,11 @@ $gradient--green-light : linear-gradient(to bottom, #88d4ba, #d8f3ea);
 
 $radius: 0.5rem;
 $gutter: 1rem;
+
+// -------------
+// Breakpoints :
+// -------------
+
+$tablet: 740px;
+$desktop: 1000px;
 
