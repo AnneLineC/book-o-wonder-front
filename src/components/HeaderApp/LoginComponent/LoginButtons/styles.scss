@@ -1,7 +1,21 @@
 @use './../../../../styles/vars';
+@use "sass:color";
 
 .login-buttons {
     display: none;
+
+    &__button {
+        background-color: vars.$color--green-light;
+        padding: vars.$gutter;
+        border-radius: vars.$radius;
+        margin-left: vars.$gutter;
+        box-shadow: 0 0 3px color.scale(vars.$color--grey-dark, $blackness: 100%); 
+        // font-weight: bold;
+
+        &--signin {
+            background-color: vars.$color--blue-light;
+        }
+    }
 }
 
 @media screen and (min-width: vars.$desktop) {

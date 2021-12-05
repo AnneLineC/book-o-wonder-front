@@ -1,0 +1,21 @@
+@use './../../../styles/vars';
+
+.logged-menu {
+
+    display: flex;
+    align-items: center;
+
+    &__username {
+        display: none;
+    }
+}
+
+@media screen and (min-width: vars.$tablet) {
+    .logged-menu {
+        &__username {
+            display: inline;
+            margin-right: vars.$gutter;
+            font-weight: bold;
+        }
+    }
+}

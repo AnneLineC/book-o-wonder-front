@@ -3,21 +3,21 @@ import LoginComponent from './LoginComponent';
 import './styles.scss';
 
 const HeaderApp = () => {
-    const isLogged = true;
+    const isLogged = false;
     return (
         <header className="header-app">
             <div className="header-app__element header-app__element--menu">
                 {!isLogged && <LoginComponent />}
                 {isLogged && <LoggedMenu />}
             </div>
-            <div className="header-app__element header-app__element--categories">
+            <button type="button" className="header-app__element header-app__element--categories">
                 <span className="sr-only">Catégories</span>
                 <i className="header-app__icon fas fa-book" />
-            </div>
-            <div className="header-app__element header-app__element--audio-player">
+            </button>
+            <button type="button" className="header-app__element header-app__element--audio-player">
                 <span className="sr-only">Lecteur audio</span>
                 <i className="header-app__icon fas fa-headphones" />
-            </div>
+            </button>
             <h1 className="header-app__title">Book'O'Wonder</h1>
         </header>
     );
