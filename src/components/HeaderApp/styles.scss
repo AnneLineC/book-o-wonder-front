@@ -1,4 +1,51 @@
+@use './../../styles/vars';
+@use "sass:color";
+
 .header-app {
-    display: flex;
-    justify-content: space-between;
+
+    padding: vars.$gutter *2;
+    background-color: color.scale(vars.$color--grey-dark, $blackness: 80%);
+    box-shadow: 1px 1px 3px color.scale(vars.$color--grey-dark, $blackness: 100%);
+
+    &__title {
+        text-align: left;
+        font-family: vars.$title-font;
+        font-size: 1.7em;
+        font-weight: bold;
+    }
+
+    &__element {
+        float: right;
+    }
+
+    &__icon {
+        background-color: vars.$color--green-light;
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: vars.$color--grey-dark;
+    }
+}
+
+@media screen and (min-width: vars.$desktop) {
+    
+    .header-app {
+
+        &__element {
+            &--audio-player {
+                float: left;
+            }
+            &--categories {
+                float: left;
+            }
+        }
+
+        &__title {
+            text-align: center;
+        }
+    }
 }
