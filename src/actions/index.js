@@ -4,6 +4,12 @@ export const loginAttempt = () => ({
     type: LOGIN_ATTEMPT,
 });
 
+export const REGISTER_ATTEMPT = 'REGISTER_ATTEMPT';
+
+export const registerAttempt = () => ({
+  type: REGISTER_ATTEMPT,
+});
+
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
