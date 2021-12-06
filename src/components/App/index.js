@@ -2,14 +2,22 @@ import HeaderApp from '../HeaderApp';
 import LoginPage from '../LoginPage';
 import MenuList from '../MenuList';
 import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './styles.scss';
 
 function App() {
-  const isConnexionMenuOpen = true;
+  const isConnexionMenuOpen = useSelector(state => state.display.connexionMenu);
+  console.log(isConnexionMenuOpen);
   return (
     <div className="App">
-      {isConnexionMenuOpen && <MenuList linksList={[{label: "Connexion", slug: "connexion"}, {label: "Inscription", slug: "inscription"}]}/>}
+      {/* {isConnexionMenuOpen && */}
+      <MenuList 
+        menuName="connexionMenu" 
+        linksList={[{label: "Connexion", slug: "/connexion"}, {label: "Inscription", slug: "/inscription"}]}
+        isMenuOpen={isConnexionMenuOpen}
+         />
+       {/* />} */}
       <HeaderApp />
       <Routes>
         <Route path="/connexion" element={<LoginPage />} />

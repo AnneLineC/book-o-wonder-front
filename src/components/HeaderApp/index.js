@@ -2,6 +2,7 @@ import LoggedMenu from './LoggedMenu';
 import LoginComponent from './LoginComponent';
 import MenuList from '../MenuList';
 import './styles.scss';
+import { Link } from 'react-router-dom';
 
 const HeaderApp = () => {
     const isLogged = false;
@@ -19,7 +20,7 @@ const HeaderApp = () => {
                 <span className="sr-only">Lecteur audio</span>
                 <i className="header-app__icon fas fa-headphones" />
             </button>
-            <h1 className="header-app__title">Book'O'Wonder</h1>
+            <Link to={'/'}><h1 className="header-app__title">Book'O'Wonder</h1></Link>
         </header>
     );
 }

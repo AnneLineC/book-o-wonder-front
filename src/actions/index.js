@@ -21,3 +21,15 @@ export const setFieldValue = (name, value) => ({
     name,
     value,
 });
+
+
+// ===============
+// DISPLAY ACTIONS
+// ===============
+
+export const SET_DISPLAY = 'SET_DISPLAY';
+
+export const setDisplay = (name) => ({
+  type: SET_DISPLAY,
+  name,
+});

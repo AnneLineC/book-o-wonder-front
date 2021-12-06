@@ -1,5 +1,5 @@
 export const initialState = {
-    // ex: list: null,
+    list: null,
   };
   
   const reducer = (state = initialState, action = {}) => {
