@@ -1,17 +1,24 @@
+import PropTypes from 'prop-types';
+
 import './styles.scss';
 
-const MenuList = () => (
+const MenuList = ({ linksList }) => (
   <div className="menu-list">
     <div className="menu-list__close-icon">
         <i class="fas fa-times"></i>
     </div>
     <ul className="menu-list__list">
-        <li className="menu-list__item">Ceci est un item</li>
-        <li className="menu-list__item">Ceci est un item</li>
-        <li className="menu-list__item">Ceci est un item</li>
-        <li className="menu-list__item">Ceci est un item</li>
+      {
+        linksList.map(
+          (link) => (<li className="menu-list__item">{link}</li>)
+        )
+      }
     </ul>
   </div>
 );
+
+MenuList.propTypes = {
+  linkList: PropTypes.array.isRequired,
+};
 
 export default MenuList;

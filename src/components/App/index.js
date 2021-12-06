@@ -7,7 +7,7 @@ import './styles.scss';
 function App() {
   return (
     <div className="App">
-      <MenuList />
+      <MenuList linksList={["Lien 1", "Lien 2"]}/>
       <HeaderApp />
       <LoginPage />
     </div>
