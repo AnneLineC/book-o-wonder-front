@@ -7,16 +7,17 @@
     background-color: color.scale(vars.$color--grey-dark, $blackness: 80%);
     box-shadow: 1px 1px 3px color.scale(vars.$color--grey-dark, $blackness: 100%);
     position: sticky;
+    min-height: 6rem;
 
     &__title {
         font-family: vars.$title-font;
         color: vars.$color--orange-light;
         font-size: 1.7em;
         font-weight: bold;
-        line-height: 1.5;
         display: flex;
         justify-content: start;
         align-items: center;
+        line-height: 1.6;
     }
 
     &__element {
@@ -59,7 +60,11 @@
         }
 
         &__title {
-            justify-content: center;
+            display: block;
+            position: absolute;
+            top: 1rem;
+            text-align: center;
+            width: calc(100% - (vars.$gutter * 4));
         }
     }
 }
