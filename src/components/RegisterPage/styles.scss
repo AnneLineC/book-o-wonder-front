@@ -1,7 +1,8 @@
+
 @use "../../styles/vars";
 
 .register-page {
-   
+
     &__form {
         display: flex;
         flex-direction: column;
@@ -45,3 +46,4 @@
         border-radius: vars.$radius;
     }
 }
+

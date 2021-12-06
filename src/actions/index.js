@@ -18,6 +18,12 @@ export const setCurrentUser= (user) => ({
     user,
 });
 
+export const SEND_CONTACT_FORM_ATTEMPT = 'SEND_CONTACT_FORM_ATTEMPT';
+
+export const sendContactFormAttempt = () => ({
+  type: SEND_CONTACT_FORM_ATTEMPT,
+});
+
 
 // Contains the values of the fields (type + name and value)
 export const SET_FIELD_VALUE = 'SET_FIELD_VALUE';
