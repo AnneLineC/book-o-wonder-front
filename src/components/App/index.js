@@ -1,15 +1,19 @@
 import HeaderApp from '../HeaderApp';
 import LoginPage from '../LoginPage';
 import MenuList from '../MenuList';
+import { Route, Routes } from 'react-router-dom';
 
 import './styles.scss';
 
 function App() {
+  const isConnexionMenuOpen = true;
   return (
     <div className="App">
-      <MenuList linksList={["Lien 1", "Lien 2"]}/>
+      {isConnexionMenuOpen && <MenuList linksList={[{label: "Connexion", slug: "connexion"}, {label: "Inscription", slug: "inscription"}]}/>}
       <HeaderApp />
-      <LoginPage />
+      <Routes>
+        <Route path="/connexion" element={<LoginPage />} />
+      </Routes>
     </div>
   );
 }
