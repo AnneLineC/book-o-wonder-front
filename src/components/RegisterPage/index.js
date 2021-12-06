@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setFieldValue, loginAttempt } from '../../actions';
+import { setFieldValue, loginAttempt, registerAttempt } from '../../actions';
 
 
 import './styles.scss';
@@ -35,6 +35,10 @@ import './styles.scss';
         dispatch(loginAttempt())
     }
 
+    const handleRegisterFormSubmit = (event) => {
+        event.preventDefault();
+        dispatch(registerAttempt())
+    }
 
    return (
     <div className="register-page">
@@ -91,7 +95,7 @@ import './styles.scss';
             <button
                 type="submit"
                 className="register-page__register"
-                onSubmit={handleConnexionFormSubmit}
+                onSubmit={handleRegisterFormSubmit}
                 >
                 Inscription
             </button>
@@ -105,6 +109,7 @@ import './styles.scss';
         <button
             type="submit"
             className="register-page__connexion"
+            onSubmit={handleConnexionFormSubmit}
             >
             Connexion
         </button>
