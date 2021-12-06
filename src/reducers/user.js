@@ -4,8 +4,11 @@ import {
 
 export const initialState = {
     currentUser: null,
+    nicknameValue: '',
     emailValue: '',
     passwordValue: '',
+    passwordConfirmValue: '',
+
   };
   
   const reducer = (state = initialState, action = {}) => {
