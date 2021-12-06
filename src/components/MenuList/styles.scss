@@ -1,0 +1,25 @@
+@use './../../styles/vars';
+@use "sass:color";
+
+.menu-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: vars.$color--grey-dark;
+    z-index: 100;
+    padding: vars.$gutter * 3;
+
+    &__close-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: vars.$gutter * 2;
+    }
+
+    &__item {
+        border-top: 1px solid color.scale(vars.$color--grey-dark, $lightness: 10%);
+        padding: vars.$gutter;
+    }
+}
