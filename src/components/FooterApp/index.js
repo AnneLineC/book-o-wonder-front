@@ -4,10 +4,10 @@ import { Link } from "react-router-dom"
 const FooterApp = () => (
   <footer>
     <nav>
-      <ul>
-        <li><a href="#"></a>Nous contacter</li>
-        <li><a href="#"></a>Notre équipe</li>
-        <li><a href="#"></a>Mentions Légales</li>
+      <ul class="nav--list">
+        <li class="nav--listItem"><a href="#">Nous contacter</a></li>
+        <li class="nav--listItem"><a href="#">Notre équipe</a></li>
+        <li class="nav--listItem"><a href="#">Mentions Légales</a></li>
       </ul>
     </nav>
 

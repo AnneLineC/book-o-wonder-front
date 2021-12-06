@@ -4,7 +4,7 @@
 
 // $color--*color*-*light/medium/dark*
 
-$color--grey-dark: #3c3c3c;
+$color--grey-dark: #2f2f2f;
 $color--green-light: #b8e8d8;
 $color--blue-light: #e1ecfe;
 $color--yellow-light: #fffec5;
@@ -24,3 +24,16 @@ $gradient--green-light : linear-gradient(to bottom, #88d4ba, #d8f3ea);
 $radius: 0.5rem;
 $gutter: 1rem;
 
+// -------------
+// Breakpoints :
+// -------------
+
+$tablet: 700px;
+$desktop: 1000px;
+
+// -------
+// Fonts :
+// -------
+
+$title-font: 'Satisfy', sans-serif;
+$main-font: 'Nunito', sans-serif;
