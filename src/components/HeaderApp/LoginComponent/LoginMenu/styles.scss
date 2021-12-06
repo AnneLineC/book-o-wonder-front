@@ -1,0 +1,7 @@
+@use './../../../../styles/vars';
+
+@media screen and (min-width: vars.$desktop) {
+    .login-menu {
+        display: none;
+    }
+}

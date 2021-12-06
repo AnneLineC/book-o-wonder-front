@@ -1,10 +1,15 @@
+import HeaderApp from '../HeaderApp';
+import LoginPage from '../LoginPage';
+import FooterApp from '../FooterApp';
+
 import './styles.scss';
-import FooterApp from './../FooterApp';
 
 function App() {
   return (
     <div className="App">
-      <FooterApp />
+     <HeaderApp />
+     <LoginPage />
+     <FooterApp />
     </div>
   );
 }
