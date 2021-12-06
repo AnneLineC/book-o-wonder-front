@@ -1,5 +1,6 @@
 import LoggedMenu from './LoggedMenu';
 import LoginComponent from './LoginComponent';
+import MenuList from '../MenuList';
 import './styles.scss';
 
 const HeaderApp = () => {
