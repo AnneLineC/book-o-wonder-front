@@ -1,5 +1,4 @@
 import './styles.scss';
-import FooterApp from './../FooterApp';
 
 function App() {
   return (
