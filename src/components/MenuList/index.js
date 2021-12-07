@@ -6,33 +6,36 @@ import { setDisplay } from '../../actions';
 import './styles.scss';
 
 const MenuList = ({ linksList, menuName, isMenuOpen }) => {
-  
   const dispatch = useDispatch();
-  const handleCloseIconClick = (menuName) => {
-    dispatch(setDisplay(menuName));
-  }
+  const handleCloseIconClick = (name) => {
+    dispatch(setDisplay(name));
+  };
 
-  const className = isMenuOpen ? "menu-list menu-list--open" : "menu-list";
+  const className = isMenuOpen ? 'menu-list menu-list--open' : 'menu-list';
 
   return (
     <div className={className}>
-      <button 
+      <button
         type="button"
         className="menu-list__close-icon"
         onClick={
-            () => {handleCloseIconClick(menuName)}
+            () => {
+              handleCloseIconClick(menuName);
+            }
           }
       >
-          <i class="fas fa-times"></i>
+        <i className="fas fa-times" />
       </button>
       <ul className="menu-list__list">
         {linksList.map((link) => (
           <li className="menu-list__item">
-            <NavLink 
+            <NavLink
               key={link.slug}
               to={link.slug}
               onClick={
-                () => {handleCloseIconClick(menuName)}
+                () => {
+                  handleCloseIconClick(menuName);
+                }
               }
             >
               {link.label}
@@ -41,15 +44,18 @@ const MenuList = ({ linksList, menuName, isMenuOpen }) => {
         ))}
       </ul>
     </div>
-)};
+  );
+};
 
 MenuList.propTypes = {
-  linkList: PropTypes.arrayOf(
+  linksList: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
     }),
-  ),
+  ).isRequired,
+  menuName: PropTypes.string.isRequired,
+  isMenuOpen: PropTypes.bool.isRequired,
 };
 
 export default MenuList;

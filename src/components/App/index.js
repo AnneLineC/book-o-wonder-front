@@ -1,28 +1,31 @@
+import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import HeaderApp from '../HeaderApp';
-import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
 import ContactPage from '../ContactPage';
 import MenuList from '../MenuList';
 import FooterApp from '../FooterApp';
-import { Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import './styles.scss';
 
-function App() {
-  const isConnexionMenuOpen = useSelector(state => state.display.connexionMenu);
-  console.log(isConnexionMenuOpen);
+const App = () => {
+  const isConnexionMenuOpen = useSelector((state) => state.display.connexionMenu);
+  const isCategoriesMenuOpen = useSelector((state) => state.display.categoriesMenu);
+  console.log(isCategoriesMenuOpen);
+  const categoriesList = useSelector((state) => state.display.categoriesList);
+  console.log(categoriesList);
+
   return (
     <div className="App">
-      <MenuList 
-        menuName="connexionMenu" 
-        linksList={[{label: "Connexion", slug: "/connexion"}, {label: "Inscription", slug: "/inscription"}]}
+      <MenuList
+        menuName="connexionMenu"
+        linksList={[{ label: 'Connexion', slug: '/connexion' }, { label: 'Inscription', slug: '/inscription' }]}
         isMenuOpen={isConnexionMenuOpen}
       />
-      <MenuList 
-        menuName="categoriesMenu" 
-        linksList={[{label: "Connexion", slug: "/connexion"}, {label: "Inscription", slug: "/inscription"}]}
-        isMenuOpen={isConnexionMenuOpen}
+      <MenuList
+        menuName="categoriesMenu"
+        linksList={categoriesList}
+        isMenuOpen={isCategoriesMenuOpen}
       />
       <HeaderApp />
       <Routes>
@@ -32,6 +35,6 @@ function App() {
       <FooterApp />
     </div>
   );
-}
+};
 
 export default App;
