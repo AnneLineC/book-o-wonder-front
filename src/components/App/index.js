@@ -1,6 +1,9 @@
 import HeaderApp from '../HeaderApp';
+import RegisterPage from '../RegisterPage';
 import LoginPage from '../LoginPage';
+import ContactPage from '../ContactPage';
 import MenuList from '../MenuList';
+import FooterApp from '../FooterApp';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -24,7 +27,9 @@ function App() {
       <HeaderApp />
       <Routes>
         <Route path="/connexion" element={<LoginPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <FooterApp />
     </div>
   );
 }
