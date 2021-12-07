@@ -11,13 +11,16 @@ function App() {
   console.log(isConnexionMenuOpen);
   return (
     <div className="App">
-      {/* {isConnexionMenuOpen && */}
       <MenuList 
         menuName="connexionMenu" 
         linksList={[{label: "Connexion", slug: "/connexion"}, {label: "Inscription", slug: "/inscription"}]}
         isMenuOpen={isConnexionMenuOpen}
-         />
-       {/* />} */}
+      />
+      <MenuList 
+        menuName="categoriesMenu" 
+        linksList={[{label: "Connexion", slug: "/connexion"}, {label: "Inscription", slug: "/inscription"}]}
+        isMenuOpen={isConnexionMenuOpen}
+      />
       <HeaderApp />
       <Routes>
         <Route path="/connexion" element={<LoginPage />} />

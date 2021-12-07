@@ -6,6 +6,7 @@ import { setDisplay } from '../../actions';
 import './styles.scss';
 
 const MenuList = ({ linksList, menuName, isMenuOpen }) => {
+  
   const dispatch = useDispatch();
   const handleCloseIconClick = (menuName) => {
     dispatch(setDisplay(menuName));
