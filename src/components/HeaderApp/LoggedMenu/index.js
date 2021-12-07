@@ -5,7 +5,7 @@ const LoggedMenu = () => (
     <span className="logged-menu__username">Monnomici</span>
     <button type="button">
       <span className="logged-menu__text sr-only">Menu</span>
-      <span className="logged-menu__icon header-app__icon"><i class="fas fa-user"></i></span>
+      <span className="logged-menu__icon header-app__icon"><i className="fas fa-user" /></span>
     </button>
   </div>
 );
