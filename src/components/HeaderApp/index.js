@@ -6,7 +6,7 @@ import { setDisplay } from '../../actions';
 import './styles.scss';
 
 const HeaderApp = () => {
-  const isLogged = false;
+  const isLogged = true;
   const dispatch = useDispatch();
   const handleMenuButtonClick = (name) => {
     dispatch(setDisplay(name));

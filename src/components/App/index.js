@@ -10,10 +10,9 @@ import './styles.scss';
 
 const App = () => {
   const isConnexionMenuOpen = useSelector((state) => state.display.connexionMenu);
+  const isConnectedMenuOpen = useSelector((state) => state.display.connectedMenu);
   const isCategoriesMenuOpen = useSelector((state) => state.display.categoriesMenu);
-  console.log(isCategoriesMenuOpen);
   const categoriesList = useSelector((state) => state.display.categoriesList);
-  console.log(categoriesList);
 
   return (
     <div className="App">
@@ -21,6 +20,11 @@ const App = () => {
         menuName="connexionMenu"
         linksList={[{ label: 'Connexion', slug: '/connexion' }, { label: 'Inscription', slug: '/inscription' }]}
         isMenuOpen={isConnexionMenuOpen}
+      />
+      <MenuList
+        menuName="connectedMenu"
+        linksList={[{ label: 'Mon Compte', slug: '/mon-compte' }, { label: 'Deconnexion', slug: '/' }, { label: 'Administration', slug: '/' }]}
+        isMenuOpen={isConnectedMenuOpen}
       />
       <MenuList
         menuName="categoriesMenu"

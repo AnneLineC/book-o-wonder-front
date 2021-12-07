@@ -28,6 +28,7 @@ export const initialState = {
     },
   ],
   connexionMenu: false,
+  connectedMenu: false,
   categoriesMenu: false,
 };
 
