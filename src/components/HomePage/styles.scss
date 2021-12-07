@@ -1,0 +1,59 @@
+@use "../../styles/vars";
+@use "sass:color";
+
+.home-page {
+    
+    &__title {
+        margin-top: 5rem;
+        font-size: 2.2rem;
+        margin-bottom: 5rem;
+    }
+
+    &__avatar {
+        background-color: vars.$color--green-light;
+        display: block;
+        width: 6rem;
+        height: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: vars.$color--grey-dark;
+    }
+
+    &__highlight {
+        margin-top: 3rem;   
+        margin-left: 5rem;     
+    }
+
+    &__container {
+        
+        margin-right: 1rem;
+        margin-left: 1rem;
+        margin-bottom: 10rem;
+    }
+    
+}
+
+
+
+.carousel img {
+    
+    height: em;
+}
+
+.thumbs-wrapper {
+    display:none;
+}
+
+.legend {
+    display: none;
+}
+
+.dots {
+    background-color:pink;
+}
+
+.carousel-status {
+    display:none;
+}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { LOGIN_ATTEMPT, setCurrentUser, REGISTER_ATTEMPT } from '../actions';
+import { LOGIN_ATTEMPT, setCurrentUser, REGISTER_ATTEMPT, SEND_CONTACT_FORM_ATTEMPT } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
   switch (action.type) {
@@ -49,9 +49,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-    default:
-      next(action);
-  }
-};
 
+    default:
+    next(action);
+  }
+}
 export default apiMiddleWare;
