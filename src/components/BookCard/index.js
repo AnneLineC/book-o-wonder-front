@@ -1,7 +1,8 @@
 import './styles.scss';
 
 const BookCard = () => (
-    <div className>
+    <div className="bookcard" style='background-image: {book.picture}'>
+
 
     </div>
     
