@@ -1,0 +1,10 @@
+@use './../../styles/vars';
+@use "sass:color";
+
+
+.categories-menu {
+    &__item {
+        border-top: 1px solid color.scale(vars.$color--grey-dark, $lightness: 15%);
+        padding: vars.$gutter * 1.5;
+    }
+}

@@ -4,13 +4,14 @@ import { setDisplay } from '../../actions';
 
 import './styles.scss';
 
-const Modal = ({ componentName, isComponentOpen, children }) => {
+const Modal = ({ componentName, isComponentOpen, appearingDesktopSide, children }) => {
   const dispatch = useDispatch();
   const handleCloseIconClick = (name) => {
     dispatch(setDisplay(name));
   };
 
-  const className = isComponentOpen ? 'menu-list menu-list--open' : 'menu-list';
+  const classNameBySide = appearingDesktopSide === 'left' ? 'menu-list menu-list--left' : 'menu-list';
+  const className = isComponentOpen ? `${classNameBySide} menu-list--open` : classNameBySide;
 
   return (
     <div className={className}>
@@ -30,10 +31,15 @@ const Modal = ({ componentName, isComponentOpen, children }) => {
   );
 };
 
+Modal.defaultProps = {
+  appearingDesktopSide: 'right',
+};
+
 Modal.propTypes = {
   componentName: PropTypes.string.isRequired,
   isComponentOpen: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
+  appearingDesktopSide: PropTypes.string,
 };
 
 export default Modal;

@@ -1,4 +1,4 @@
-import { SET_DISPLAY } from '../actions';
+import { SET_DISPLAY, REMOVE_ALL_DISPLAY } from '../actions';
 
 export const initialState = {
   categoriesList: [
@@ -33,6 +33,9 @@ const reducer = (state = initialState, action = {}) => {
     case SET_DISPLAY:
       return {
         ...state,
+        connexionMenu: false,
+        connectedMenu: false,
+        categoriesMenu: false,
         [action.name]: !state[action.name],
       };
     default:

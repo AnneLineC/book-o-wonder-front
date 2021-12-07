@@ -40,8 +40,7 @@
         transition: 0.5s;
 
         &:hover {
-            background-color: vars.$color--grey-dark;
-            color: vars.$color--green-light;
+            background-color: vars.$color--orange-medium;
         }
     }
 }

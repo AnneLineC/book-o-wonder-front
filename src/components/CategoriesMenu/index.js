@@ -16,23 +16,22 @@ const CategoriesMenu = () => {
   };
 
   return (
-    <Modal componentName="categoriesMenu" isComponentOpen={isCategoriesMenuOpen}>
-      <ul className="connected-menu__list">
-
+    <Modal componentName="categoriesMenu" appearingDesktopSide="left" isComponentOpen={isCategoriesMenuOpen}>
+      <ul className="categories-menu__list">
         {
-            categoriesList.map(
-              (category) => (
-                <li className="connected-menu__item">
-                  <NavLink
-                    to={`/category/${category.id}`}
-                    onClick={handleLinkClick}
-                  >
-                    {category.label}
-                  </NavLink>
-                </li>
-              ),
-            )
-          }
+          categoriesList.map(
+            (category) => (
+              <li className="categories-menu__item">
+                <NavLink
+                  to={`/category/${category.id}`}
+                  onClick={handleLinkClick}
+                >
+                  {category.label}
+                </NavLink>
+              </li>
+            ),
+          )
+        }
 
       </ul>
     </Modal>
