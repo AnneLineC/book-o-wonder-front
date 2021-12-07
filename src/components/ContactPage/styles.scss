@@ -13,12 +13,17 @@
         padding: vars.$gutter;
         margin-top: 5rem;
     }
+    
+    &__top {
+    display:flex;
+    flex-direction: column;
+    }
 
-    &__formm {
+    &__bottom {
         display: flex;
         flex-direction: column;
-        
     }
+
 
     &__object {
         border-radius: vars.$radius;
@@ -48,6 +53,7 @@
         width:  250px;
         margin: auto;
         border-radius: vars.$radius;
+        font-family: inherit;
     }
 
     &__contact {
@@ -77,17 +83,27 @@
 
     .contact-page{
         
+        &__top {
+            display:flex;
+            flex-direction: row;
+        }
+
+        &__bottom {
+            margin-top: -3rem;
+        }
+
+        
 
         &__form {
             display: flex;
-            flex-direction: row;
+            align-items: center;
             padding: vars.$gutter;
             margin-top: 5rem;
-
         }
 
-        &__formm {
-            margin-bottom: 2rem;
+        &__input {
+            height: 30px;
+            width: 310px;
         }
 
         &__object {
@@ -110,8 +126,9 @@
 }
 
 @media screen and (min-width: vars.$desktop) {
-    
+
     .contact-page {
+        
         &__object {
             border-radius: vars.$radius;
             margin-bottom: 1rem;
@@ -127,5 +144,21 @@
             margin: auto;
             border-radius: vars.$radius;
         } 
-    }
+    
+        &__input {
+            width: 375px;  
+        }
+
+        &__top {
+            display:flex;
+            flex-direction: row;
+        }
+
+        &__bottom {
+            display:flex;
+            flex-direction: column;
+        }
+     
+
+    }  
 }

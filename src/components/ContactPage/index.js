@@ -51,34 +51,35 @@ return (
         Tous les champs sont obligatoires
     </p>
 
+
     <form autoComplete="off" className="contact-page__form">
-        
-        <label className="contact-page__label" htmlFor="email"></label> 
+        <div className="contact-page__top">
+        <label className="sr-only contact-page__label" htmlFor="email"></label> 
                 <input
                     className="contact-page__input"
                     type="email"
                     name="email"
                     id="email"
-                    placeholder="votre adresse mail"
+                    placeholder="Votre adresse mail"
                     value={emailValue}
                     onChange={handleInputEmailChange}
                 />
         
-        <label className="contact-page__label" htmlFor="pseudo"></label> 
+        <label className="sr-only contact-page__label" htmlFor="pseudo"></label> 
         <input
             className="contact-page__input"
             type="text"
             name="nickname"
             id="nickname"
-            placeholder="votre pseudo"
+            placeholder="Votre pseudo"
             value={nicknameValue}
             onChange={handleInputNicknameChange}
             
         />
-        </form >
+        </div>
 
-        <form autoComplete="off" className="contact-page__formm">
-        <label className="contact-page__labell" htmlFor="object"></label> 
+    <div className="contact-page__bottom">
+        <label className="sr-only contact-page__labell" htmlFor="object"></label> 
         <input
             className="contact-page__object"
             type="text"
@@ -90,7 +91,7 @@ return (
             
         />
         
-        <label className="contact-page__labell"  htmlFor="content"></label> 
+        <label className="sr-only contact-page__labell"  htmlFor="content"></label> 
         <textarea
             cols="33"
             className="contact-page__textarea"
@@ -100,7 +101,6 @@ return (
             value={contentValue}
             onChange={handleInputContentValueChange} 
         />
-
             <button
                 type="submit"
                 className="contact-page__send"
@@ -108,6 +108,7 @@ return (
                 >
                 Envoyer
             </button>
+        </div>
     </form>
   </div>
   );
