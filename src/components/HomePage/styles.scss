@@ -10,7 +10,7 @@
     }
 
     &__avatar {
-        background-color: vars.$color--green-light;
+        background-color: vars.$color--orange-light;
         display: block;
         width: 6rem;
         height: 6rem;
@@ -19,12 +19,23 @@
         justify-content: center;
         border-radius: 50%;
         color: vars.$color--grey-dark;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
     }
 
     &__highlight {
-        margin-top: 3rem;   
-        margin-left: 5rem;     
+        display:flex;
+        flex-direction: column;
+        align-items:center;  
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        text-align: center;
+        margin-left:1rem;
+        margin-right:1rem;
+         
     }
+
+
 
     &__container {
         
@@ -35,11 +46,9 @@
     
 }
 
-
-
-.carousel img {
+.carousel-root {
     
-    height: em;
+    margin: auto;
 }
 
 .thumbs-wrapper {
@@ -57,3 +66,56 @@
 .carousel-status {
     display:none;
 }
+
+@media screen and (min-width: vars.$tablet) {
+.home-page {
+    
+    &__container {
+        background-color: rgba(138, 138, 138, 0.144);
+        border-radius:vars.$radius;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__title {
+        margin-top: 5rem;
+        font-size: 3rem;
+        margin-bottom: 5rem;
+    }
+
+    &__avatar {
+        display:flex;
+        flex-direction: row;
+    }
+}
+
+.carousel-root {
+    
+    width: 600px;
+    margin: auto;
+}
+}
+
+
+@media screen and (min-width: vars.$desktop) {
+    
+    .home-page {
+        
+        
+        &__title {
+            margin-top: 5rem;
+            font-size: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        &__content {
+            margin-left: 1rem;
+        }
+    }
+    
+    .carousel-root {
+        
+        width: 800px;
+        margin: auto;
+    }
+    }
