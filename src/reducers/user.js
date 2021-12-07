@@ -1,19 +1,19 @@
 import {
-  SET_FIELD_VALUE
+  SET_FIELD_VALUE,
 } from '../actions';
 
 export const initialState = {
-    currentUser: null,
-    nicknameValue: '',
-    emailValue: '',
-    passwordValue: '',
-    passwordConfirmValue: '',
+  currentUser: null,
+  nicknameValue: '',
+  emailValue: '',
+  passwordValue: '',
+  passwordConfirmValue: '',
 
-  };
-  
-  const reducer = (state = initialState, action = {}) => {
-    switch (action.type) {
-      case SET_FIELD_VALUE:
+};
+
+const reducer = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case SET_FIELD_VALUE:
       return {
         ...state,
         [action.name]: action.value,
@@ -25,10 +25,9 @@ export const initialState = {
     //     currentUser: action.value,
     //     // on en profite pour refermer le formulaire de login
     //   };
-    default: 
+    default:
       return state;
-    }
-  };
-  
-  export default reducer;
-  
+  }
+};
+
+export default reducer;
