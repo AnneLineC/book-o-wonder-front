@@ -1,0 +1,17 @@
+@use './../../styles/vars';
+@use "sass:color";
+
+.nav--list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: vars.$gutter*5;
+    justify-content: center;
+}
+
+.nav--listItem {
+    text-decoration: underline;
+    color: white;
+    font-family: vars.$main-font;
+    margin: vars.$gutter;
+}

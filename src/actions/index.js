@@ -4,12 +4,24 @@ export const loginAttempt = () => ({
     type: LOGIN_ATTEMPT,
 });
 
+export const REGISTER_ATTEMPT = 'REGISTER_ATTEMPT';
+
+export const registerAttempt = () => ({
+  type: REGISTER_ATTEMPT,
+});
+
 
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 export const setCurrentUser= (user) => ({
     type: SET_CURRENT_USER,
     user,
+});
+
+export const SEND_CONTACT_FORM_ATTEMPT = 'SEND_CONTACT_FORM_ATTEMPT';
+
+export const sendContactFormAttempt = () => ({
+  type: SEND_CONTACT_FORM_ATTEMPT,
 });
 
 
