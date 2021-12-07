@@ -15,6 +15,11 @@
   font-style: normal;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: vars.$color--grey-dark;
   margin: 0;

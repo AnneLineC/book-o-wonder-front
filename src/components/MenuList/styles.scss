@@ -1,0 +1,35 @@
+@use './../../styles/vars';
+@use "sass:color";
+
+
+.menu-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: vars.$gutter*8 vars.$gutter*3 vars.$gutter*3;
+    overflow: hidden;
+    background-color: vars.$color--grey-dark;
+    z-index: 100;
+    transition: transform 1s;
+    transform: translateX(100%);
+    
+    &--open {
+        transform: translateX(0);
+    }
+
+    &__close-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: vars.$gutter * 3;
+        font-size: 1.2em;
+        color: vars.$color--orange-light;
+    }
+
+    &__item {
+        border-top: 1px solid color.scale(vars.$color--grey-dark, $lightness: 15%);
+        padding: vars.$gutter * 1.5;
+    }
+}

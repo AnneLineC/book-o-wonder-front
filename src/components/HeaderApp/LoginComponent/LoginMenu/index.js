@@ -1,10 +1,23 @@
+import { useDispatch } from 'react-redux';
+import { setDisplay } from '../../../../actions';
+
 import './styles.scss';
 
-const LoginMenu = () => (
-  <button type="button" className="login-menu">
+const LoginMenu = () => {
+const dispatch = useDispatch();
+const handleLinkClick = (name) => {
+  dispatch(setDisplay(name));
+}
+return (
+  <button type="button" className="login-menu" 
+    onClick={
+      () => {handleLinkClick('connexionMenu')}
+    }
+  >
     <span className="login-menu__text sr-only">Menu de connexion</span>
     <span className="login-menu__icon header-app__icon"><i class="far fa-user"></i></span>
   </button>
 );
+}
 
 export default LoginMenu;
