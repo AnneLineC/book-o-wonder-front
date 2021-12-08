@@ -8,15 +8,15 @@ import './styles.css';
 const CategoryChosen = useSelector(state => state.book.picture);
 
 const SortedBooksPage = ( { book.title, book.author, book } ) => {
-    <div className="SortedBooksPage">
+  <div className="SortedBooksPage">
     {books.map((book) => (
-        <div clasName="content-book">
-        <BookCard key={book.id} {...book} />
+      <div clasName="content-book">
+        <BookCard key={book.id} picture={book.picture} />
         <h3 className="title--book"> {book.title} </h3>
         <h4 className="author--book"> {book.author} </h4>
-        </div>
-      ))}
       </div>
+    ))}
+  </div>
 
 
 
