@@ -1,17 +1,18 @@
 import './styles.scss';
+
+import Favorite from './Favorite'
+
 const picture = useSelector(state => state.book.picture);
 
-
-const BookCard = ({ }) => (
-    <div className="bookcard" style="background-image:" {picture}>
-        <div className="star"></div>
-    </div>
-    
-    
-    {!isLogged && <LoginComponent />}
-    {isLogged && <LoggedMenu />}
-    
-    //props booleen pour l'étoile si true ou false
+const BookCard = ({ picture }) => (
+    if (isLogged) {
+        <div className="bookcard" style="background-image:" {picture}>
+            <Favorite />
+        </div>
+    } else {
+        <div className="bookcard" style="background-image:" {picture}>
+        </div>
+    }
 );
 
 BookCard.propTypes = {
@@ -19,5 +20,5 @@ BookCard.propTypes = {
 }
 export default BookCard;
 
-
 // Ne pas mettre de flex sur ça !!! uniquement dans le composant parent
+// Mettre un flex uniquement pour l'étoile
