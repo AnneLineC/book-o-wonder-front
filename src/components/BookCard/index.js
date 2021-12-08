@@ -16,15 +16,12 @@ import './styles.scss';
 //     }
 // );
 
-// background-image: url("paper.gif");
-
 const BookCard = ({ picture }) => (
   <div
     className="bookcard"
-    style={{ backgroundImage: `url("../../docs/images/${picture}")` }}
-  >
-    {/* Favorite todo */}
-  </div>
+    // style={{ backgroundImage: `url("../../docs/images/${picture}")` }}
+    style={{ backgroundImage: 'url("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/willful-sin-dangers-design-template-3a668d6f61992e49d7e9308fb68044af_screen.jpg?ts=1637039339")' }}
+  />
 );
 
 BookCard.propTypes = {
@@ -32,6 +29,3 @@ BookCard.propTypes = {
 };
 
 export default BookCard;
-
-// Ne pas mettre de flex sur ça !!! uniquement dans le composant parent
-// Mettre un flex uniquement pour l'étoile

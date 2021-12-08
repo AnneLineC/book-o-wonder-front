@@ -18,11 +18,11 @@ const App = () => (
     <ConnectedMenu />
     <CategoriesMenu />
     <HeaderApp />
-    <SortedBooksPage />
     <Routes>
       <Route path="/connexion" element={<LoginPage />} />
       <Route path="/inscription" element={<RegisterPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/categorie/:id" element={<SortedBooksPage />} />
     </Routes>
     <FooterApp />
   </div>

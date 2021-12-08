@@ -74,7 +74,7 @@ export default [
     },
     categories: [
       {
-        id: 1,
+        id: 3,
         name: 'Aventure',
       },
     ],

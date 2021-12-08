@@ -1,12 +1,15 @@
 // import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import BookCard from '../BookCard';
 
 import './styles.scss';
 
 const SortedBooksPage = () => {
+  const { id } = useParams();
   const booksList = useSelector((state) => state.books.booksList);
-  console.log(booksList);
+
+  // console.log(booksList);
   // const CategoryChosen = useSelector((state) => state.book.picture);
 
   return (

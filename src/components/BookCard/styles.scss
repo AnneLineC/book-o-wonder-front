@@ -2,8 +2,10 @@
 
 .bookcard {
   width: 14rem;
-  height: 20rem;
+  height: 21rem;
   background-color: rgb(105, 44, 44);
-  border: 2px solid vars.$color--orange-light;
+  border: 1px solid vars.$color--orange-light;
   border-radius: 5%;
+  background-size: cover;
+  background-position: center;
 }
