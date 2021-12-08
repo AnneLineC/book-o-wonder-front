@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 // import Favorite from './Favorite'
@@ -16,18 +16,15 @@ import './styles.scss';
 //     }
 // );
 
-import './styles.scss';
-
 const BookCard = ({ picture }) => (
   <div className="bookcard" style={`background-image: ${picture}`}>
     {/* Favorite todo */}
   </div>
 );
 
-
 BookCard.propTypes = {
-    picture: PropTypes.string.isRequired,
-}
+  picture: PropTypes.string.isRequired,
+};
 
 export default BookCard;
 

@@ -1,0 +1,54 @@
+@use './../../styles/vars';
+@use "sass:color";
+
+
+.menu-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: vars.$gutter*8 vars.$gutter*3 vars.$gutter*3;
+    overflow: hidden;
+    background-color: color.scale(vars.$color--grey-dark, $blackness: 80%);
+    z-index: 100;
+    transition: transform 1s;
+    transform: translateX(100%);
+    box-shadow: 1px 1px 3px black;
+    
+    &--open {
+        transform: translateX(0);
+    }
+
+    &__close-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: vars.$gutter * 3;
+        font-size: 1.2em;
+        color: vars.$color--orange-light;
+    }
+}
+
+@media only screen and (min-width: vars.$tablet) {
+    .menu-list {
+        top: 0;
+        left: auto;
+        right: 0;
+        width: 40rem;
+        transform: translateX(40rem);
+
+        &--left {
+            top: 0;
+            left: 0;
+            right: auto;
+            width: 40rem;
+            transform: translateX(-40rem);
+        }
+
+        &--open {
+            transform: translateX(0);
+        }
+    }
+
+}
