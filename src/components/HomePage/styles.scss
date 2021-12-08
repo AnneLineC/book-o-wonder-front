@@ -51,6 +51,10 @@
     margin: auto;
 }
 
+.carousel {
+    height: 200px;
+}
+
 .thumbs-wrapper {
     display:none;
 }
@@ -94,6 +98,9 @@
     width: 600px;
     margin: auto;
 }
+.carousel {
+    height: 250px;
+}
 }
 
 
@@ -116,6 +123,14 @@
     .carousel-root {
         
         width: 800px;
+        height: 300px;
+    }
+
+    .carousel {
+        width:auto;
+        height: 300px;
         margin: auto;
+        
+        
     }
     }

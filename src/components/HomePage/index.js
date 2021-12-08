@@ -40,18 +40,16 @@ const HomePage = () => (
         </div>
     </div>
 
-    <Carousel>
-                <div>
-                    <img src="https://panels-images.twitch.tv/panel-44379234-image-94455114-03a4-4818-b199-88b2035d0cdc" />
-                    <p className="legend">Legend 1</p>
+    <Carousel infiniteLoop useKeyboardArrows autoPlay autoFocus  >
+                <div className="home-page__test">
+                <img src="https://i.postimg.cc/BbpCMQ48/alice.jpg" alt="alice" border="0" />
                 </div>
-                <div>
-                    <img src="https://panels-images.twitch.tv/panel-44379234-image-9b993a3e-5e52-4d7b-9024-a7b657603f64" />
-                    <p className="legend">Legend 2</p>
+
+                <div className="home-page__test">
+                    <img src="https://panels-images.twitch.tv/panel-44379234-image-9b993a3e-5e52-4d7b-9024-a7b657603f64" /> 
                 </div>
-                <div>
-                    <img src="https://panels-images.twitch.tv/panel-44379234-image-7289cc2d-bd2c-453a-b747-409df43e2835" />
-                    <p className="legend">Legend 3</p>
+                <div className="home-page__test">
+                    <img src="https://panels-images.twitch.tv/panel-44379234-image-7289cc2d-bd2c-453a-b747-409df43e2835" />  
                 </div>
             </Carousel>
 
