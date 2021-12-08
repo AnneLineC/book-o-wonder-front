@@ -6,7 +6,7 @@ import { removeAllDisplay, setDisplay } from '../../actions';
 import './styles.scss';
 
 const HeaderApp = () => {
-  const isLogged = true;
+  const isLogged = false;
   const dispatch = useDispatch();
   const handleMenuButtonClick = (name) => {
     // dispatch(removeAllDisplay());

@@ -8,6 +8,7 @@ import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
 import ConnectedMenu from '../ConnectedMenu';
 import CategoriesMenu from '../CategoriesMenu';
+import SortedBooksPage from '../SortedBooksPage';
 
 import './styles.scss';
 
@@ -21,6 +22,7 @@ const App = () => (
       <Route path="/connexion" element={<LoginPage />} />
       <Route path="/inscription" element={<RegisterPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/categorie/:id" element={<SortedBooksPage />} />
     </Routes>
     <FooterApp />
   </div>

@@ -23,7 +23,7 @@ const CategoriesMenu = () => {
             (category) => (
               <li className="categories-menu__item">
                 <NavLink
-                  to={`/category/${category.id}`}
+                  to={`/categorie/${category.id}`}
                   onClick={handleLinkClick}
                 >
                   {category.label}
