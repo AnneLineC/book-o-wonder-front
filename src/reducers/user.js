@@ -1,5 +1,5 @@
 import {
-  SET_FIELD_VALUE,
+  SET_FIELD_VALUE, SET_PINNEDPAGE,
 } from '../actions';
 
 export const initialState = {
@@ -8,7 +8,16 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
-
+  pinnedPages: [
+    {
+      bookId: 1,
+      location: 'test1',
+    },
+    {
+      bookId: 2,
+      location: 'test2',
+    },
+  ],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -17,7 +26,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
-        // emailValue: action.value,
       };
     // case 'SET_CURRENT_USER':
     //   return {
@@ -25,6 +33,20 @@ const reducer = (state = initialState, action = {}) => {
     //     currentUser: action.value,
     //     // on en profite pour refermer le formulaire de login
     //   };
+    case SET_PINNEDPAGE: {
+      const pinnedPageIndex = state.pinnedPages.findIndex(
+        (pinnedPage) => (pinnedPage.bookId == action.id),
+      );
+      const { pinnedPages } = state;
+      pinnedPages[pinnedPageIndex].location = action.location;
+
+      return {
+        ...state,
+        pinnedPages: [
+          ...pinnedPages,
+        ],
+      };
+    }
     default:
       return state;
   }
