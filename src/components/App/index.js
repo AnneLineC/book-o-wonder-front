@@ -8,6 +8,7 @@ import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
 import ConnectedMenu from '../ConnectedMenu';
 import CategoriesMenu from '../CategoriesMenu';
+import SortedBooksPage from '../SortedBooksPage';
 
 import './styles.scss';
 
@@ -17,6 +18,7 @@ const App = () => (
     <ConnectedMenu />
     <CategoriesMenu />
     <HeaderApp />
+    <SortedBooksPage />
     <Routes>
       <Route path="/connexion" element={<LoginPage />} />
       <Route path="/inscription" element={<RegisterPage />} />

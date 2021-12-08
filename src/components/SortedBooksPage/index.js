@@ -1,33 +1,34 @@
-import PropTypes from 'prop-types';
-import BookCard from './../BookCard'
+// import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import BookCard from '../BookCard';
 
-import './styles.css';
+import './styles.scss';
 
-const CategoryChosen = useSelector(state => state.book.picture);
+const SortedBooksPage = () => {
+  const booksList = useSelector((state) => state.books.booksList);
+  console.log(booksList);
+  // const CategoryChosen = useSelector((state) => state.book.picture);
 
-const SortedBooksPage = ( { book.title, book.author, book } ) => {
-  <div className="SortedBooksPage">
-    {books.map((book) => (
-      <div clasName="content-book">
-        <BookCard key={book.id} picture={book.picture} />
-        <h3 className="title--book"> {book.title} </h3>
-        <h4 className="author--book"> {book.author} </h4>
-      </div>
-    ))}
-  </div>
+  return (
+    <div className="sortedbookspage">
+      {booksList.map((book) => (
+        <div className="sortedbookspage__card">
+          <BookCard key={book.id} picture={book.picture} />
+          <h3 className="sortedbookspage__title">{book.title}</h3>
+          <p className-="sortedbookspage__author">{book.author.firstname} {book.author.lastname}</p>
+        </div>
+      ))}
+    </div>
+  );
 
+  // Faire une sorte de :
+  // (catégorie récupéré).book.map()
 
-
-    
-    // Faire une sorte de :
-    // (catégorie récupéré).book.map()
-
-    // Récupérer les données de la catégorie choisie
-    // Puis afficher uniquement les livres ayant cette catégories
-    // Avec BookCard + titre et auteur en dessous
-    // map() pour faire le tour des livres de la catégories sur BookCard
-    // Voir dans le component Content de oRecipes
-
-}
+  // Récupérer les données de la catégorie choisie
+  // Puis afficher uniquement les livres ayant cette catégories
+  // Avec BookCard + titre et auteur en dessous
+  // map() pour faire le tour des livres de la catégories sur BookCard
+  // Voir dans le component Content de oRecipes
+};
 
 export default SortedBooksPage;

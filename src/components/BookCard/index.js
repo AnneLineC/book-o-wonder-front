@@ -16,8 +16,13 @@ import './styles.scss';
 //     }
 // );
 
+// background-image: url("paper.gif");
+
 const BookCard = ({ picture }) => (
-  <div className="bookcard" style={`background-image: ${picture}`}>
+  <div
+    className="bookcard"
+    style={{ backgroundImage: `url("../../docs/images/${picture}")` }}
+  >
     {/* Favorite todo */}
   </div>
 );

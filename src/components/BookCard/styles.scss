@@ -1,4 +1,9 @@
+@use '../../styles/vars';
+
 .bookcard {
-  width: 10rem;
+  width: 14rem;
   height: 20rem;
+  background-color: rgb(105, 44, 44);
+  border: 2px solid vars.$color--orange-light;
+  border-radius: 5%;
 }
