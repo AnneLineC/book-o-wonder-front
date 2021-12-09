@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { LOGIN_ATTEMPT, setCurrentUser, REGISTER_ATTEMPT, LOAD_CATEGORIES_FROM_API } from '../actions';
+import { LOGIN_ATTEMPT, setCurrentUser, REGISTER_ATTEMPT, LOAD_CATEGORIES_FROM_API, setCategories } from '../actions';
 
 const baseURI = 'http://52.87.193.62';
 
@@ -60,13 +60,10 @@ const apiMiddleWare = (store) => (next) => (action) => {
       break;
     }
     case LOAD_CATEGORIES_FROM_API: {
-      // api's url so that we can connect back and front together
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
           console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
+          store.dispatch(setCategories(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

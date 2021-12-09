@@ -1,5 +1,5 @@
 // eslint-disable no-debugger, no-console
-import { Route, Routes } from 'react-router-dom';
+import { useLocation, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -20,15 +20,24 @@ import { loadCategoriesFromAPI } from '../../actions';
 
 const App = () => {
   const dispatch = useDispatch();
-  const loadCategories = () => {
-    dispatch(loadCategoriesFromAPI());
-  };
+
   useEffect(
     () => {
-      loadCategories();
+      dispatch(loadCategoriesFromAPI());
     },
     [],
   );
+
+  // React router dom hook allowing to know the  currentlocation
+  const location = useLocation();
+  // Allow scrolling at the top of the page when navigating
+  useEffect(
+    () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    },
+    [location],
+  );
+
   return (
     <div className="App">
       <ConnexionMenu />
