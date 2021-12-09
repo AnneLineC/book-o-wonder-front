@@ -3,7 +3,7 @@ import './styles.scss';
 const Error404 = () => (
   <div className="error404">
     {/* ICI MILLIEN ! */}
-    <p>TEST</p>
+    <img src="https://s10.gifyu.com/images/mimille.gif" alt="mimille.gif" border="0" />
   </div>
 );
 
