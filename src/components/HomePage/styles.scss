@@ -31,14 +31,10 @@
         margin-top: 1rem;
         text-align: center;
         margin-left:1rem;
-        margin-right:1rem;
-         
+        margin-right:1rem; 
     }
 
-
-
     &__container {
-        
         margin-right: 1rem;
         margin-left: 1rem;
         margin-bottom: 10rem;
@@ -47,12 +43,16 @@
 }
 
 .carousel-root {
-    
     margin: auto;
 }
 
 .carousel {
     height: 200px;
+}
+
+.carousel:last-child {
+    z-index: -1;
+    position: absolute;
 }
 
 .thumbs-wrapper {
@@ -72,43 +72,40 @@
 }
 
 @media screen and (min-width: vars.$tablet) {
-.home-page {
-    
-    &__container {
-        background-color: rgba(138, 138, 138, 0.144);
-        border-radius:vars.$radius;
-        display: flex;
-        flex-direction: row;
+    .home-page {
+        
+        &__container {
+            background-color: rgba(138, 138, 138, 0.144);
+            border-radius:vars.$radius;
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__title {
+            margin-top: 5rem;
+            font-size: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        &__avatar {
+            display:flex;
+            flex-direction: row;
+        }
     }
 
-    &__title {
-        margin-top: 5rem;
-        font-size: 3rem;
-        margin-bottom: 5rem;
+    .carousel-root {
+        width: 600px;
+        margin: auto;
     }
-
-    &__avatar {
-        display:flex;
-        flex-direction: row;
+    .carousel {
+        height: 250px;
     }
-}
-
-.carousel-root {
-    
-    width: 600px;
-    margin: auto;
-}
-.carousel {
-    height: 250px;
-}
 }
 
 
 @media screen and (min-width: vars.$desktop) {
     
     .home-page {
-        
-        
         &__title {
             margin-top: 5rem;
             font-size: 3rem;
@@ -121,16 +118,12 @@
     }
     
     .carousel-root {
-        
-        width: 800px;
-        height: 300px;
+        width: 80rem;
     }
 
     .carousel {
         width:auto;
-        height: 300px;
+        height: 30rem;
         margin: auto;
-        
-        
     }
-    }
+}
