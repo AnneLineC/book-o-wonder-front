@@ -14,6 +14,7 @@ import ConnectedMenu from '../ConnectedMenu';
 import CategoriesMenu from '../CategoriesMenu';
 import SortedBooksPage from '../SortedBooksPage';
 import BookReadingPage from '../BookReadingPage';
+import Error404 from '../Error404';
 
 import './styles.scss';
 import { loadCategoriesFromAPI } from '../../actions';
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
         <Route path="/livre/:id/lecture" element={<BookReadingPage />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <FooterApp />
     </div>
