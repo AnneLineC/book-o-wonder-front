@@ -1,4 +1,4 @@
-import { SET_DISPLAY, REMOVE_ALL_DISPLAY } from '../actions';
+import { SET_DISPLAY } from '../actions';
 
 export const initialState = {
   categoriesList: [

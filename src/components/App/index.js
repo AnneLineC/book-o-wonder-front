@@ -1,6 +1,9 @@
+// eslint-disable no-debugger, no-console
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import HeaderApp from '../HeaderApp';
+import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
 import ContactPage from '../ContactPage';
@@ -19,6 +22,7 @@ const App = () => (
     <CategoriesMenu />
     <HeaderApp />
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route path="/connexion" element={<LoginPage />} />
       <Route path="/inscription" element={<RegisterPage />} />
       <Route path="/contact" element={<ContactPage />} />

@@ -1,0 +1,136 @@
+@use "../../styles/vars";
+@use "sass:color";
+
+.home-page {
+    
+    &__title {
+        margin-top: 5rem;
+        font-size: 2.2rem;
+        margin-bottom: 5rem;
+    }
+
+    &__avatar {
+        background-color: vars.$color--orange-light;
+        display: block;
+        width: 6rem;
+        height: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: vars.$color--grey-dark;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+
+    &__highlight {
+        display:flex;
+        flex-direction: column;
+        align-items:center;  
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        text-align: center;
+        margin-left:1rem;
+        margin-right:1rem;
+         
+    }
+
+
+
+    &__container {
+        
+        margin-right: 1rem;
+        margin-left: 1rem;
+        margin-bottom: 10rem;
+    }
+    
+}
+
+.carousel-root {
+    
+    margin: auto;
+}
+
+.carousel {
+    height: 200px;
+}
+
+.thumbs-wrapper {
+    display:none;
+}
+
+.legend {
+    display: none;
+}
+
+.dots {
+    background-color:pink;
+}
+
+.carousel-status {
+    display:none;
+}
+
+@media screen and (min-width: vars.$tablet) {
+.home-page {
+    
+    &__container {
+        background-color: rgba(138, 138, 138, 0.144);
+        border-radius:vars.$radius;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__title {
+        margin-top: 5rem;
+        font-size: 3rem;
+        margin-bottom: 5rem;
+    }
+
+    &__avatar {
+        display:flex;
+        flex-direction: row;
+    }
+}
+
+.carousel-root {
+    
+    width: 600px;
+    margin: auto;
+}
+.carousel {
+    height: 250px;
+}
+}
+
+
+@media screen and (min-width: vars.$desktop) {
+    
+    .home-page {
+        
+        
+        &__title {
+            margin-top: 5rem;
+            font-size: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        &__content {
+            margin-left: 1rem;
+        }
+    }
+    
+    .carousel-root {
+        
+        width: 800px;
+        height: 300px;
+    }
+
+    .carousel {
+        width:auto;
+        height: 300px;
+        margin: auto;
+        
+        
+    }
+    }
