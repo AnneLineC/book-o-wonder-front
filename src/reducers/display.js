@@ -1,28 +1,7 @@
-import { SET_DISPLAY } from '../actions';
+import { SET_CATEGORIES, SET_DISPLAY } from '../actions';
 
 export const initialState = {
-  categoriesList: [
-    {
-      id: 0,
-      label: 'Aventure',
-      image: 'http://monimage.jpg',
-    },
-    {
-      id: 1,
-      label: 'Héroïc-Fantasy',
-      image: 'http://monimage.jpg',
-    },
-    {
-      id: 2,
-      label: 'Horreur',
-      image: 'http://monimage.jpg',
-    },
-    {
-      id: 3,
-      label: 'Enfant',
-      image: 'http://monimage.jpg',
-    },
-  ],
+  categoriesList: [],
   connexionMenu: false,
   connectedMenu: false,
   categoriesMenu: false,
@@ -30,6 +9,11 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SET_CATEGORIES:
+      return {
+        ...state,
+        categoriesList: action.list,
+      };
     case SET_DISPLAY:
       return {
         ...state,

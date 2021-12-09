@@ -40,6 +40,7 @@ const ConnexionMenu = () => {
         </li>
         <li className="connected-menu__item">
           <a
+            href="http://52.87.193.62/"
             onClick={handleLinkClick}
           >
             Administration (admin)
