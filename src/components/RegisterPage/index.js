@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setFieldValue, loginAttempt, registerAttempt } from '../../actions';
 
 import './styles.scss';
@@ -33,6 +34,7 @@ const RegisterPage = () => {
   };
 
   const handleRegisterFormSubmit = (event) => {
+    console.log("submit OK");
     event.preventDefault();
     dispatch(registerAttempt());
   };
@@ -40,56 +42,64 @@ const RegisterPage = () => {
   return (
     <div className="register-page">
 
-      <form autoComplete="off" className="register-page__form">
+      <form autoComplete="off" className="register-page__form" onSubmit={handleRegisterFormSubmit}>
 
-        <label className="register-page__label" htmlFor="pseudo">Pseudo</label>
-        <input
-          className="register-page__input"
-          type="text"
-          name="nickname"
-          id="nickname"
-          placeholder=""
-          value={nicknameValue}
-          onChange={handleInputNicknameChange}
-        />
+        <label className="register-page__label" htmlFor="pseudo">
+          <span className="sr-only">Pseudo</span>
+          <input
+            className="register-page__input"
+            type="text"
+            name="nickname"
+            id="nickname"
+            placeholder="Pseudo"
+            value={nicknameValue}
+            onChange={handleInputNicknameChange}
+          />
+        </label>
 
-        <label className="register-page__label" htmlFor="email">Adresse Mail</label>
-        <input
-          className="register-page__input"
-          type="email"
-          name="email"
-          id="email"
-          placeholder=""
-          value={emailValue}
-          onChange={handleInputEmailChange}
-        />
+        <label className="register-page__label" htmlFor="email">
+          <span className="sr-only">Adresse Mail</span>
+          <input
+            className="register-page__input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Adresse mail"
+            value={emailValue}
+            onChange={handleInputEmailChange}
+          />
+        </label>
 
-        <label className="register-page__label" htmlFor="password">Mot de Passe</label>
-        <input
-          className="register-page__input"
-          type="password"
-          name="password"
-          id="password"
-          placeholder=""
-          value={passwordValue}
-          onChange={handleInputPasswordChange}
-        />
+        <label className="register-page__label" htmlFor="password">
+          <span className="sr-only">Mot de passe</span>
+          <input
+            className="register-page__input"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Mot de passe"
+            minLength={8}
+            value={passwordValue}
+            onChange={handleInputPasswordChange}
+          />
+        </label>
 
-        <label className="register-page__label" htmlFor="password-confirm">Confirmation du mot de passe</label>
-        <input
-          className="register-page__input"
-          type="password"
-          name="passwordconfirm"
-          id="passwordconfirm"
-          placeholder=""
-          value={passwordConfirmValue}
-          onChange={handleInputPasswordConfirmChange}
-        />
+        <label className="register-page__label" htmlFor="password-confirm">
+          <span className="sr-only">Confirmez le mot de passe</span>
+          <input
+            className="register-page__input"
+            type="password"
+            name="passwordconfirm"
+            id="passwordconfirm"
+            placeholder="Confirmez votre mot de passe"
+            value={passwordConfirmValue}
+            onChange={handleInputPasswordConfirmChange}
+          />
+        </label>
 
         <button
           type="submit"
           className="register-page__register"
-          onSubmit={handleRegisterFormSubmit}
         >
           Inscription
         </button>
@@ -100,14 +110,15 @@ const RegisterPage = () => {
         Si vous avez déjà un compte, vous pouvez vous connecter :
       </p>
 
-      <button
-        type="submit"
-        className="register-page__connexion"
-        onSubmit={handleConnexionFormSubmit}
-      >
-        Connexion
-      </button>
-
+      <Link to="/connexion">
+        <button
+          type="submit"
+          className="register-page__connexion"
+          onSubmit={handleConnexionFormSubmit}
+        >
+          Connexion
+        </button>
+      </Link>
     </div>
   );
 };

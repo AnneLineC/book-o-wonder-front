@@ -1,4 +1,21 @@
 // ===============
+// LOAD FROM API
+// ===============
+
+export const LOAD_CATEGORIES_FROM_API = 'LOAD_CATEGORIES_FROM_API';
+
+export const loadCategoriesFromAPI = () => ({
+  type: LOAD_CATEGORIES_FROM_API,
+});
+
+export const SET_CATEGORIES = 'SET_CATEGORIES';
+
+export const setCategories = (list) => ({
+  type: SET_CATEGORIES,
+  list,
+});
+
+// ===============
 // FORMS
 // ===============
 
