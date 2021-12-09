@@ -1,3 +1,7 @@
+// ===============
+// FORMS
+// ===============
+
 export const LOGIN_ATTEMPT = 'LOGIN_ATTEMPT';
 
 export const loginAttempt = () => ({
@@ -41,4 +45,16 @@ export const SET_DISPLAY = 'SET_DISPLAY';
 export const setDisplay = (name) => ({
   type: SET_DISPLAY,
   name,
+});
+
+// ===============
+// BOOKS
+// ===============
+
+export const SET_PINNEDPAGE = 'SET_PINNEDPAGE';
+
+export const setPinnedPage = (id, location) => ({
+  type: SET_PINNEDPAGE,
+  id,
+  location,
 });

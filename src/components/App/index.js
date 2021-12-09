@@ -14,6 +14,7 @@ import CategoriesMenu from '../CategoriesMenu';
 import SortedBooksPage from '../SortedBooksPage';
 
 import './styles.scss';
+import BookReadingPage from '../BookReadingPage';
 
 const App = () => (
   <div className="App">
@@ -27,6 +28,7 @@ const App = () => (
       <Route path="/inscription" element={<RegisterPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/categorie/:id" element={<SortedBooksPage />} />
+      <Route path="/livre/:id/lecture" element={<BookReadingPage />} />
     </Routes>
     <FooterApp />
   </div>
