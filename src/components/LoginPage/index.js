@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setFieldValue, loginAttempt } from '../../actions';
 
 import './styles.scss';
@@ -20,37 +21,41 @@ const LoginPage = () => {
 
   const handleConnexionFormSubmit = (event) => {
     event.preventDefault();
+    console.log('handler OK');
     dispatch(loginAttempt());
   };
 
   return (
     <div className="login-page">
 
-      <form autoComplete="off" className="login-page__form">
-        <label htmlFor="email">Adresse Mail</label>
-        <input
-          className="login-page__input"
-          type="email"
-          name="email"
-          id="email"
-          placeholder=""
-          value={emailValue}
-          onChange={handleInputEmailChange}
-        />
-        <label htmlFor="password">Mot de Passe</label>
-        <input
-          className="login-page__input"
-          type="password"
-          name="password"
-          id="password"
-          placeholder=""
-          value={passwordValue}
-          onChange={handleInputPasswordChange}
-        />
+      <form autoComplete="off" className="login-page__form" onSubmit={handleConnexionFormSubmit}>
+        <label htmlFor="email">
+          <input
+            className="login-page__input"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Adresse mail"
+            value={emailValue}
+            onChange={handleInputEmailChange}
+          />
+        </label>
+        <label htmlFor="password">
+          <span className="sr-only">Mot de Passe</span>
+          <input
+            className="login-page__input"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Mot de passe"
+            value={passwordValue}
+            onChange={handleInputPasswordChange}
+          />
+        </label>
+
         <button
           type="submit"
           className="login-page__connexion"
-          onSubmit={handleConnexionFormSubmit}
         >
           Connexion
         </button>
@@ -66,12 +71,14 @@ const LoginPage = () => {
         Si vous n'avez pas de compte, vous pouvez vous inscrire :
       </p>
 
-      <button
+      <Link to="/inscription">
+        <button
         type="submit"
         className="login-page__subscription"
-      >
-        Inscription
-      </button>
+        >
+          Inscription
+       </button>
+      </Link>
 
     </div>
   );

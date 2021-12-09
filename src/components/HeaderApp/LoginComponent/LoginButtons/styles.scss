@@ -11,10 +11,6 @@
         margin-left: vars.$gutter;
         box-shadow: 0 0 3px color.scale(vars.$color--grey-dark, $blackness: 100%); 
         // font-weight: bold;
-
-        &--signin {
-            background-color: vars.$color--blue-light;
-        }
     }
 }
 
