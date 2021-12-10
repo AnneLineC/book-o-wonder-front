@@ -73,11 +73,11 @@ const LoginPage = () => {
 
       <Link to="/inscription">
         <button
-        type="submit"
-        className="login-page__subscription"
+          type="submit"
+          className="login-page__subscription"
         >
           Inscription
-       </button>
+        </button>
       </Link>
 
     </div>

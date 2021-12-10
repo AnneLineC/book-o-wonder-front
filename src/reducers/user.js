@@ -1,9 +1,13 @@
 import {
-  SET_FIELD_VALUE, SET_PINNEDPAGE,
+  SET_FIELD_VALUE,
+  SET_PINNEDPAGE,
+  SET_CURRENT_USER_JWT,
+  SET_CURRENT_USER_DATA,
 } from '../actions';
 
 export const initialState = {
-  currentUser: null,
+  token: null,
+  logged: false,
   nicknameValue: '',
   emailValue: '',
   passwordValue: '',
@@ -27,12 +31,17 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
-    // case 'SET_CURRENT_USER':
-    //   return {
-    //     ...state,
-    //     currentUser: action.value,
-    //     // on en profite pour refermer le formulaire de login
-    //   };
+    case SET_CURRENT_USER_JWT:
+      return {
+        ...state,
+        token: action.token,
+      };
+    case SET_CURRENT_USER_DATA:
+      return {
+        ...state,
+        logged: true,
+        ...action.data,
+      };
     case SET_PINNEDPAGE: {
       const pinnedPageIndex = state.pinnedPages.findIndex(
         (pinnedPage) => (pinnedPage.bookId == action.id),
