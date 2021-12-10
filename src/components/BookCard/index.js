@@ -20,7 +20,7 @@ const BookCard = ({ picture }) => (
   <div
     className="bookcard"
     // style={{ backgroundImage: `url("../../docs/images/${picture}")` }}
-    style={{ backgroundImage: 'url("https://d1csarkz8obe9u.cloudfront.net/posterpreviews/willful-sin-dangers-design-template-3a668d6f61992e49d7e9308fb68044af_screen.jpg?ts=1637039339")' }}
+    style={{ backgroundImage: 'url(" {picture} ")' }}
   />
 );
 
