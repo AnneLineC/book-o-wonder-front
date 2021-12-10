@@ -11,7 +11,7 @@ export const initialState = {
   pinnedPages: [
     {
       bookId: 1,
-      location: 'test1',
+      location: 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)',
     },
     {
       bookId: 2,

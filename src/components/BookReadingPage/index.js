@@ -12,12 +12,14 @@ const BookReadingPage = () => {
   let pageLocation;
   console.log(pinnedPages);
   pinnedPages.forEach((pinnedPage) => {
-    // console.log(pinnedPage.location);
-    if (parseInt(pinnedPage.bookId, 10) === id) {
+    console.log(pinnedPage.location);
+    console.log(pinnedPage.bookId);
+    console.log(id);
+    if (parseInt(pinnedPage.bookId, 10) == id) {
       pageLocation = pinnedPage.location;
     }
   });
-  // console.log(pageLocation);
+  console.log(pageLocation);
 
   const dispatch = useDispatch();
   const locationChanged = (epubcifi) => {

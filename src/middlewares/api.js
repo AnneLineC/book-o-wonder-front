@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { LOGIN_ATTEMPT, setCurrentUser, REGISTER_ATTEMPT, LOAD_CATEGORIES_FROM_API } from '../actions';
 
-const baseURI = 'http://52.87.193.62';
+const baseURI = 'http://3.84.188.125';
 
 const apiMiddleWare = (store) => (next) => (action) => {
   switch (action.type) {
