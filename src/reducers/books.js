@@ -1,3 +1,4 @@
+import { SET_BOOKS_LIST } from '../actions';
 import booksList from '../docs/test-book';
 
 export const initialState = {
@@ -9,6 +10,11 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case SET_BOOKS_LIST:
+      return {
+        ...state,
+        booksList: action.list,
+      };
     // case SAVE_BOOKS:
     //   return {
     //     ...state,

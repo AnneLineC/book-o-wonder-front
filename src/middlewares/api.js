@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { LOGIN_ATTEMPT, setCurrentUser, REGISTER_ATTEMPT, LOAD_CATEGORIES_FROM_API } from '../actions';
+import { LOGIN_ATTEMPT, REGISTER_ATTEMPT, LOAD_CATEGORIES_FROM_API, LOAD_BOOKS_BY_CATEGORY_FROM_API, setBooksList } from '../actions';
 
-const baseURI = 'http://52.87.193.62';
+const baseURI = 'http://3.84.188.125';
 
 const apiMiddleWare = (store) => (next) => (action) => {
   switch (action.type) {
@@ -63,7 +63,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       // api's url so that we can connect back and front together
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
 
           // dispatch to log the user
           // store.dispatch(setCurrentUser(response.data));
@@ -71,9 +71,26 @@ const apiMiddleWare = (store) => (next) => (action) => {
       ).catch(
         (error) => console.log(error.toJSON()),
       );
+
+      next(action);
+      break;
     }
+    case LOAD_BOOKS_BY_CATEGORY_FROM_API: {
+      axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setBooksList(response.data.books));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
     default:
-    next(action);
+      next(action);
   }
-}
+};
 export default apiMiddleWare;

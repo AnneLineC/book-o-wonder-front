@@ -15,6 +15,20 @@ export const setCategories = (list) => ({
   list,
 });
 
+export const LOAD_BOOKS_BY_CATEGORY_FROM_API = 'LOAD_BOOKS_BY_CATEGORY_FROM_API';
+
+export const loadBooksByCategoryFromAPI = (id) => ({
+  type: LOAD_BOOKS_BY_CATEGORY_FROM_API,
+  id,
+});
+
+export const SET_BOOKS_LIST = 'SET_BOOKS_LIST';
+
+export const setBooksList = (list) => ({
+  type: SET_BOOKS_LIST,
+  list,
+});
+
 // ===============
 // FORMS
 // ===============

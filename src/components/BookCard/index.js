@@ -20,7 +20,7 @@ const BookCard = ({ picture }) => (
   <div
     className="bookcard"
     // style={{ backgroundImage: `url("../../docs/images/${picture}")` }}
-    style={{ backgroundImage: 'url(" {picture} ")' }}
+    style={{ backgroundImage: 'url("{picture} ")' }}
   />
 );
 
