@@ -2,14 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LoggedMenu from './LoggedMenu';
 import LoginComponent from './LoginComponent';
-import { removeAllDisplay, setDisplay } from '../../actions';
+import { setDisplay } from '../../actions';
 import './styles.scss';
 
 const HeaderApp = () => {
-  const isLogged = false;
+  const isLogged = useSelector((state) => state.user.logged);
   const dispatch = useDispatch();
   const handleMenuButtonClick = (name) => {
-    // dispatch(removeAllDisplay());
     dispatch(setDisplay(name));
   };
   return (

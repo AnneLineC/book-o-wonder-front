@@ -1,6 +1,15 @@
 import axios from 'axios';
 
-import { LOGIN_ATTEMPT, REGISTER_ATTEMPT, LOAD_CATEGORIES_FROM_API, LOAD_BOOKS_BY_CATEGORY_FROM_API, setBooksList } from '../actions';
+import {
+  LOGIN_ATTEMPT,
+  setCurrentUserJWT,
+  REGISTER_ATTEMPT,
+  LOAD_CATEGORIES_FROM_API,
+  setCategories,
+  setCurrentUserData,
+  setBooksList,
+  LOAD_BOOKS_BY_CATEGORY_FROM_API,
+} from '../actions';
 
 const baseURI = 'http://3.84.188.125';
 
@@ -8,10 +17,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
   switch (action.type) {
     case LOGIN_ATTEMPT: {
       const { emailValue, passwordValue } = store.getState().user;
-      console.log('test');
-      console.log(emailValue, passwordValue);
 
-      // api's url so that we can connect back and front together
       axios.post(`${baseURI}/api/login_check`, {
         username: emailValue,
         password: passwordValue,
@@ -19,8 +25,22 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (response) => {
           console.log(response.data);
 
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
+          // dispatch to get the user's token
+          store.dispatch(setCurrentUserJWT(response.data.token));
+
+          // we save the token into axios instance
+          axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+
+          axios.get(
+            `${baseURI}/api/v1/user/user`,
+          ).then(
+            (result) => {
+              console.log(result);
+              store.dispatch(setCurrentUserData(result.data));
+            },
+          ).catch(
+            (error) => console.log(error),
+          );
         },
       ).catch(
         (error) => console.log(error),
@@ -29,6 +49,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case REGISTER_ATTEMPT: {
       const {
         nicknameValue,
@@ -36,8 +57,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         passwordValue,
         // passwordConfirmValue,
       } = store.getState().user;
-
-      console.log(nicknameValue, emailValue, passwordValue);
 
       // api's url so that we can connect back and front together
       axios.post(`${baseURI}/api/v1/register`, {
@@ -59,14 +78,12 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_CATEGORIES_FROM_API: {
-      // api's url so that we can connect back and front together
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
-          // console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
+          console.log(response);
+          store.dispatch(setCategories(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

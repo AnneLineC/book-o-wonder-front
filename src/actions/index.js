@@ -45,11 +45,18 @@ export const registerAttempt = () => ({
   type: REGISTER_ATTEMPT,
 });
 
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const SET_CURRENT_USER_JWT = 'SET_CURRENT_USER';
 
-export const setCurrentUser = (user) => ({
-  type: SET_CURRENT_USER,
-  user,
+export const setCurrentUserJWT = (token) => ({
+  type: SET_CURRENT_USER_JWT,
+  token,
+});
+
+export const SET_CURRENT_USER_DATA = 'SET_CURRENT_USER_DATA';
+
+export const setCurrentUserData = (data) => ({
+  type: SET_CURRENT_USER_DATA,
+  data,
 });
 
 export const SEND_CONTACT_FORM_ATTEMPT = 'SEND_CONTACT_FORM_ATTEMPT';
