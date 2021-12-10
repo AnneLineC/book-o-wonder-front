@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import './styles.scss';
 
 // import Favorite from './Favorite'
@@ -16,13 +17,15 @@ import './styles.scss';
 //     }
 // );
 
-const BookCard = ({ picture }) => (
-  <div
-    className="bookcard"
-    // style={{ backgroundImage: `url("../../docs/images/${picture}")` }}
-    style={{ backgroundImage: 'url("{picture} ")' }}
-  />
-);
+const BookCard = ({ picture }) => {
+  const baseURI = useSelector((state) => (state.display.baseURI));
+  return (
+    <div
+      className="bookcard"
+      style={{ backgroundImage: `url("${baseURI}/images_book_folder/${picture}")` }}
+    />
+  );
+};
 
 BookCard.propTypes = {
   picture: PropTypes.string.isRequired,

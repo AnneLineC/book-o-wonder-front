@@ -22,11 +22,12 @@ export const loadBooksByCategoryFromAPI = (id) => ({
   id,
 });
 
-export const SET_BOOKS_LIST = 'SET_BOOKS_LIST';
+export const SET_BOOKS_LIST_BY_CATEGORY = 'SET_BOOKS_LIST_BY_CATEGORY';
 
-export const setBooksList = (list) => ({
-  type: SET_BOOKS_LIST,
-  list,
+export const setBooksListByCategory = (booksList) => ({
+  type: SET_BOOKS_LIST_BY_CATEGORY,
+  booksList,
+  // categoryTitle,
 });
 
 // ===============

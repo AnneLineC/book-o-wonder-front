@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { useEffect } from 'react';
 import { loadBooksByCategoryFromAPI } from '../../actions';
 import BookCard from '../BookCard';
@@ -9,6 +9,7 @@ import './styles.scss';
 
 const SortedBooksPage = () => {
   const { id } = useParams();
+  const location = useLocation();
   const booksList = useSelector((state) => state.books.booksList);
   const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ const SortedBooksPage = () => {
       // This function will be executed when the SortedBooksPage component will render
       dispatch(loadBooksByCategoryFromAPI(id));
     },
-    [],
+    [location],
   );
 
   return (
