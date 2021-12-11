@@ -44,7 +44,7 @@ const reducer = (state = initialState, action = {}) => {
       };
     case SET_PINNEDPAGE: {
       const pinnedPageIndex = state.pinnedPages.findIndex(
-        (pinnedPage) => (pinnedPage.bookId == action.id),
+        (pinnedPage) => (pinnedPage.bookId === parseInt(action.id, 10)),
       );
       const { pinnedPages } = state;
       pinnedPages[pinnedPageIndex].location = action.location;

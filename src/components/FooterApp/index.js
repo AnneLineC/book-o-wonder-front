@@ -1,19 +1,15 @@
 import './styles.scss';
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 const FooterApp = () => (
   <footer>
     <nav>
       <ul className="nav--list">
-        <li className="nav--listItem"><a href="#">Nous contacter</a></li>
-        <li className="nav--listItem"><a href="#">Notre équipe</a></li>
-        <li className="nav--listItem"><a href="#">Mentions Légales</a></li>
+        <li className="nav--listItem"><NavLink to="/contact">Nous contacter</NavLink></li>
+        <li className="nav--listItem"><NavLink to="/notre-equipe">Notre équipe</NavLink></li>
+        <li className="nav--listItem"><NavLink to="/mentions-legales">Mentions Légales</NavLink></li>
       </ul>
     </nav>
-
-        {/*<Link to="/Nous_contacter">Nous contacter</Link>
-        <Link to="/Notre_equipe">Notre équipe</Link>
-        <Link to="/Mentions_Legales">Mentions Légales</Link>*/}
   </footer>
 );
 

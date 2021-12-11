@@ -34,7 +34,6 @@ const RegisterPage = () => {
   };
 
   const handleRegisterFormSubmit = (event) => {
-    console.log("submit OK");
     event.preventDefault();
     dispatch(registerAttempt());
   };
