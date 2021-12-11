@@ -1,4 +1,4 @@
 .book-reading-page {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - (6rem + 5rem + 1rem));
 }

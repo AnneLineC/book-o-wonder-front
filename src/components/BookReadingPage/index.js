@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
-import { ReactReader } from 'react-reader';
+import { useEffect, useRef, useState } from 'react';
+import { ReactReader, ReactReaderStyle } from 'react-reader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { setPinnedPage } from '../../actions';
+import BookReadingFooter from './BookReadingFooter';
 import './styles.scss';
 
 const BookReadingPage = () => {
@@ -35,13 +36,40 @@ const BookReadingPage = () => {
     },
   );
 
+  const [size, setSize] = useState(200);
+  const renditionRef = useRef(null);
+  const changeSize = (newSize) => {
+    setSize(newSize);
+  };
+  useEffect(() => {
+    if (renditionRef.current) {
+      renditionRef.current.themes.fontSize(`${size}%`);
+    }
+  }, [size]);
+
+  const ownStyles = {
+    ...ReactReaderStyle,
+    readerArea: {
+      ...ReactReaderStyle.readerArea,
+      // backgroundColor: 'black',
+      // color: 'white',
+    },
+  };
+
   return (
     <div className="book-reading-page">
       <ReactReader
         url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
         location={pageLocation}
         locationChanged={locationChanged}
+        swipeable="true"
+        styles={ownStyles}
+        getRendition={(rendition) => {
+          renditionRef.current = rendition;
+          renditionRef.current.themes.fontSize(`${size}%`);
+        }}
       />
+      <BookReadingFooter changeSize={changeSize} size={size} />
     </div>
   );
 };
