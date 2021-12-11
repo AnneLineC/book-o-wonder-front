@@ -4,7 +4,9 @@ import { setDisplay } from '../../actions';
 
 import './styles.scss';
 
-const Modal = ({ componentName, isComponentOpen, appearingDesktopSide, children }) => {
+const Modal = ({
+  componentName, isComponentOpen, appearingDesktopSide, children,
+}) => {
   const dispatch = useDispatch();
   const handleCloseIconClick = (name) => {
     dispatch(setDisplay(name));
