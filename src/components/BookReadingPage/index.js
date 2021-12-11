@@ -13,10 +13,7 @@ const BookReadingPage = () => {
   let pageLocation;
   console.log(pinnedPages);
   pinnedPages.forEach((pinnedPage) => {
-    console.log(pinnedPage.location);
-    console.log(pinnedPage.bookId);
-    console.log(id);
-    if (parseInt(pinnedPage.bookId, 10) == id) {
+    if (parseInt(pinnedPage.bookId, 10) === parseInt(id, 10)) {
       pageLocation = pinnedPage.location;
     }
   });
@@ -31,6 +28,10 @@ const BookReadingPage = () => {
     () => {
       const bodyElement = document.querySelector('body');
       bodyElement.classList.add('reading-page');
+
+      return () => {
+        bodyElement.classList.remove('reading-page');
+      };
     },
   );
 

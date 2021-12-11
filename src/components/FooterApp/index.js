@@ -2,7 +2,7 @@ import './styles.scss';
 import { NavLink } from 'react-router-dom';
 
 const FooterApp = () => (
-  <footer>
+  <footer className="app-footer">
     <nav className="nav">
       <ul className="nav__list">
         <li className="nav__listItem"><NavLink to="/contact">Nous contacter</NavLink></li>
