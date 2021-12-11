@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { ReactReader } from 'react-reader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
@@ -25,6 +26,13 @@ const BookReadingPage = () => {
   const locationChanged = (epubcifi) => {
     dispatch(setPinnedPage(id, epubcifi));
   };
+
+  useEffect(
+    () => {
+      const bodyElement = document.querySelector('body');
+      bodyElement.classList.add('reading-page');
+    },
+  );
 
   return (
     <div className="book-reading-page">
