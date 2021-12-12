@@ -12,6 +12,7 @@ import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
 import ConnectedMenu from '../ConnectedMenu';
 import CategoriesMenu from '../CategoriesMenu';
+import MediaPlayer from '../MediaPlayer';
 import SortedBooksPage from '../SortedBooksPage';
 import BookReadingPage from '../BookReadingPage';
 import Error404 from '../Error404';
@@ -45,6 +46,7 @@ const App = () => {
       <ConnectedMenu />
       <CategoriesMenu />
       <HeaderApp />
+      <MediaPlayer />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/connexion" element={<LoginPage />} />

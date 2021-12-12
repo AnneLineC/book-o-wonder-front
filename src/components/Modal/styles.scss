@@ -14,7 +14,7 @@
     z-index: 100;
     transition: transform 1s;
     transform: translateX(100%);
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 0 0 3px black;
     
     &--open {
         transform: translateX(0);
@@ -36,14 +36,14 @@
         left: auto;
         right: 0;
         width: 40rem;
-        transform: translateX(40rem);
+        transform: translateX(41rem);
 
         &--left {
             top: 0;
             left: 0;
             right: auto;
             width: 40rem;
-            transform: translateX(-40rem);
+            transform: translateX(-41rem);
         }
 
         &--open {

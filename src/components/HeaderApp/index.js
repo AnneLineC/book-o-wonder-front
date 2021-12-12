@@ -29,7 +29,15 @@ const HeaderApp = () => {
         <span className="sr-only">Catégories</span>
         <i className="header-app__icon fas fa-book" />
       </button>
-      <button type="button" className="header-app__element header-app__element--audio-player">
+      <button
+        type="button"
+        className="header-app__element header-app__element--audio-player"
+        onClick={
+          () => {
+            handleMenuButtonClick('mediaPlayer');
+          }
+        }
+      >
         <span className="sr-only">Lecteur audio</span>
         <i className="header-app__icon fas fa-headphones" />
       </button>

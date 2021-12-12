@@ -5,6 +5,7 @@ export const initialState = {
   connexionMenu: false,
   connectedMenu: false,
   categoriesMenu: false,
+  mediaPlayer: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
