@@ -1,0 +1,8 @@
+@use './../../styles/vars';
+
+.controls {
+  &__playpause {
+    background-color: vars.$color--blue-light;
+    padding: 1rem;
+  }
+}

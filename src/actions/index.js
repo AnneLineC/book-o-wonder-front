@@ -71,6 +71,13 @@ export const setDisplay = (name) => ({
   name,
 });
 
+export const SET_MEDIA_PLAYER_PLAYING = 'SET_MEDIA_PLAYER_PLAYING';
+
+export const setMediaPlayerPlaying = (value) => ({
+  type: SET_MEDIA_PLAYER_PLAYING,
+  value,
+});
+
 // ===============
 // BOOKS
 // ===============
