@@ -1,7 +1,9 @@
 @use "../../../styles/vars";
+@use "sass:color";
 
 .book-reading-footer {
-  height: 5rem;
+  height: 6rem;
+  background-color: color.scale(vars.$color--grey-dark, $blackness: 80%);
 }
 
 .font-size {

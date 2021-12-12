@@ -36,7 +36,7 @@ const BookReadingPage = () => {
     },
   );
 
-  const [size, setSize] = useState(200);
+  const [size, setSize] = useState(100);
   const renditionRef = useRef(null);
   const changeSize = (newSize) => {
     setSize(newSize);
@@ -51,7 +51,7 @@ const BookReadingPage = () => {
     ...ReactReaderStyle,
     readerArea: {
       ...ReactReaderStyle.readerArea,
-      // backgroundColor: 'black',
+      backgroundColor: '#2f2f2f',
       // color: 'white',
     },
   };
@@ -67,6 +67,19 @@ const BookReadingPage = () => {
         getRendition={(rendition) => {
           renditionRef.current = rendition;
           renditionRef.current.themes.fontSize(`${size}%`);
+          rendition.themes.register('custom', {
+            img: {
+              border: '2px solid #e9ab9c',
+              borderRadius: '5px',
+            },
+            p: {
+              color: 'white',
+            },
+            h2: {
+              color: 'white',
+            },
+          });
+          rendition.themes.select('custom');
         }}
       />
       <BookReadingFooter changeSize={changeSize} size={size} />
