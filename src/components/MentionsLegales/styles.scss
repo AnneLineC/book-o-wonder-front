@@ -1,0 +1,56 @@
+@use './../../styles/vars';
+
+.mentions-legales {
+    margin: vars.$gutter*2;
+
+
+    &__page-title {
+        font-size: 3rem;
+        margin: vars.$gutter*2;
+        font-weight: bold;
+    }
+
+    &__main-title {
+        font-size: 2.2rem;
+        margin: vars.$gutter;
+        font-weight: bold;
+    }
+
+    &__sub-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: vars.$gutter;
+    }
+
+    &__section {
+        margin-top: vars.$gutter*3;
+    }
+
+    &__content {
+        text-align: justify;
+        margin: vars.$gutter*0.5;
+    }
+
+    &__list {
+        text-align: left;
+        list-style-type: circle;
+        padding-left: vars.$gutter*5;
+    }
+
+    &__list-item {
+        font-size: inherit;
+    }
+
+    &__list-item::marker {
+        text-align: left;
+    }
+
+    &__link {
+        text-decoration: underline;
+        color: #96BFFF;
+    }
+
+    &__link:hover{
+        color: vars.$color--blue-light;
+    }
+}
