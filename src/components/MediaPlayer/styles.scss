@@ -3,6 +3,9 @@
 .player {
   max-width: 30rem;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
 }
 
 .infos {
@@ -68,6 +71,27 @@
     &-text {
       margin-right: vars.$gutter;
     }
+  }
+}
+
+.music-list {
+  margin-top: vars.$gutter*3;
+  padding-right: vars.$gutter;
+  flex: 1;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: vars.$color--blue-light;        /* color of the tracking area */
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: vars.$color--grey-dark;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid vars.$color--blue-light;  /* creates padding around scroll thumb */
   }
 }
 

@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import { setMediaPlayerDisplay } from '../../actions';
 import Modal from '../Modal';
 import './styles.scss';
+import MusicPreview from './MusicPreview';
 
 const MediaPlayer = () => {
   const dispatch = useDispatch();
@@ -55,9 +56,9 @@ const MediaPlayer = () => {
               <div className="infos__content">
                 <div className="infos__left">
                   <button className="infos__playpause" type="button" onClick={handlePlayPause}>{playing ? <i className="fas fa-pause" /> : <i className="fas fa-play" />}</button>
-                  <h2 className="infos__title">Titre du son</h2>
+                  <h2 className="infos__title">Le lofi de ouf</h2>
                 </div>
-                <span className="infos__category">Lofi</span>
+                <span className="infos__category">Fantasy</span>
               </div>
             </div>
           </div>
@@ -67,7 +68,20 @@ const MediaPlayer = () => {
               <input id="volume" type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
             </label>
           </div>
+          <div className="music-list">
+            <MusicPreview title="Le lofi de ouf" category="Fantasy" />
+            <MusicPreview title="Le bruit de l'endive" category="Aventure" />
+            <MusicPreview title="Le feu ça brule" category="Science Fiction" />
+            <MusicPreview title="Et l'eau ça... non !" category="Enfant" />
+            <MusicPreview title="Vous le valez bien" category="Horreur" />
+            <MusicPreview title="Le lofi de ouf" category="Aventure" />
+            <MusicPreview title="Le bruit de l'endive" category="Nature" />
+            <MusicPreview title="Le feu ça brule" category="Science Fiction" />
+            <MusicPreview title="Et l'eau ça... non !" category="Nature" />
+            <MusicPreview title="Vous le valez bien" category="Horreur" />
+          </div>
         </div>
+
       </Modal>
     </div>
   );
