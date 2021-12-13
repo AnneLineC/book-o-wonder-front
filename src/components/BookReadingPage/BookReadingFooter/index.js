@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 const BookReadingFooter = ({ changeSize, size }) => (
@@ -9,5 +10,10 @@ const BookReadingFooter = ({ changeSize, size }) => (
     </div>
   </div>
 );
+
+BookReadingFooter.propTypes = {
+  changeSize: PropTypes.func.isRequired,
+  size: PropTypes.number.isRequired,
+};
 
 export default BookReadingFooter;

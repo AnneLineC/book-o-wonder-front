@@ -1,10 +1,14 @@
 RouteApi.md
-Aujourd'hui
-09:10
+Hier
+jeu. 11:57
 Marianne Holveck a modifié un élément.
 Texte
 RouteApi.md
-Hier
+jeu. 09:10
+Marianne Holveck a modifié un élément.
+Texte
+RouteApi.md
+Au début de la semaine
 mer. 10:45
 Marianne Holveck a importé un élément
 Texte
@@ -212,6 +216,12 @@ RouteApi.md
     }
   ]
 }
+```
+
+- route: /api/v1/book/ishome - name="api_v1_book_ishome- methods = {"GET"} - Role : [GUEST]:
+
+```
+La même que pour la route read
 ```
 
 ## Category
@@ -809,7 +819,48 @@ RouteApi.md
 
 - route: /api/v1/favorite/mostfavorite - name="api_v1_favorite_mostfavorite - methods = {"GET"} - Role : [Guest]:
 
-- route: /api/v1/favorite//mostrecommendated - name="api_v1_favorite_mostrecommendated - methods = {"GET"} - Role : [Guest]:
+```
+[
+  {
+    "book": {
+      "id": 5,
+      "title": "Charlie et la chocolaterie",
+      "picture": null
+    }
+  }
+]
+```
 
-- route: /api/v1/favorite/mostpinned - name="api_v1_favorite_mostpinned - methods = {"GET"} - Role : [Guest]:
+- route: /api/v1/recommendation/mostrecommendated - name="api_v1_recommendation_mostrecommendated - methods = {"GET"} - Role : [Guest]:
 
+```
+[
+  {
+    "book": {
+      "id": 4,
+      "title": "Eragon",
+      "picture": null
+    }
+  }
+]
+```
+
+- route: /api/v1/pinnedpage/mostpinned - name="api_v1_pinnedpage_mostpinned - methods = {"GET"} - Role : [Guest]:
+
+```
+[
+  {
+    "book": {
+      "id": 2,
+      "title": "La métaphysique des tubes",
+      "picture": null
+    }
+  }
+]
+```
+
+- route: /api/v1/pinnedpage/mostreadcategory - name="api_v1_pinnedpage_mostreadcategory - methods = {"GET"} - Role : [Guest]:
+
+```
+EN COURS MAIS C'EST LA GALERE ET JE PLEURE 
+```

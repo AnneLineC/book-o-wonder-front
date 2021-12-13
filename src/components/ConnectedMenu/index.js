@@ -19,6 +19,8 @@ const ConnexionMenu = () => {
     dispatch();
   };
 
+  const baseURI = useSelector((state) => (state.display.baseURI));
+
   return (
     <Modal componentName="connectedMenu" isComponentOpen={isConnectedMenuOpen}>
       <ul className="connected-menu__list">
@@ -40,7 +42,7 @@ const ConnexionMenu = () => {
         </li>
         <li className="connected-menu__item">
           <a
-            href="http://52.87.193.62/"
+            href={`${baseURI}/`}
             onClick={handleLinkClick}
           >
             Administration (admin)

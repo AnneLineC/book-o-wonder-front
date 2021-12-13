@@ -2,6 +2,8 @@
 // LOAD FROM API
 // ===============
 
+import { bindActionCreators } from "redux";
+
 export const LOAD_CATEGORIES_FROM_API = 'LOAD_CATEGORIES_FROM_API';
 
 export const loadCategoriesFromAPI = () => ({
@@ -13,6 +15,28 @@ export const SET_CATEGORIES = 'SET_CATEGORIES';
 export const setCategories = (list) => ({
   type: SET_CATEGORIES,
   list,
+});
+
+export const LOAD_BOOKS_BY_CATEGORY_FROM_API = 'LOAD_BOOKS_BY_CATEGORY_FROM_API';
+
+export const loadBooksByCategoryFromAPI = (id) => ({
+  type: LOAD_BOOKS_BY_CATEGORY_FROM_API,
+  id,
+});
+
+export const SET_BOOKS_LIST_BY_CATEGORY = 'SET_BOOKS_LIST_BY_CATEGORY';
+
+export const setBooksListByCategory = (booksList) => ({
+  type: SET_BOOKS_LIST_BY_CATEGORY,
+  booksList,
+  // categoryTitle,
+});
+
+export const LOAD_BOOK_FROM_API = 'LOAD_BOOK_FROM_API';
+
+export const loadBookFromAPI = (id) => ({
+  type: LOAD_BOOK_FROM_API,
+  id,
 });
 
 // ===============
