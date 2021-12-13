@@ -10,6 +10,7 @@ import {
   setBooksListByCategory,
   LOAD_BOOKS_BY_CATEGORY_FROM_API,
   LOAD_BOOK_FROM_API,
+  setBook,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -112,7 +113,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       axios.get(`${baseURI}/api/v1/book/${action.id}`).then(
         (response) => {
           console.log(response);
-          // store.dispatch(setBooksListByCategory(response.data.books));
+          store.dispatch(setBook(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

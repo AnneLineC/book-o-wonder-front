@@ -39,6 +39,13 @@ export const loadBookFromAPI = (id) => ({
   id,
 });
 
+export const SET_BOOK = 'SET_BOOK';
+
+export const setBook = (data) => ({
+  type: SET_BOOK,
+  data,
+});
+
 // ===============
 // FORMS
 // ===============

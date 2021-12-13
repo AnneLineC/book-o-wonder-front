@@ -10,7 +10,6 @@ const CategoriesMenu = () => {
   const dispatch = useDispatch();
   const isCategoriesMenuOpen = useSelector((state) => state.display.categoriesMenu);
   const categoriesList = useSelector((state) => state.display.categoriesList);
-  // console.log(categoriesList);
 
   const handleLinkClick = () => {
     dispatch(setDisplay('categoriesMenu'));

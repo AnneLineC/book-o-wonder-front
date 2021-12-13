@@ -35,6 +35,10 @@ const BookReadingPage = () => {
     },
   );
 
+  const epub = useSelector((state) => state.books.book.epub);
+
+  const baseURI = useSelector((state) => (state.display.baseURI));
+
   const [size, setSize] = useState(100);
   const renditionRef = useRef(null);
   const changeSize = (newSize) => {
@@ -54,13 +58,22 @@ const BookReadingPage = () => {
     },
   };
 
+  const epubURI = `${baseURI}/epub_folder/${epub}`;
+  console.log(epubURI);
+
   return (
     <div className="book-reading-page">
       <ReactReader
-        url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
+        // url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
+        // url="https://www.ebooksgratuits.com/newsendbook.php?id=457&format=epub"
+        // url="https://i.postimg.cc/BbpCMQ48/alice.jpg"
+        url={epubURI}
+        epubInitOptions={{
+          openAs: 'epub',
+        }}
         location={pageLocation}
         locationChanged={locationChanged}
-        swipeable="true"
+        // swipeable={true}
         styles={ownStyles}
         getRendition={(rendition) => {
           renditionRef.current = rendition;
