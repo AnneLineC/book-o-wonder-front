@@ -78,6 +78,13 @@ export const setMediaPlayerPlaying = (value) => ({
   value,
 });
 
+export const SET_MEDIA_PLAYER_VOLUME = 'SET_MEDIA_PLAYER_VOLUME';
+
+export const setMediaPlayerVolume = (value) => ({
+  type: SET_MEDIA_PLAYER_VOLUME,
+  value,
+});
+
 // ===============
 // BOOKS
 // ===============

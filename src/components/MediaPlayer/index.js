@@ -8,7 +8,7 @@ const MediaPlayer = () => {
   const dispatch = useDispatch();
   const isMediaPlayerOpen = useSelector((state) => state.display.mediaPlayer);
   const playing = useSelector((state) => state.display.mediaPlayerDisplay.playing);
-  console.log(playing);
+  const volume = useSelector((state) => state.display.mediaPlayerDisplay.volume);
 
   const handlePlayPause = () => {
     console.log('onPlay');
@@ -19,6 +19,11 @@ const MediaPlayer = () => {
   const handlePlay = () => {
     console.log('onPlay');
     dispatch(setMediaPlayerPlaying(true));
+  };
+
+  const handleVolumeChange = (event) => {
+    console.log('volumeChange');
+    dispatch(setMediaPlayerVolume(event.current.target));
   };
 
   return (
@@ -39,8 +44,15 @@ const MediaPlayer = () => {
           playing={playing}
           onPlay={handlePlay}
         />
+        <div className="illustration">
+          <div
+            className="illustration__picture"
+            style={{ backgroundImage: 'url("https://www.ladn.eu/wp-content/uploads/2021/09/lofi-girl-1200x630.jpg")' }}
+          />
+        </div>
         <div className="controls">
           <button className="controls__playpause" type="button" onClick={handlePlayPause}>{playing ? 'Pause' : 'Play'}</button>
+          <input type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
         </div>
       </Modal>
     </div>

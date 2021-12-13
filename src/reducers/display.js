@@ -8,6 +8,7 @@ export const initialState = {
   mediaPlayer: false,
   mediaPlayerDisplay: {
     playing: false,
+    volume: 0.8,
   },
 };
 
