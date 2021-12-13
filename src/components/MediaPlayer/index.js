@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
-import { setMediaPlayerPlaying } from '../../actions';
+import { setMediaPlayerDisplay } from '../../actions';
 import Modal from '../Modal';
 import './styles.scss';
 
@@ -12,25 +12,26 @@ const MediaPlayer = () => {
 
   const handlePlayPause = () => {
     console.log('onPlay');
-    dispatch(setMediaPlayerPlaying(!playing));
+    dispatch(setMediaPlayerDisplay('playing', !playing));
   };
 
   // Allow to change the playing status when autoplay is activated
   const handlePlay = () => {
     console.log('onPlay');
-    dispatch(setMediaPlayerPlaying(true));
+    dispatch(setMediaPlayerDisplay('playing', true));
   };
 
   const handleVolumeChange = (event) => {
     console.log('volumeChange');
-    dispatch(setMediaPlayerVolume(event.current.target));
+    console.log(event.currentTarget.value);
+    dispatch(setMediaPlayerDisplay('volume', parseFloat(event.currentTarget.value)));
   };
 
   return (
     <div className="mediaplayer">
       <Modal componentName="mediaPlayer" appearingDesktopSide="left" isComponentOpen={isMediaPlayerOpen}>
         <ReactPlayer
-          url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+          url="https://www.youtube.com/watch?v=5qap5aO4i9A"
           config={{
             youtube: {
               /* Parameters for playerVars : https://developers.google.com/youtube/player_parameters?playerVersion=HTML5#Parameters */
@@ -43,16 +44,29 @@ const MediaPlayer = () => {
           height={0}
           playing={playing}
           onPlay={handlePlay}
+          volume={volume}
         />
-        <div className="illustration">
-          <div
-            className="illustration__picture"
-            style={{ backgroundImage: 'url("https://www.ladn.eu/wp-content/uploads/2021/09/lofi-girl-1200x630.jpg")' }}
-          />
-        </div>
-        <div className="controls">
-          <button className="controls__playpause" type="button" onClick={handlePlayPause}>{playing ? 'Pause' : 'Play'}</button>
-          <input type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
+        <div className="player">
+          <div className="infos">
+            <div
+              className="infos__picture"
+              style={{ backgroundImage: 'url("https://www.ladn.eu/wp-content/uploads/2021/09/lofi-girl-1200x630.jpg")' }}
+            >
+              <div className="infos__content">
+                <div className="infos__left">
+                  <button className="infos__playpause" type="button" onClick={handlePlayPause}>{playing ? <i className="fas fa-pause" /> : <i className="fas fa-play" />}</button>
+                  <h2 className="infos__title">Titre du son</h2>
+                </div>
+                <span className="infos__category">Lofi</span>
+              </div>
+            </div>
+          </div>
+          <div className="controls">
+            <label className="controls__volume" htmlFor="volume">
+              <span className="controls__volume-text"><i className="fas fa-volume-up" /></span>
+              <input id="volume" type="range" min={0} max={1} step="any" value={volume} onChange={handleVolumeChange} />
+            </label>
+          </div>
         </div>
       </Modal>
     </div>

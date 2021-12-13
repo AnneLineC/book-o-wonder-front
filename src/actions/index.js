@@ -71,17 +71,11 @@ export const setDisplay = (name) => ({
   name,
 });
 
-export const SET_MEDIA_PLAYER_PLAYING = 'SET_MEDIA_PLAYER_PLAYING';
+export const SET_MEDIA_PLAYER_DISPLAY = 'SET_MEDIA_PLAYER_DISPLAY';
 
-export const setMediaPlayerPlaying = (value) => ({
-  type: SET_MEDIA_PLAYER_PLAYING,
-  value,
-});
-
-export const SET_MEDIA_PLAYER_VOLUME = 'SET_MEDIA_PLAYER_VOLUME';
-
-export const setMediaPlayerVolume = (value) => ({
-  type: SET_MEDIA_PLAYER_VOLUME,
+export const setMediaPlayerDisplay = (property, value) => ({
+  type: SET_MEDIA_PLAYER_DISPLAY,
+  property,
   value,
 });
 

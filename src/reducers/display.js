@@ -1,4 +1,4 @@
-import { SET_CATEGORIES, SET_DISPLAY, SET_MEDIA_PLAYER_PLAYING } from '../actions';
+import { SET_CATEGORIES, SET_DISPLAY, SET_MEDIA_PLAYER_DISPLAY } from '../actions';
 
 export const initialState = {
   categoriesList: [],
@@ -27,12 +27,12 @@ const reducer = (state = initialState, action = {}) => {
         categoriesMenu: false,
         [action.name]: !state[action.name],
       };
-    case SET_MEDIA_PLAYER_PLAYING:
+    case SET_MEDIA_PLAYER_DISPLAY:
       return {
         ...state,
         mediaPlayerDisplay: {
           ...state.mediaPlayerDisplay,
-          playing: action.value,
+          [action.property]: action.value,
         },
       };
     default:
