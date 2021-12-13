@@ -43,10 +43,10 @@ const HomePage = () => (
       </div>
 
       <div className="home-page__test">
-        <img src="https://i.postimg.cc/BbpCMQ48/alice.jpg" alt="alice" border="0" />
+        <img src="https://i.postimg.cc/g07PQbSc/alacrois-edesmondes.jpg" alt="croiseedesmondes" border="0" />
       </div>
       <div className="home-page__test">
-        <img src="https://i.postimg.cc/BbpCMQ48/alice.jpg" alt="alice" border="0" />
+        <img src="https://i.postimg.cc/z3YBgpxn/template.jpg" alt="template" border="0" />
       </div>
     </Carousel>
 

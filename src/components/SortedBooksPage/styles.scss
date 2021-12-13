@@ -7,19 +7,20 @@
   flex-wrap: wrap;
 
   &__card {
-      display: flex;
-      flex-direction: column;
-      margin: vars.$gutter;
+    display: flex;
+    flex-direction: column;
+    margin: vars.$gutter;
+    width: 14rem;
   }
 
   &__title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin: vars.$gutter * 0.5;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: vars.$gutter * 0.5;
   }
 
   &__author {
-      font-size: 1rem;
-      margin: vars.$gutter * 0.5;
+    font-size: 1rem;
+    margin: vars.$gutter * 0.5;
   }
 }

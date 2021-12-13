@@ -7,11 +7,13 @@ import {
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
+  setBooksListByCategory,
+  LOAD_BOOKS_BY_CATEGORY_FROM_API,
 } from '../actions';
 
-const baseURI = 'http://52.87.193.62';
-
 const apiMiddleWare = (store) => (next) => (action) => {
+  const { baseURI } = store.getState().display;
+
   switch (action.type) {
     case LOGIN_ATTEMPT: {
       const { emailValue, passwordValue } = store.getState().user;
@@ -86,6 +88,20 @@ const apiMiddleWare = (store) => (next) => (action) => {
       ).catch(
         (error) => console.log(error.toJSON()),
       );
+
+      next(action);
+      break;
+    }
+    case LOAD_BOOKS_BY_CATEGORY_FROM_API: {
+      axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setBooksListByCategory(response.data.books));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
       next(action);
       break;
     }
