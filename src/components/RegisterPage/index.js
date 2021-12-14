@@ -38,6 +38,13 @@ const RegisterPage = () => {
     dispatch(registerAttempt());
   };
 
+  const verificationPassword =() => {
+    if (input["password"] != input["confirm_password"]) {
+      isValid = false;
+      errors["password"] = "Passwords don't match.";
+    }
+  };
+
   return (
     <div className="register-page">
 
