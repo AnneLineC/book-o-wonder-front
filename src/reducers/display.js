@@ -1,7 +1,7 @@
 import { SET_CATEGORIES, SET_DISPLAY } from '../actions';
 
 export const initialState = {
-  baseURI: 'http://3.82.96.249',
+  baseURI: 'http://3.83.50.148',
   categoriesList: [],
   connexionMenu: false,
   connectedMenu: false,

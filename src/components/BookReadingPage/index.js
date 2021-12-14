@@ -64,10 +64,9 @@ const BookReadingPage = () => {
   return (
     <div className="book-reading-page">
       <ReactReader
-        // url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
-        // url="https://www.ebooksgratuits.com/newsendbook.php?id=457&format=epub"
-        // url="https://i.postimg.cc/BbpCMQ48/alice.jpg"
-        url={epubURI}
+        // url="https://gerhardsletten.github.io/react-reader/files/alice.epub" // Ebook d'exemple fourni avec la librairie, marche bien
+        // url="https://www.ebooksgratuits.com/newsendbook.php?id=457&format=epub" // Ebook pris au hasard sur le net pour tester, ne marche pas (erreur CORS identique à celle causée par epubURI)
+        url={epubURI} // Cause un bug CORS access
         epubInitOptions={{
           openAs: 'epub',
         }}
