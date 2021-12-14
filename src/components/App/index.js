@@ -16,9 +16,8 @@ import MediaPlayer from '../MediaPlayer';
 import SortedBooksPage from '../SortedBooksPage';
 import BookReadingPage from '../BookReadingPage';
 import Error404 from '../Error404';
-
+import { loadCategoriesFromAPI, loadSoundsFromAPI } from '../../actions';
 import './styles.scss';
-import { loadCategoriesFromAPI } from '../../actions';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,6 +25,7 @@ const App = () => {
   useEffect(
     () => {
       dispatch(loadCategoriesFromAPI());
+      // dispatch(loadSoundsFromAPI());
     },
     [],
   );

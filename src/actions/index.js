@@ -15,6 +15,12 @@ export const setCategories = (list) => ({
   list,
 });
 
+export const LOAD_SOUNDS_FROM_API = 'LOAD_SOUNDS_FROM_API';
+
+export const loadSoundsFromAPI = () => ({
+  type: LOAD_SOUNDS_FROM_API,
+});
+
 // ===============
 // FORMS
 // ===============
