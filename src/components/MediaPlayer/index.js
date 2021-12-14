@@ -17,13 +17,16 @@ const MediaPlayer = () => {
   const musicImage = useSelector((state) => state.sounds.currentMusic.image);
   const musicCategories = useSelector((state) => state.sounds.currentMusic.categories);
 
+  // Musics list
+  const musicsList = useSelector((state) => state.sounds.musicsList);
+
+  // Handlers
   const handlePlayPause = () => {
     console.log('onPlay');
     dispatch(setMediaPlayerDisplay('playing', !playing));
   };
 
-  // Allow to change the playing status when autoplay is activated
-  const handlePlay = () => {
+  const handlePlay = () => { // Allow to change the playing status when autoplay is activated
     console.log('onPlay');
     dispatch(setMediaPlayerDisplay('playing', true));
   };
@@ -77,7 +80,10 @@ const MediaPlayer = () => {
             </label>
           </div>
           <div className="music-list">
-            <MusicPreview title="Le lofi de ouf" category="Fantasy" />
+            {musicsList.map(
+              (music) => (<MusicPreview title={music.name} categories={music.categories} />),
+            )}
+            {/* <MusicPreview title="Le lofi de ouf" category="Fantasy" />
             <MusicPreview title="Le bruit de l'endive" category="Aventure" />
             <MusicPreview title="Le feu ça brule" category="Science Fiction" />
             <MusicPreview title="Et l'eau ça... non !" category="Enfant" />
@@ -86,7 +92,7 @@ const MediaPlayer = () => {
             <MusicPreview title="Le bruit de l'endive" category="Nature" />
             <MusicPreview title="Le feu ça brule" category="Science Fiction" />
             <MusicPreview title="Et l'eau ça... non !" category="Nature" />
-            <MusicPreview title="Vous le valez bien" category="Horreur" />
+            <MusicPreview title="Vous le valez bien" category="Horreur" /> */}
           </div>
         </div>
 
