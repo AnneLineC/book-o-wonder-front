@@ -25,7 +25,7 @@ const App = () => {
   useEffect(
     () => {
       dispatch(loadCategoriesFromAPI());
-      // dispatch(loadSoundsFromAPI());
+      dispatch(loadSoundsFromAPI());
     },
     [],
   );

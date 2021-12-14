@@ -1,14 +1,28 @@
+import { SET_SOUNDS } from "../actions";
+
 export const initialState = {
   musicsList: [],
+  currentMusic: {
+    id: 1,
+    name: 'Lofi pour bien bosser',
+    music: 'https:/www.youtube.com/watch?v=5qap5aO4i9A',
+    image: null,
+    categories: [
+      {
+        id: 1,
+        name: 'Science-Fiction',
+      },
+    ],
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    // case SAVE_FAVORITES:
-    //   return {
-    //     ...state,
-    //     favorites: action.favorites,
-    //   };
+    case SET_SOUNDS:
+      return {
+        ...state,
+        musicsList: action.data,
+      };
     default:
       return state;
   }

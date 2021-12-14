@@ -11,6 +11,12 @@ const MediaPlayer = () => {
   const playing = useSelector((state) => state.display.mediaPlayerDisplay.playing);
   const volume = useSelector((state) => state.display.mediaPlayerDisplay.volume);
 
+  // Current music
+  const musicTitle = useSelector((state) => state.sounds.currentMusic.name);
+  const musicURL = useSelector((state) => state.sounds.currentMusic.music);
+  const musicImage = useSelector((state) => state.sounds.currentMusic.image);
+  const musicCategories = useSelector((state) => state.sounds.currentMusic.categories);
+
   const handlePlayPause = () => {
     console.log('onPlay');
     dispatch(setMediaPlayerDisplay('playing', !playing));
@@ -32,7 +38,7 @@ const MediaPlayer = () => {
     <div className="mediaplayer">
       <Modal componentName="mediaPlayer" appearingDesktopSide="left" isComponentOpen={isMediaPlayerOpen}>
         <ReactPlayer
-          url="https://www.youtube.com/watch?v=5qap5aO4i9A"
+          url={musicURL}
           config={{
             youtube: {
               /* Parameters for playerVars : https://developers.google.com/youtube/player_parameters?playerVersion=HTML5#Parameters */
@@ -56,9 +62,11 @@ const MediaPlayer = () => {
               <div className="infos__content">
                 <div className="infos__left">
                   <button className="infos__playpause" type="button" onClick={handlePlayPause}>{playing ? <i className="fas fa-pause" /> : <i className="fas fa-play" />}</button>
-                  <h2 className="infos__title">Le lofi de ouf</h2>
+                  <h2 className="infos__title">{musicTitle}</h2>
                 </div>
-                <span className="infos__category">Fantasy</span>
+                {musicCategories.map(
+                  (category) => (<span className="infos__category">{category.name}</span>),
+                )}
               </div>
             </div>
           </div>

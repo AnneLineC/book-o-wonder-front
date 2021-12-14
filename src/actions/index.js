@@ -21,6 +21,27 @@ export const loadSoundsFromAPI = () => ({
   type: LOAD_SOUNDS_FROM_API,
 });
 
+export const SET_SOUNDS = 'SET_SOUNDS';
+
+export const setSounds = (data) => ({
+  type: SET_SOUNDS,
+  data,
+});
+
+export const LOAD_BOOKS_BY_CATEGORY_FROM_API = 'LOAD_BOOKS_BY_CATEGORY_FROM_API';
+
+export const loadBooksByCategoryFromAPI = (id) => ({
+  type: LOAD_BOOKS_BY_CATEGORY_FROM_API,
+  id,
+});
+
+export const SET_BOOKS_LIST_BY_CATEGORY = 'SET_BOOKS_LIST_BY_CATEGORY';
+
+export const setBooksListByCategory = (booksList) => ({
+  type: SET_BOOKS_LIST_BY_CATEGORY,
+  booksList,
+});
+
 // ===============
 // FORMS
 // ===============

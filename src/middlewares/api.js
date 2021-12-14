@@ -8,11 +8,14 @@ import {
   setCategories,
   setCurrentUserData,
   LOAD_SOUNDS_FROM_API,
+  setBooksListByCategory,
+  LOAD_BOOKS_BY_CATEGORY_FROM_API,
+  setSounds,
 } from '../actions';
 
-const baseURI = 'http://52.87.193.62';
-
 const apiMiddleWare = (store) => (next) => (action) => {
+  const { baseURI } = store.getState().display;
+
   switch (action.type) {
     case LOGIN_ATTEMPT: {
       const { emailValue, passwordValue } = store.getState().user;
@@ -85,6 +88,20 @@ const apiMiddleWare = (store) => (next) => (action) => {
       ).catch(
         (error) => console.log(error.toJSON()),
       );
+
+      next(action);
+      break;
+    }
+    case LOAD_BOOKS_BY_CATEGORY_FROM_API: {
+      axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setBooksListByCategory(response.data.books));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
       next(action);
       break;
     }
@@ -92,7 +109,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       axios.get(`${baseURI}/api/v1/audio`).then(
         (response) => {
           console.log(response);
-          // store.dispatch(setCategories(response.data));
+          store.dispatch(setSounds(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
