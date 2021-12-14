@@ -15,6 +15,7 @@ import CategoriesMenu from '../CategoriesMenu';
 import SortedBooksPage from '../SortedBooksPage';
 import BookReadingPage from '../BookReadingPage';
 import MentionsLegales from '../MentionsLegales';
+import TeamPage from '../TeamPage';
 import Error404 from '../Error404';
 
 import './styles.scss';
@@ -53,7 +54,8 @@ const App = () => {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
         <Route path="/livre/:id/lecture" element={<BookReadingPage />} />
-        <Route path="/Mentions-Legales" element={<MentionsLegales />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/notre-equipe" element={<TeamPage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <FooterApp />
