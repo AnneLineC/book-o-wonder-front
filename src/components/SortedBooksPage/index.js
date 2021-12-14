@@ -27,8 +27,8 @@ const SortedBooksPage = () => {
   return (
     <div className="sortedbookspage">
       {booksList.map((book) => (
-        <div className="sortedbookspage__card">
-          <BookCard key={book.id} picture={book.picture} />
+        <div key={book.id} className="sortedbookspage__card">
+          <BookCard picture={book.picture} />
           <h3 className="sortedbookspage__title">{book.title}</h3>
           {/* <p className-="sortedbookspage__author">{book.author.firstname} {book.author.lastname}</p> */}
         </div>
