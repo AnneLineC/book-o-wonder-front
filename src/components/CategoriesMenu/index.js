@@ -10,7 +10,6 @@ const CategoriesMenu = () => {
   const dispatch = useDispatch();
   const isCategoriesMenuOpen = useSelector((state) => state.display.categoriesMenu);
   const categoriesList = useSelector((state) => state.display.categoriesList);
-  // console.log(categoriesList);
 
   const handleLinkClick = () => {
     dispatch(setDisplay('categoriesMenu'));
@@ -22,7 +21,7 @@ const CategoriesMenu = () => {
         {
           categoriesList.map(
             (category) => (
-              <li className="categories-menu__item">
+              <li key={category.id} className="categories-menu__item">
                 <NavLink
                   to={`/categorie/${category.id}`}
                   onClick={handleLinkClick}

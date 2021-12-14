@@ -7,8 +7,12 @@ import {
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
+  LOAD_SOUNDS_FROM_API,
   setBooksListByCategory,
   LOAD_BOOKS_BY_CATEGORY_FROM_API,
+  setSounds,
+  LOAD_SOUND_FROM_API,
+  setCurrentSound,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -49,7 +53,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
     case REGISTER_ATTEMPT: {
       const {
         nicknameValue,
@@ -78,7 +81,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
@@ -102,6 +104,30 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (error) => console.log(error.toJSON()),
       );
 
+      next(action);
+      break;
+    }
+    case LOAD_SOUNDS_FROM_API: {
+      axios.get(`${baseURI}/api/v1/audio`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setSounds(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+      next(action);
+      break;
+    }
+    case LOAD_SOUND_FROM_API: {
+      axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setCurrentSound(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
       next(action);
       break;
     }

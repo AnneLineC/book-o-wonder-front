@@ -1,0 +1,28 @@
+@use './../../../styles/vars';
+@use "sass:color";
+
+.music-preview {
+  width: 100%;
+  color: white;
+  padding: vars.$gutter;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: vars.$color--grey-dark;
+  border-radius: vars.$radius*3;
+  margin-bottom: vars.$gutter;
+
+  &__categories {
+    display: flex;
+  }
+
+  &__category {
+    display: block;
+    background-color: color.scale(vars.$color--grey-dark, $blackness: 80%);
+    padding: 0.5rem;
+    color: white;
+    border-radius: vars.$radius;
+    font-size: 0.8em;
+    margin: 0.2rem;
+  }
+}
