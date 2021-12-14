@@ -28,6 +28,20 @@ export const setSounds = (data) => ({
   data,
 });
 
+export const LOAD_SOUND_FROM_API = 'LOAD_SOUND_FROM_API';
+
+export const loadSoundFromAPI = (id) => ({
+  type: LOAD_SOUND_FROM_API,
+  id,
+});
+
+export const SET_CURRENT_SOUND = 'SET_CURRENT_SOUND';
+
+export const setCurrentSound = (data) => ({
+  type: SET_CURRENT_SOUND,
+  data,
+});
+
 export const LOAD_BOOKS_BY_CATEGORY_FROM_API = 'LOAD_BOOKS_BY_CATEGORY_FROM_API';
 
 export const loadBooksByCategoryFromAPI = (id) => ({

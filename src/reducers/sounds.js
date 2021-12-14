@@ -1,4 +1,4 @@
-import { SET_SOUNDS } from "../actions";
+import { SET_SOUNDS, SET_CURRENT_SOUND } from "../actions";
 
 export const initialState = {
   musicsList: [],
@@ -22,6 +22,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         musicsList: action.data,
+      };
+    case SET_CURRENT_SOUND:
+      return {
+        ...state,
+        currentMusic: action.data,
       };
     default:
       return state;

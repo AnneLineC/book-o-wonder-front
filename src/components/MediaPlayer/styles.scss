@@ -35,18 +35,25 @@
     align-items: center;
   }
 
+  &__right {
+    display: flex;
+    // flex-direction: column;
+  }
+
   &__title {
     font-weight: bold;
     margin-left: vars.$gutter;
   }
 
   &__category {
-    display: block;
+    display: flex;
+    align-items: center;
     background-color: vars.$color--orange-light;
     padding: 0.5rem;
     color: vars.$color--grey-dark;
     border-radius: vars.$radius;
-    font-size: 0.8em;
+    font-size: 0.7em;
+    margin: 0.2rem;
   }
 
   &__playpause {
@@ -57,6 +64,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    flex-shrink: 0;
   }
 }
 

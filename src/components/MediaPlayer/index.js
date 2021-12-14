@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
-import { setMediaPlayerDisplay } from '../../actions';
+import { setMediaPlayerDisplay, loadSoundFromAPI } from '../../actions';
 import Modal from '../Modal';
 import './styles.scss';
 import MusicPreview from './MusicPreview';
@@ -10,6 +11,10 @@ const MediaPlayer = () => {
   const isMediaPlayerOpen = useSelector((state) => state.display.mediaPlayer);
   const playing = useSelector((state) => state.display.mediaPlayerDisplay.playing);
   const volume = useSelector((state) => state.display.mediaPlayerDisplay.volume);
+
+  useEffect(() => {
+    dispatch(loadSoundFromAPI(1));
+  }, []);
 
   // Current music
   const musicTitle = useSelector((state) => state.sounds.currentMusic.name);
@@ -21,6 +26,11 @@ const MediaPlayer = () => {
   const musicsList = useSelector((state) => state.sounds.musicsList);
 
   // Handlers
+  const handleSetMusic = (id) => {
+    console.log(`En avant la musique !${id}`);
+    dispatch(loadSoundFromAPI(id));
+  };
+
   const handlePlayPause = () => {
     console.log('onPlay');
     dispatch(setMediaPlayerDisplay('playing', !playing));
@@ -67,9 +77,11 @@ const MediaPlayer = () => {
                   <button className="infos__playpause" type="button" onClick={handlePlayPause}>{playing ? <i className="fas fa-pause" /> : <i className="fas fa-play" />}</button>
                   <h2 className="infos__title">{musicTitle}</h2>
                 </div>
-                {musicCategories.map(
-                  (category) => (<span className="infos__category">{category.name}</span>),
-                )}
+                <div className="infos__right">
+                  {musicCategories.map(
+                    (category) => (<span key={category.id} className="infos__category">{category.name}</span>),
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -81,18 +93,16 @@ const MediaPlayer = () => {
           </div>
           <div className="music-list">
             {musicsList.map(
-              (music) => (<MusicPreview title={music.name} categories={music.categories} />),
+              (music) => (
+                <MusicPreview
+                  key={music.id}
+                  id={music.id}
+                  title={music.name}
+                  categories={music.categories}
+                  handleSetMusic={handleSetMusic}
+                />
+              ),
             )}
-            {/* <MusicPreview title="Le lofi de ouf" category="Fantasy" />
-            <MusicPreview title="Le bruit de l'endive" category="Aventure" />
-            <MusicPreview title="Le feu ça brule" category="Science Fiction" />
-            <MusicPreview title="Et l'eau ça... non !" category="Enfant" />
-            <MusicPreview title="Vous le valez bien" category="Horreur" />
-            <MusicPreview title="Le lofi de ouf" category="Aventure" />
-            <MusicPreview title="Le bruit de l'endive" category="Nature" />
-            <MusicPreview title="Le feu ça brule" category="Science Fiction" />
-            <MusicPreview title="Et l'eau ça... non !" category="Nature" />
-            <MusicPreview title="Vous le valez bien" category="Horreur" /> */}
           </div>
         </div>
 

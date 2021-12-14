@@ -42,10 +42,10 @@ const App = () => {
 
   return (
     <div className="App">
+      <HeaderApp />
       <ConnexionMenu />
       <ConnectedMenu />
       <CategoriesMenu />
-      <HeaderApp />
       <MediaPlayer />
       <Routes>
         <Route path="/" element={<HomePage />} />
