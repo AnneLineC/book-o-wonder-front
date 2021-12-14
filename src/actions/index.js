@@ -2,8 +2,6 @@
 // LOAD FROM API
 // ===============
 
-import { bindActionCreators } from "redux";
-
 export const LOAD_CATEGORIES_FROM_API = 'LOAD_CATEGORIES_FROM_API';
 
 export const loadCategoriesFromAPI = () => ({
@@ -29,7 +27,6 @@ export const SET_BOOKS_LIST_BY_CATEGORY = 'SET_BOOKS_LIST_BY_CATEGORY';
 export const setBooksListByCategory = (booksList) => ({
   type: SET_BOOKS_LIST_BY_CATEGORY,
   booksList,
-  // categoryTitle,
 });
 
 export const LOAD_BOOK_FROM_API = 'LOAD_BOOK_FROM_API';
@@ -113,3 +110,12 @@ export const setPinnedPage = (id, location) => ({
   id,
   location,
 });
+
+// export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
+
+// export const postNewPinnedpageToBDD = (userId, bookId, location) => ({
+//   type: POST_NEW_PINNEDPAGE_TO_BDD,
+//   userId,
+//   bookId,
+//   location,
+// });

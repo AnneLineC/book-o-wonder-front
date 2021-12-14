@@ -2,28 +2,40 @@ import { useEffect, useRef, useState } from 'react';
 import { ReactReader, ReactReaderStyle } from 'react-reader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { setPinnedPage,loadBookFromAPI } from '../../actions';
+import { setPinnedPage, loadBookFromAPI, postNewPinnedpageToBDD } from '../../actions';
 import BookReadingFooter from './BookReadingFooter';
 import './styles.scss';
 
 const BookReadingPage = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
 
-  const pinnedPages = useSelector((state) => state.user.pinnedPages);
-  let pageLocation;
-  pinnedPages.forEach((pinnedPage) => {
-    if (parseInt(pinnedPage.bookId, 10) === parseInt(id, 10)) {
-      pageLocation = pinnedPage.location;
-    }
-  });
+  const isLogged = useSelector((state) => state.user.logged);
 
-  const dispatch = useDispatch();
+  let pageLocation;
+
+  if (isLogged) {
+    const userId = useSelector((state) => state.user.id);
+    const pinnedPages = useSelector((state) => state.user.pinnedPages);
+    pinnedPages.forEach((pinnedPage) => {
+      if (parseInt(pinnedPage.bookId, 10) === parseInt(id, 10)) {
+        pageLocation = pinnedPage.location;
+      }
+      else {
+        // dispatch(postNewPinnedpageToBDD(userId, id, 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)'));
+      }
+    });
+  }
+
   const locationChanged = (epubcifi) => {
-    dispatch(setPinnedPage(id, epubcifi));
+    if (isLogged) {
+      dispatch(setPinnedPage(id, epubcifi));
+    }
   };
 
   useEffect(
     () => {
+      console.log(id);
       dispatch(loadBookFromAPI(id));
 
       const bodyElement = document.querySelector('body');
@@ -36,14 +48,16 @@ const BookReadingPage = () => {
   );
 
   const epub = useSelector((state) => state.books.book.epub);
-
   const baseURI = useSelector((state) => (state.display.baseURI));
+  const epubURI = `${baseURI}/epub_folder/${epub}`;
+  console.log(epubURI);
 
   const [size, setSize] = useState(100);
   const renditionRef = useRef(null);
   const changeSize = (newSize) => {
     setSize(newSize);
   };
+
   useEffect(() => {
     if (renditionRef.current) {
       renditionRef.current.themes.fontSize(`${size}%`);
@@ -58,21 +72,18 @@ const BookReadingPage = () => {
     },
   };
 
-  const epubURI = `${baseURI}/epub_folder/${epub}`;
-  console.log(epubURI);
-
   return (
     <div className="book-reading-page">
       <ReactReader
         // url="https://gerhardsletten.github.io/react-reader/files/alice.epub" // Ebook d'exemple fourni avec la librairie, marche bien
-        // url="https://www.ebooksgratuits.com/newsendbook.php?id=457&format=epub" // Ebook pris au hasard sur le net pour tester, ne marche pas (erreur CORS identique à celle causée par epubURI)
-        url={epubURI} // Cause un bug CORS access
+        // url="https://www.ebooksgratuits.com/newsendbook.php?id=457&format=epub" // Ebook pris au hasard sur le net pour tester
+        url={epubURI}
         epubInitOptions={{
           openAs: 'epub',
         }}
         location={pageLocation}
         locationChanged={locationChanged}
-        // swipeable={true}
+        swipeable
         styles={ownStyles}
         getRendition={(rendition) => {
           renditionRef.current = rendition;

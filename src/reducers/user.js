@@ -43,17 +43,17 @@ const reducer = (state = initialState, action = {}) => {
         ...action.data,
       };
     case SET_PINNEDPAGE: {
-      // const pinnedPageIndex = state.pinnedPages.findIndex(
-      //   (pinnedPage) => (pinnedPage.bookId === parseInt(action.id, 10)),
-      // );
-      // const { pinnedPages } = state;
-      // pinnedPages[pinnedPageIndex].location = action.location;
+      const pinnedPageIndex = state.pinnedPages.findIndex(
+        (pinnedPage) => (pinnedPage.bookId === parseInt(action.id, 10)),
+      );
+      const { pinnedPages } = state;
+      pinnedPages[pinnedPageIndex].location = action.location;
 
       return {
         ...state,
-        // pinnedPages: [
-        //   ...pinnedPages,
-        // ],
+        pinnedPages: [
+          ...pinnedPages,
+        ],
       };
     }
     default:
