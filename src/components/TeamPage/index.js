@@ -40,7 +40,7 @@ const Team = () => (
                 </div>
                 <div className="team__container-title">
                     <h2 className="team__name"><a className="team__link" href="https://www.linkedin.com/in/anne-line-colombo/">Anne-Line Colombo</a></h2>
-                    <h3 className="team__job">Développeuse Front-End React</h3>
+                    <h3 className="team__job">Développeuse Front-End ReactJS</h3>
                 </div>
             </div>
             <div className="team__container-info">
