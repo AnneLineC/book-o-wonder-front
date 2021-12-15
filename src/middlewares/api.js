@@ -9,7 +9,7 @@ import {
   setCurrentUserData,
 } from '../actions';
 
-const baseURI = 'http://3.83.176.59';
+const baseURI = 'http://3.83.127.40';
 
 const apiMiddleWare = (store) => (next) => (action) => {
   switch (action.type) {
