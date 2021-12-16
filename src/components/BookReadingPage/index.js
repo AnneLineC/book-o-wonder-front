@@ -70,6 +70,10 @@ const BookReadingPage = () => {
       ...ReactReaderStyle.readerArea,
       backgroundColor: '#2f2f2f',
     },
+    titleArea: {
+      ...ReactReaderStyle.titleArea,
+      color: '#FFF',
+    },
   };
 
   return (
@@ -89,12 +93,16 @@ const BookReadingPage = () => {
           renditionRef.current = rendition;
           renditionRef.current.themes.fontSize(`${size}%`);
           rendition.themes.register('custom', {
+            body: {
+              backgroundColor: '#2f2f2f !important',
+            },
             img: {
               border: '2px solid #e9ab9c',
               borderRadius: '5px',
             },
             p: {
               color: 'white',
+              backgroundColor: '#2f2f2f',
             },
             h2: {
               color: 'white',

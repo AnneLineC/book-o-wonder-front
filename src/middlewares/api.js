@@ -112,6 +112,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_BOOK_FROM_API: {
       axios.get(`${baseURI}/api/v1/book/${action.id}`).then(
         (response) => {
+          console.log('test');
           console.log(response);
           store.dispatch(setBook(response.data));
         },
