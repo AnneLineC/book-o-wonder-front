@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { setDisplay } from '../../actions';
+import { setDisplay, logout } from '../../actions';
 
 import Modal from '../Modal';
 
@@ -15,8 +15,8 @@ const ConnexionMenu = () => {
   };
 
   const handleDeconnexionClick = () => {
-    // TODO : action et reducer pour remettre le currentUser à null
-    dispatch();
+    dispatch(logout());
+    dispatch(setDisplay('connectedMenu'));
   };
 
   const baseURI = useSelector((state) => (state.display.baseURI));
@@ -34,7 +34,7 @@ const ConnexionMenu = () => {
         </li>
         <li className="connected-menu__item">
           <NavLink
-            to="/inscription"
+            to="/"
             onClick={handleDeconnexionClick}
           >
             Deconnexion

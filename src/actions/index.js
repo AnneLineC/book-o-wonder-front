@@ -115,6 +115,12 @@ export const setFieldValue = (name, value) => ({
   value,
 });
 
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
 // ===============
 // DISPLAY ACTIONS
 // ===============

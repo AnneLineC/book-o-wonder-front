@@ -1,11 +1,13 @@
 // import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { Navigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { setFieldValue, loginAttempt } from '../../actions';
 
 import './styles.scss';
 
 const LoginPage = () => {
+  const isLogged = useSelector((state) => state.user.logged);
   const emailValue = useSelector((state) => state.user.emailValue);
   const passwordValue = useSelector((state) => state.user.passwordValue);
 
@@ -27,6 +29,8 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
+
+      { isLogged ? <Navigate to="/" /> : '' }
 
       <form autoComplete="off" className="login-page__form" onSubmit={handleConnexionFormSubmit}>
         <label htmlFor="email">

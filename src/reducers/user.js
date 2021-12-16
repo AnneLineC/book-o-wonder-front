@@ -3,6 +3,7 @@ import {
   SET_PINNEDPAGE,
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
+  LOGOUT,
 } from '../actions';
 
 export const initialState = {
@@ -12,16 +13,16 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
-  pinnedPages: [
-    {
-      bookId: 1,
-      location: 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)',
-    },
-    {
-      bookId: 2,
-      location: 'test2',
-    },
-  ],
+  // pinnedPages: [
+  //   {
+  //     bookId: 1,
+  //     location: 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)',
+  //   },
+  //   {
+  //     bookId: 2,
+  //     location: 'test2',
+  //   },
+  // ],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -54,6 +55,11 @@ const reducer = (state = initialState, action = {}) => {
         pinnedPages: [
           ...pinnedPages,
         ],
+      };
+    }
+    case LOGOUT: {
+      return {
+        ...initialState,
       };
     }
     default:
