@@ -64,7 +64,7 @@ const LoginPage = () => {
       <p className="login-page__forgotten">
         Si vous avez oublié votre mot de passe,
         <br />
-        <a href="#">contactez les administrateurs</a>
+        <Link to="/reinitialisation">cliquez ici.</Link>
       </p>
 
       <p className="login-page__account">
