@@ -78,6 +78,13 @@ export const editAccountAttempt = () => ({
   type: EDIT_ACCOUNT_ATTEMPT,
 });
 
+export const EDIT_PICTURE_ACCOUNT_ATTEMPT = 'EDIT_PICTURE_ACCOUNT_ATTEMPT';
+
+export const editPictureAccountAttempt = (picture) => ({
+  type: EDIT_PICTURE_ACCOUNT_ATTEMPT,
+  picture,
+});
+
 export const SET_CURRENT_USER_JWT = 'SET_CURRENT_USER';
 
 export const setCurrentUserJWT = (token) => ({

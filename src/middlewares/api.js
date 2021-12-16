@@ -5,6 +5,7 @@ import {
   setCurrentUserJWT,
   REGISTER_ATTEMPT,
   EDIT_ACCOUNT_ATTEMPT,
+  EDIT_PICTURE_ACCOUNT_ATTEMPT,
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
@@ -83,6 +84,24 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+    case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
+      // api's url so that we can connect back and front together
+      axios.patch(`${baseURI}/api/v1/user/1/`, {
+        profilePic: picture,
+      }).then(
+        (response) => {
+          console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
     case EDIT_ACCOUNT_ATTEMPT: {
       const {
         nicknameValue,
@@ -90,7 +109,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       } = store.getState().user;
 
       // api's url so that we can connect back and front together
-      axios.post(`${baseURI}/api/v1/`, {
+      axios.post(`${baseURI}/api/v1/user`, {
         name: nicknameValue,
         email: emailValue,
       }).then(

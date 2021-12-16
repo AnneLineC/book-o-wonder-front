@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useRef } from 'react';
 
 import { Link } from 'react-router-dom';
-import { editAccountAttempt, setFieldValue } from '../../actions';
+import { editPictureAccountAttempt, editAccountAttempt, setFieldValue } from '../../actions';
 import BookReview from '../BookReview';
 
 import './styles.scss';
 
 const AccountPage = () => {
+  const avatarInput = useRef(null);
+
   const dispatch = useDispatch();
 
   const nicknameValue = useSelector((state) => state.user.nicknameValue);
@@ -18,13 +21,20 @@ const AccountPage = () => {
   const handleInputEmailChange = (event) => {
     dispatch(setFieldValue('emailValue', event.target.value));
   };
+  const handleEditPictureAccountFormSubmit = (event) => {
+    event.preventDefault();
+    console.log('picture OK');
+    console.log(avatarInput.current.value);
+    dispatch(editPictureAccountAttempt(avatarInput.current.value));
+  };
   const handleEditAccountFormSubmit = (event) => {
     event.preventDefault();
     console.log('handler OK');
     dispatch(editAccountAttempt());
   };
-
-  onChangeHandler = (event) => {
+  const onChangeHandler = (event) => {
+    const data = new FormData();
+    data.append('file', avatarInput.state.selectedFile);
     console.log(event.target.files[0]);
   };
 
@@ -32,7 +42,7 @@ const AccountPage = () => {
 
     <div className="account-page">
 
-      <form autoComplete="off" className="account-page__form" onSubmit={handleEditAccountFormSubmit}>
+      <form autoComplete="off" className="account-page__form-top" onSubmit={handleEditPictureAccountFormSubmit}>
 
         <div className="account-page__avatar-button">
           <i className="account-page__avatar fas fa-upload" />
@@ -41,8 +51,9 @@ const AccountPage = () => {
             <span className="sr-only">changement d'avatar</span>
             <input
               type="file"
-              name="file"
-              id="file"
+              name="profilePic"
+              id="profilePic"
+              ref={avatarInput}
               onChange={onChangeHandler}
             />
 
@@ -56,7 +67,9 @@ const AccountPage = () => {
         >
           Envoyer
         </button>
+      </form>
 
+      <form autoComplete="off" className="account-page__form-bottom" onSubmit={handleEditAccountFormSubmit}>
         <p> Inscrit depuis le </p>
         <label className="account-page__label" htmlFor="pseudo">
           <span className="sr-only">Pseudo</span>
