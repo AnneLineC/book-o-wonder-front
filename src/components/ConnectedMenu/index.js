@@ -20,6 +20,13 @@ const ConnexionMenu = () => {
   };
 
   const baseURI = useSelector((state) => (state.display.baseURI));
+  const userRoles = useSelector((state) => (state.user.roles));
+
+  let isAdmin = false;
+  if (userRoles) {
+    isAdmin = userRoles.includes('ROLE_ADMIN');
+    console.log(isAdmin);
+  }
 
   return (
     <Modal componentName="connectedMenu" isComponentOpen={isConnectedMenuOpen}>
@@ -40,14 +47,17 @@ const ConnexionMenu = () => {
             Deconnexion
           </NavLink>
         </li>
-        <li className="connected-menu__item">
-          <a
-            href={`${baseURI}/`}
-            onClick={handleLinkClick}
-          >
-            Administration (admin)
-          </a>
-        </li>
+        {console.log(isAdmin)}
+        {isAdmin && (
+          <li className="connected-menu__item">
+            <a
+              href={`${baseURI}/`}
+              onClick={handleLinkClick}
+            >
+              Administration (admin)
+            </a>
+          </li>
+        )}
       </ul>
     </Modal>
   );

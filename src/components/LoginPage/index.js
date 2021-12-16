@@ -30,7 +30,7 @@ const LoginPage = () => {
   return (
     <div className="login-page">
 
-      { isLogged ? <Navigate to="/" /> : '' }
+      {isLogged && <Navigate to="/" />}
 
       <form autoComplete="off" className="login-page__form" onSubmit={handleConnexionFormSubmit}>
         <label htmlFor="email">
