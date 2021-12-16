@@ -6,9 +6,11 @@
   &__cover {
     background-color: rgb(72, 128, 161);
     width: 20rem;
-    height: 30rem;
+    height: 32rem;
     margin: auto;
     border-radius: vars.$radius;
+    background-size: cover;
+    background-position: center;
   }
 
   &__title {

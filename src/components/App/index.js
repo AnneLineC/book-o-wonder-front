@@ -7,6 +7,7 @@ import HeaderApp from '../HeaderApp';
 import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
+import AccountPage from '../AccountPage';
 import ContactPage from '../ContactPage';
 import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
@@ -54,9 +55,10 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/connexion" element={<LoginPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
-        <Route path="/livre/:id" element={<SynopsisPage />} />
+        <Route path="/mon-compte" element={<AccountPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
+        <Route path="/livre/:id" element={<SynopsisPage />} />
         <Route path="/livre/:id/lecture" element={<BookReadingPage />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/notre-equipe" element={<TeamPage />} />
