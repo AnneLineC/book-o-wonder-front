@@ -54,7 +54,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/connexion" element={<LoginPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
-        <Route path="mon-compte" element={<AccountPage />} />
+        <Route path="/mon-compte" element={<AccountPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
         <Route path="/livre/:id/lecture" element={<BookReadingPage />} />

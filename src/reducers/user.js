@@ -12,6 +12,8 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
+  selectedFile: null,
+  loaded: 0,
   pinnedPages: [
     {
       bookId: 1,

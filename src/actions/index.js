@@ -72,6 +72,12 @@ export const registerAttempt = () => ({
   type: REGISTER_ATTEMPT,
 });
 
+export const EDIT_ACCOUNT_ATTEMPT = 'EDIT_ACCOUNT_ATTEMPT';
+
+export const editAccountAttempt = () => ({
+  type: EDIT_ACCOUNT_ATTEMPT,
+});
+
 export const SET_CURRENT_USER_JWT = 'SET_CURRENT_USER';
 
 export const setCurrentUserJWT = (token) => ({

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
+
 import { Link } from 'react-router-dom';
-import { setFieldValue } from '../../actions';
+import { editAccountAttempt, setFieldValue } from '../../actions';
 import BookReview from '../BookReview';
 
 import './styles.scss';
@@ -17,12 +18,21 @@ const AccountPage = () => {
   const handleInputEmailChange = (event) => {
     dispatch(setFieldValue('emailValue', event.target.value));
   };
+  const handleEditAccountFormSubmit = (event) => {
+    event.preventDefault();
+    console.log('handler OK');
+    dispatch(editAccountAttempt());
+  };
+
+  onChangeHandler = (event) => {
+    console.log(event.target.files[0]);
+  };
 
   return (
 
     <div className="account-page">
 
-      <form autoComplete="off" className="account-page__form">
+      <form autoComplete="off" className="account-page__form" onSubmit={handleEditAccountFormSubmit}>
 
         <div className="account-page__avatar-button">
           <i className="account-page__avatar fas fa-upload" />
@@ -33,9 +43,19 @@ const AccountPage = () => {
               type="file"
               name="file"
               id="file"
+              onChange={onChangeHandler}
             />
+
           </label>
         </div>
+
+        <button
+          type="submit"
+          className="account-page__button"
+
+        >
+          Envoyer
+        </button>
 
         <p> Inscrit depuis le </p>
         <label className="account-page__label" htmlFor="pseudo">
@@ -70,7 +90,6 @@ const AccountPage = () => {
           </Link>
         </p>
       </form>
-
       <BookReview />
     </div>
   );

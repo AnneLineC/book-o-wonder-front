@@ -4,6 +4,7 @@ import {
   LOGIN_ATTEMPT,
   setCurrentUserJWT,
   REGISTER_ATTEMPT,
+  EDIT_ACCOUNT_ATTEMPT,
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
@@ -67,6 +68,30 @@ const apiMiddleWare = (store) => (next) => (action) => {
         email: emailValue,
         password: passwordValue,
         // passwordconfirm: passwordConfirmValue,
+      }).then(
+        (response) => {
+          console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+    case EDIT_ACCOUNT_ATTEMPT: {
+      const {
+        nicknameValue,
+        emailValue,
+      } = store.getState().user;
+
+      // api's url so that we can connect back and front together
+      axios.post(`${baseURI}/api/v1/`, {
+        name: nicknameValue,
+        email: emailValue,
       }).then(
         (response) => {
           console.log(response);
