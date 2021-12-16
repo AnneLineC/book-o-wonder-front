@@ -21,7 +21,7 @@ const CategoriesMenu = () => {
         {
           categoriesList.map(
             (category) => (
-              <li className="categories-menu__item">
+              <li key={category.id} className="categories-menu__item">
                 <NavLink
                   to={`/categorie/${category.id}`}
                   onClick={handleLinkClick}

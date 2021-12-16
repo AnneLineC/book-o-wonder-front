@@ -7,10 +7,14 @@ import {
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
+  LOAD_SOUNDS_FROM_API,
   setBooksListByCategory,
   LOAD_BOOKS_BY_CATEGORY_FROM_API,
   LOAD_BOOK_FROM_API,
   setBook,
+  setSounds,
+  LOAD_SOUND_FROM_API,
+  setCurrentSound,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -51,36 +55,35 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
     case REGISTER_ATTEMPT: {
       const {
         nicknameValue,
         emailValue,
         passwordValue,
-        // passwordConfirmValue,
+        passwordConfirmValue,
       } = store.getState().user;
 
-      // api's url so that we can connect back and front together
-      axios.post(`${baseURI}/api/v1/register`, {
-        name: nicknameValue,
-        email: emailValue,
-        password: passwordValue,
-        // passwordconfirm: passwordConfirmValue,
-      }).then(
-        (response) => {
-          console.log(response);
+      if (passwordValue === passwordConfirmValue) {
+        // api's url so that we can connect back and front together
+        axios.post(`${baseURI}/api/v1/register`, {
+          name: nicknameValue,
+          email: emailValue,
+          password: passwordValue,
+        }).then(
+          (response) => {
+            console.log(response);
 
           // dispatch to log the user
           // store.dispatch(setCurrentUser(response.data));
-        },
-      ).catch(
-        (error) => console.log(error.toJSON()),
-      );
+          },
+        ).catch(
+          (error) => console.log(error.toJSON()),
+        );
+      }
 
       next(action);
       break;
     }
-
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
@@ -105,6 +108,30 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (error) => console.log(error.toJSON()),
       );
 
+      next(action);
+      break;
+    }
+    case LOAD_SOUNDS_FROM_API: {
+      axios.get(`${baseURI}/api/v1/audio`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setSounds(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+      next(action);
+      break;
+    }
+    case LOAD_SOUND_FROM_API: {
+      axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setCurrentSound(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
       next(action);
       break;
     }
