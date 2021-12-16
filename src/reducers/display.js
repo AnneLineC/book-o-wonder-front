@@ -1,11 +1,15 @@
 import { SET_CATEGORIES, SET_DISPLAY, SET_MEDIA_PLAYER_DISPLAY } from '../actions';
 
 export const initialState = {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   baseURI: 'http://3.83.176.59',
 =======
   baseURI: 'http://52.207.253.181',
 >>>>>>> Stashed changes
+=======
+  baseURI: 'http://3.83.127.40',
+>>>>>>> development
   categoriesList: [],
   connexionMenu: false,
   connectedMenu: false,
