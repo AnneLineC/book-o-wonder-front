@@ -51,7 +51,7 @@ const ContactPage = () => {
 
       <form autoComplete="off" className="contact-page__form" onSubmit={handleSendFormSubmit}>
         <div className="contact-page__top">
-          <label className="sr-only contact-page__label" htmlFor="email">
+          <label className="contact-page__label" htmlFor="email">
             <span className="sr-only">Email</span>
             <input
               className="contact-page__input"
@@ -64,7 +64,7 @@ const ContactPage = () => {
             />
           </label>
 
-          <label className="sr-only contact-page__label" htmlFor="pseudo">
+          <label className="contact-page__label" htmlFor="pseudo">
             <span className="sr-only">Pseudo</span>
             <input
               className="contact-page__input"
@@ -79,7 +79,7 @@ const ContactPage = () => {
         </div>
 
         <div className="contact-page__bottom">
-          <label className="sr-only contact-page__labell" htmlFor="object">
+          <label className="contact-page__labell" htmlFor="object">
             <span className="sr-only">Objet du message</span>
             <input
               className="contact-page__object"
@@ -92,7 +92,7 @@ const ContactPage = () => {
             />
           </label>
 
-          <label className="sr-only contact-page__labell" htmlFor="content">
+          <label className="contact-page__labell" htmlFor="content">
             <span className="sr-only">Tapez votre message ici</span>
             <textarea
               cols="33"

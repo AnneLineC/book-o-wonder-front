@@ -7,11 +7,17 @@ import {
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
+  LOAD_SOUNDS_FROM_API,
+  setBooksListByCategory,
+  LOAD_BOOKS_BY_CATEGORY_FROM_API,
+  setSounds,
+  LOAD_SOUND_FROM_API,
+  setCurrentSound,
 } from '../actions';
 
-const baseURI = 'http://50.16.130.142';
-
 const apiMiddleWare = (store) => (next) => (action) => {
+  const { baseURI } = store.getState().display;
+
   switch (action.type) {
     case LOGIN_ATTEMPT: {
       const { emailValue, passwordValue } = store.getState().user;
@@ -47,7 +53,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
     case REGISTER_ATTEMPT: {
       const {
         nicknameValue,
@@ -77,12 +82,49 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
           console.log(response);
           store.dispatch(setCategories(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+    case LOAD_BOOKS_BY_CATEGORY_FROM_API: {
+      axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setBooksListByCategory(response.data.books));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+    case LOAD_SOUNDS_FROM_API: {
+      axios.get(`${baseURI}/api/v1/audio`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setSounds(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+      next(action);
+      break;
+    }
+    case LOAD_SOUND_FROM_API: {
+      axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
+        (response) => {
+          console.log(response);
+          store.dispatch(setCurrentSound(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

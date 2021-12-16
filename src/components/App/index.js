@@ -7,17 +7,20 @@ import HeaderApp from '../HeaderApp';
 import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
+import AccountPage from '../AccountPage';
 import ContactPage from '../ContactPage';
 import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
 import ConnectedMenu from '../ConnectedMenu';
 import CategoriesMenu from '../CategoriesMenu';
+import MediaPlayer from '../MediaPlayer';
 import SortedBooksPage from '../SortedBooksPage';
 import BookReadingPage from '../BookReadingPage';
+import MentionsLegales from '../MentionsLegales';
+import TeamPage from '../TeamPage';
 import Error404 from '../Error404';
-
+import { loadCategoriesFromAPI, loadSoundsFromAPI } from '../../actions';
 import './styles.scss';
-import { loadCategoriesFromAPI } from '../../actions';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,6 +28,7 @@ const App = () => {
   useEffect(
     () => {
       dispatch(loadCategoriesFromAPI());
+      dispatch(loadSoundsFromAPI());
     },
     [],
   );
@@ -41,17 +45,21 @@ const App = () => {
 
   return (
     <div className="App">
+      <HeaderApp />
       <ConnexionMenu />
       <ConnectedMenu />
       <CategoriesMenu />
-      <HeaderApp />
+      <MediaPlayer />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/connexion" element={<LoginPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
+        <Route path="mon-compte" element={<AccountPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
         <Route path="/livre/:id/lecture" element={<BookReadingPage />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/notre-equipe" element={<TeamPage />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <FooterApp />
