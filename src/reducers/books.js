@@ -1,8 +1,10 @@
-import { SET_BOOKS_LIST_BY_CATEGORY } from '../actions';
+import { SET_BOOKS_LIST_BY_CATEGORY, SET_BOOK } from '../actions';
 import booksList from '../docs/test-book';
 
 export const initialState = {
   booksList: booksList,
+  categoryTitle: 0,
+  book: {},
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -11,6 +13,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         booksList: action.booksList,
+      };
+    case SET_BOOK:
+      return {
+        ...state,
+        book: { ...action.data },
       };
     default:
       return state;
