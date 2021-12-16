@@ -1,7 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import validator from 'validator';
 import { setFieldValue, loginAttempt, registerAttempt } from '../../actions';
 
 import './styles.scss';
@@ -37,12 +35,8 @@ const RegisterPage = () => {
 
   const handleRegisterFormSubmit = (event) => {
     event.preventDefault();
-    alert(`Multiple validation Input: ${form.mulitpleValidation}`);
-    alert(`Required Input: ${form.requiredInput}`);
     dispatch(registerAttempt());
   };
-
-  const { register, handleSubmit, errors } = useForm();
 
   return (
     <div className="register-page">
@@ -59,11 +53,7 @@ const RegisterPage = () => {
             placeholder="Pseudo"
             value={nicknameValue}
             onChange={handleInputNicknameChange}
-            ref={register({ required: true })}
           />
-          {errors.requiredInput && (
-          <p>{`Input field "${errors.requiredInput.ref.name}" is required 🐑`}</p>
-          )}
         </label>
 
         <label className="register-page__label" htmlFor="email">
@@ -76,19 +66,7 @@ const RegisterPage = () => {
             placeholder="Adresse mail"
             value={emailValue}
             onChange={handleInputEmailChange}
-            ref={register({
-              required: true,
-              validate: {
-                isEmail: (value) => validator.isEmail(value) || 'Not a valid email 📧',
-              },
-            })}
           />
-          {errors.requiredInput && (
-          <p>{`Input field "${errors.requiredInput.ref.name}" is required 🐑`}</p>
-          )}
-          {errors.mulitpleValidation && (
-          <p>{errors.mulitpleValidation.message}</p>
-          )}
         </label>
 
         <label className="register-page__label" htmlFor="password">
