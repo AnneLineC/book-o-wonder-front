@@ -58,25 +58,26 @@ const apiMiddleWare = (store) => (next) => (action) => {
         nicknameValue,
         emailValue,
         passwordValue,
-        // passwordConfirmValue,
+        passwordConfirmValue,
       } = store.getState().user;
 
-      // api's url so that we can connect back and front together
-      axios.post(`${baseURI}/api/v1/register`, {
-        name: nicknameValue,
-        email: emailValue,
-        password: passwordValue,
-        // passwordconfirm: passwordConfirmValue,
-      }).then(
-        (response) => {
-          console.log(response);
+      if (passwordValue === passwordConfirmValue) {
+        // api's url so that we can connect back and front together
+        axios.post(`${baseURI}/api/v1/register`, {
+          name: nicknameValue,
+          email: emailValue,
+          password: passwordValue,
+        }).then(
+          (response) => {
+            console.log(response);
 
           // dispatch to log the user
           // store.dispatch(setCurrentUser(response.data));
-        },
-      ).catch(
-        (error) => console.log(error.toJSON()),
-      );
+          },
+        ).catch(
+          (error) => console.log(error.toJSON()),
+        );
+      }
 
       next(action);
       break;
