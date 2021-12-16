@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const SynopsisPage = () => (
@@ -8,7 +9,7 @@ const SynopsisPage = () => (
       <p className="synopsis-page__recommandations-item"><i className="fas fa-thumbs-up item--up" /><span className="synopsis-page__recommandations-number">3</span></p>
       <p className="synopsis-page__recommandations-item"><i className="fas fa-thumbs-down item--down" /><span className="synopsis-page__recommandations-number">1</span></p>
     </div>
-    <button className="synopsis-page__reading" type="button">Lecture</button>
+    <Link to={`/livre/1/lecture`}><button className="synopsis-page__reading" type="button">Lecture</button></Link>
     <p className="synopsis-page__extract">Il était une fois au pays de Roméo et Alice, un lapin se promenait en compagnie d'une endive. Il était une fois au pays de Roméo et Alice, un lapin se promenait en compagnie d'une endive.Il était une fois au pays de Roméo et Alice, un lapin se promenait en compagnie d'une endive.Il était une fois au pays de Roméo et Alice, un lapin se promenait en compagnie d'une endive.Il était une fois au pays de Roméo et Alice, un lapin se promenait en compagnie d'une endive.</p>
   </div>
 );
