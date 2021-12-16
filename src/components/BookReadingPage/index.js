@@ -74,6 +74,14 @@ const BookReadingPage = () => {
       ...ReactReaderStyle.titleArea,
       color: '#FFF',
     },
+    tocArea: {
+      ...ReactReaderStyle.tocArea,
+      display: 'none',
+    },
+    tocButton: {
+      ...ReactReaderStyle.tocButton,
+      display: 'none',
+    },
   };
 
   return (
@@ -100,11 +108,21 @@ const BookReadingPage = () => {
               border: '2px solid #e9ab9c',
               borderRadius: '5px',
             },
+            div: {
+              color: 'white',
+              backgroundColor: '#2f2f2f !important',
+            },
             p: {
               color: 'white',
-              backgroundColor: '#2f2f2f',
+              backgroundColor: '#2f2f2f !important',
+            },
+            h1: {
+              color: 'white',
             },
             h2: {
+              color: 'white',
+            },
+            a: {
               color: 'white',
             },
           });
