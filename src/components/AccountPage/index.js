@@ -33,8 +33,6 @@ const AccountPage = () => {
     dispatch(editAccountAttempt());
   };
   const onChangeHandler = (event) => {
-    const data = new FormData();
-    data.append('file', avatarInput.state.selectedFile);
     console.log(event.target.files[0]);
   };
 

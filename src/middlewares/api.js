@@ -87,7 +87,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
       // api's url so that we can connect back and front together
       axios.patch(`${baseURI}/api/v1/user/1/`, {
-        profilePic: picture,
+        profilePic: action.picture,
       }).then(
         (response) => {
           console.log(response);

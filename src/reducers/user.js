@@ -3,6 +3,7 @@ import {
   SET_PINNEDPAGE,
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
+  SET_ACCOUNT_PICTURE,
 } from '../actions';
 
 export const initialState = {
@@ -32,6 +33,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case SET_ACCOUNT_PICTURE:
+      return {
+        ...state,
+        [action.name]: action.picture,
       };
     case SET_CURRENT_USER_JWT:
       return {

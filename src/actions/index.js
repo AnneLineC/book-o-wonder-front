@@ -114,6 +114,14 @@ export const setFieldValue = (name, value) => ({
   value,
 });
 
+export const SET_ACCOUNT_PICTURE = 'SET_ACCOUNT_PICTURE';
+
+export const setAccountPicture = (id, picture) => ({
+  type: SET_ACCOUNT_PICTURE,
+  id,
+  picture,
+});
+
 // ===============
 // DISPLAY ACTIONS
 // ===============
