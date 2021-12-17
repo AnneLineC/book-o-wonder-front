@@ -13,6 +13,7 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
+  pinnedPages: [],
   // pinnedPages: [
   //   {
   //     bookId: 1,
@@ -47,14 +48,19 @@ const reducer = (state = initialState, action = {}) => {
       const pinnedPageIndex = state.pinnedPages.findIndex(
         (pinnedPage) => (pinnedPage.bookId === parseInt(action.id, 10)),
       );
-      const { pinnedPages } = state;
-      pinnedPages[pinnedPageIndex].location = action.location;
-
+      console.log(pinnedPageIndex);
+      if (pinnedPageIndex !== -1) {
+        const { pinnedPages } = state;
+        pinnedPages[pinnedPageIndex].location = action.location;
+        return {
+          ...state,
+          pinnedPages: [
+            ...pinnedPages,
+          ],
+        };
+      }
       return {
         ...state,
-        pinnedPages: [
-          ...pinnedPages,
-        ],
       };
     }
     case LOGOUT: {

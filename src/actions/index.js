@@ -152,11 +152,21 @@ export const setPinnedPage = (id, location) => ({
   location,
 });
 
-// export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
+export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
 
-// export const postNewPinnedpageToBDD = (userId, bookId, location) => ({
-//   type: POST_NEW_PINNEDPAGE_TO_BDD,
-//   userId,
-//   bookId,
-//   location,
-// });
+export const postNewPinnedpageToBDD = (userId, bookId, location) => ({
+  type: POST_NEW_PINNEDPAGE_TO_BDD,
+  userId,
+  bookId,
+  location,
+});
+
+export const UPDATE_PINNEDPAGE_IN_BDD = 'UPDATE_PINNEDPAGE_IN_BDD';
+
+export const updatePinnepageInBDD = (pinnedpageId, userId, bookId, location) => ({
+  type: UPDATE_PINNEDPAGE_IN_BDD,
+  pinnedpageId,
+  userId,
+  bookId,
+  location,
+});

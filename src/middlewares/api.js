@@ -15,6 +15,7 @@ import {
   setSounds,
   LOAD_SOUND_FROM_API,
   setCurrentSound,
+  POST_NEW_PINNEDPAGE_TO_BDD,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -139,9 +140,29 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_BOOK_FROM_API: {
       axios.get(`${baseURI}/api/v1/book/${action.id}`).then(
         (response) => {
-          console.log('test');
           console.log(response);
           store.dispatch(setBook(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case POST_NEW_PINNEDPAGE_TO_BDD: {
+      axios.post(`${baseURI}/api/v1/pinnedpage`, {
+        page: action.location,
+        book: action.bookId,
+        user: action.userId,
+      }).then(
+        (response) => {
+          console.log('ceci est un appel pour créer un marque page');
+          console.log(response);
+
+        // dispatch to log the user
+        // store.dispatch(setCurrentUser(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

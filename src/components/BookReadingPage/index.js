@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ReactReader, ReactReaderStyle } from 'react-reader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { setPinnedPage, loadBookFromAPI, postNewPinnedpageToBDD } from '../../actions';
+import { updatePinnepageInBDD, loadBookFromAPI, postNewPinnedpageToBDD } from '../../actions';
 import BookReadingFooter from './BookReadingFooter';
 import './styles.scss';
 
@@ -11,25 +11,27 @@ const BookReadingPage = () => {
   const { id } = useParams();
 
   const isLogged = useSelector((state) => state.user.logged);
+  const userId = useSelector((state) => state.user.id);
 
   let pageLocation;
 
-  if (isLogged) {
-    const userId = useSelector((state) => state.user.id);
-    const pinnedPages = useSelector((state) => state.user.pinnedPages);
-    pinnedPages.forEach((pinnedPage) => {
-      if (parseInt(pinnedPage.bookId, 10) === parseInt(id, 10)) {
-        pageLocation = pinnedPage.location;
-      }
-      else {
-        // dispatch(postNewPinnedpageToBDD(userId, id, 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)'));
-      }
-    });
-  }
+  // if (isLogged) {
+  //   const userId = useSelector((state) => state.user.id);
+  //   const pinnedPages = useSelector((state) => state.user.pinnedPages);
+  //   pinnedPages.forEach((pinnedPage) => {
+  //     if (parseInt(pinnedPage.bookId, 10) === parseInt(id, 10)) {
+  //       pageLocation = pinnedPage.location;
+  //     }
+  //     else {
+  //       // dispatch(postNewPinnedpageToBDD(userId, id, 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)'));
+  //     }
+  //   });
+  // }
 
   const locationChanged = (epubcifi) => {
     if (isLogged) {
-      dispatch(setPinnedPage(id, epubcifi));
+      console.log(epubcifi);
+      dispatch(updatePinnepageInBDD(userId, id, epubcifi));
     }
   };
 
@@ -37,6 +39,10 @@ const BookReadingPage = () => {
     () => {
       console.log(id);
       dispatch(loadBookFromAPI(id));
+
+      if (isLogged) {
+        dispatch(postNewPinnedpageToBDD(userId, id, 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)'));
+      }
 
       const bodyElement = document.querySelector('body');
       bodyElement.classList.add('reading-page');
