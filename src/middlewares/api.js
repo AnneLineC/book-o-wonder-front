@@ -16,6 +16,9 @@ import {
   LOAD_SOUND_FROM_API,
   setCurrentSound,
   POST_NEW_PINNEDPAGE_TO_BDD,
+  UPDATE_PINNEDPAGE_IN_BDD,
+  setNewPinnedPage,
+  updatePinnedpage,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -88,7 +91,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(setCategories(response.data));
         },
       ).catch(
@@ -115,7 +118,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_SOUNDS_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio`).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(setSounds(response.data));
         },
       ).catch(
@@ -127,7 +130,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_SOUND_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(setCurrentSound(response.data));
         },
       ).catch(
@@ -160,9 +163,27 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (response) => {
           console.log('ceci est un appel pour créer un marque page');
           console.log(response);
+          store.dispatch(setNewPinnedPage(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
 
-        // dispatch to log the user
-        // store.dispatch(setCurrentUser(response.data));
+      next(action);
+      break;
+    }
+
+    case UPDATE_PINNEDPAGE_IN_BDD: {
+      console.log('update demandé !!');
+      axios.put(`${baseURI}/api/v1/pinnedpage/${action.pinnedpageId}`, {
+        page: action.location,
+        book: action.bookId,
+        user: action.userId,
+      }).then(
+        (response) => {
+          console.log('ceci est un appel pour updater un marque page');
+          console.log(response);
+          store.dispatch(updatePinnedpage(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

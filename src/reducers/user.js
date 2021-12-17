@@ -1,9 +1,10 @@
 import {
   SET_FIELD_VALUE,
-  SET_PINNEDPAGE,
+  SET_NEW_PINNEDPAGE,
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
   LOGOUT,
+  UPDATE_PINNDEDPAGE,
 } from '../actions';
 
 export const initialState = {
@@ -13,17 +14,7 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
-  pinnedPages: [],
-  // pinnedPages: [
-  //   {
-  //     bookId: 1,
-  //     location: 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)',
-  //   },
-  //   {
-  //     bookId: 2,
-  //     location: 'test2',
-  //   },
-  // ],
+  pinnedpages: [],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -44,23 +35,29 @@ const reducer = (state = initialState, action = {}) => {
         logged: true,
         ...action.data,
       };
-    case SET_PINNEDPAGE: {
-      const pinnedPageIndex = state.pinnedPages.findIndex(
-        (pinnedPage) => (pinnedPage.bookId === parseInt(action.id, 10)),
-      );
-      console.log(pinnedPageIndex);
-      if (pinnedPageIndex !== -1) {
-        const { pinnedPages } = state;
-        pinnedPages[pinnedPageIndex].location = action.location;
-        return {
-          ...state,
-          pinnedPages: [
-            ...pinnedPages,
-          ],
-        };
-      }
+    case SET_NEW_PINNEDPAGE: {
       return {
         ...state,
+        pinnedpages: [
+          ...state.pinnedpages,
+          action.data,
+        ],
+      };
+    }
+    case UPDATE_PINNDEDPAGE: {
+      const pinnedPageIndex = state.pinnedpages.findIndex(
+        (pinnedPage) => (pinnedPage.book.id === parseInt(action.data.book.id, 10)),
+      );
+      // console.log(pinnedPageIndex);
+      const { pinnedpages } = state;
+      pinnedpages[pinnedPageIndex] = action.data;
+      // console.log(pinnedpages);
+
+      return {
+        ...state,
+        pinnedpages: [
+          ...pinnedpages,
+        ],
       };
     }
     case LOGOUT: {

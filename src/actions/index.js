@@ -144,12 +144,18 @@ export const setMediaPlayerDisplay = (property, value) => ({
 // BOOKS
 // ===============
 
-export const SET_PINNEDPAGE = 'SET_PINNEDPAGE';
+export const SET_NEW_PINNEDPAGE = 'SET_NEW_PINNEDPAGE';
 
-export const setPinnedPage = (id, location) => ({
-  type: SET_PINNEDPAGE,
-  id,
-  location,
+export const setNewPinnedPage = (data) => ({
+  type: SET_NEW_PINNEDPAGE,
+  data,
+});
+
+export const UPDATE_PINNDEDPAGE = 'UPDATE_PINNDEDPAGE';
+
+export const updatePinnedpage = (data) => ({
+  type: UPDATE_PINNDEDPAGE,
+  data,
 });
 
 export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
