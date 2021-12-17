@@ -42,8 +42,8 @@ const MediaPlayer = () => {
   };
 
   const handleVolumeChange = (event) => {
-    console.log('volumeChange');
-    console.log(event.currentTarget.value);
+    // console.log('volumeChange');
+    // console.log(event.currentTarget.value);
     dispatch(setMediaPlayerDisplay('volume', parseFloat(event.currentTarget.value)));
   };
 

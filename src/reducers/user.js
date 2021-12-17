@@ -3,6 +3,7 @@ import {
   SET_PINNEDPAGE,
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
+  LOGOUT,
 } from '../actions';
 
 export const initialState = {
@@ -56,6 +57,11 @@ const reducer = (state = initialState, action = {}) => {
         pinnedPages: [
           ...pinnedPages,
         ],
+      };
+    }
+    case LOGOUT: {
+      return {
+        ...initialState,
       };
     }
     default:

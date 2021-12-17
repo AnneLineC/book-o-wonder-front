@@ -25,6 +25,11 @@ body {
   margin: 0;
   font-family: 'Nunito', sans-serif;
   color: white;
+
+  &.reading-page {
+    height: 100vh;
+    overflow-y: hidden;
+  }
 }
 
 button {
