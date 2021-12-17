@@ -13,10 +13,11 @@ import {
   setSounds,
   LOAD_SOUND_FROM_API,
   setCurrentSound,
+  CHANGE_PASSWORD_ATTEMPT,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
-  const { baseURI } = store.getState().display;
+  const { baseURI } = 'http://44.202.11.157';
 
   switch (action.type) {
     case LOGIN_ATTEMPT: {
@@ -67,6 +68,37 @@ const apiMiddleWare = (store) => (next) => (action) => {
           name: nicknameValue,
           email: emailValue,
           password: passwordValue,
+        }).then(
+          (response) => {
+            console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+          },
+        ).catch(
+          (error) => console.log(error.toJSON()),
+        );
+      }
+
+      next(action);
+      break;
+    }
+    case CHANGE_PASSWORD_ATTEMPT: {
+      const {
+        nicknameValue,
+        emailValue,
+        passwordValue,
+        newPasswordValue,
+        newPasswordConfirmValue,
+      } = store.getState().user;
+
+      if (newPasswordValue === newPasswordConfirmValue) {
+        // api's url so that we can connect back and front together
+        axios.post(`${baseURI}/api/v1/account/changepassword`, {
+          name: nicknameValue,
+          email: emailValue,
+          old_password: passwordValue,
+          new_password: newPasswordValue,
         }).then(
           (response) => {
             console.log(response);

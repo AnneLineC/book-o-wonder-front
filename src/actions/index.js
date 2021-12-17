@@ -72,6 +72,12 @@ export const registerAttempt = () => ({
   type: REGISTER_ATTEMPT,
 });
 
+export const CHANGE_PASSWORD_ATTEMPT = 'CHANGE_PASSWORD_ATTEMPT';
+
+export const changePasswordAttempt = () => ({
+  type: CHANGE_PASSWORD_ATTEMPT,
+});
+
 export const SET_CURRENT_USER_JWT = 'SET_CURRENT_USER';
 
 export const setCurrentUserJWT = (token) => ({

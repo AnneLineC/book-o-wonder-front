@@ -12,6 +12,8 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
+  newPasswordValue: '',
+  newPasswordConfirmValue: '',
   pinnedPages: [
     {
       bookId: 1,
