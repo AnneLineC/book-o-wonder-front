@@ -100,7 +100,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
             console.log(response);
 
           // dispatch to log the user
-            store.dispatch(setCurrentUser(response.data));
+          // store.dispatch(setCurrentUser(response.data));
           },
         ).catch(
           (error) => console.log(error.toJSON()),
