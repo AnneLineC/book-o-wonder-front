@@ -9,6 +9,11 @@
         margin-bottom: 5rem;
     }
 
+    &__pinnedpaged-title {
+        font-weight: bold;
+        margin-bottom: vars.$gutter;
+    }
+
     &__avatar {
         background-color: vars.$color--orange-light;
         display: block;
@@ -40,6 +45,32 @@
         margin-bottom: 10rem;
     }
     
+}
+
+.pinnedpaged-books {
+    overflow-x: hidden;
+    display: flex;
+    // justify-content: center;
+    margin-bottom: vars.$gutter*3;
+    // padding-left: 12rem;
+
+    &__card {
+        margin: vars.$gutter;
+    }
+
+    &::-webkit-scrollbar {
+        width: 12px;               /* width of the entire scrollbar */
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #292929;        /* color of the tracking area */
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #575757;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 3px solid #292929 ;  /* creates padding around scroll thumb */
+    }
 }
 
 .carousel-root {
@@ -94,11 +125,17 @@
     }
 
     .carousel-root {
-        width: 600px;
+        width: 60rem;
         margin: auto;
     }
     .carousel {
-        height: 250px;
+        height: 25rem;
+    }
+
+    .pinnedpaged-books {
+        width: 60rem;
+        margin: auto;
+        margin-bottom: vars.$gutter*3;
     }
 }
 
@@ -125,5 +162,10 @@
         width:auto;
         height: 30rem;
         margin: auto;
+    }
+
+    .pinnedpaged-books {
+        width: 80rem;
+        overflow-x: auto;
     }
 }
