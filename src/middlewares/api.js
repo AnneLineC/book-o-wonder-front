@@ -85,9 +85,15 @@ const apiMiddleWare = (store) => (next) => (action) => {
       break;
     }
     case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
+      const formData = new FormData();
+      const fileInput = document.querySelector('#profilePic');
+      formData.append('profilePic', fileInput.files[0], 'profile.jpg');
+      console.log(formData);
+
       // api's url so that we can connect back and front together
-      axios.patch(`${baseURI}/api/v1/user/1/`, {
-        profilePic: action.picture,
+      axios.patch(`${baseURI}/api/v1/user/1`, {
+        data: formData,
+        headers: { 'Content-Type': 'multipart/form-data' },
       }).then(
         (response) => {
           console.log(response);
