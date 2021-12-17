@@ -17,7 +17,7 @@ import {
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
-  const { baseURI } = 'http://44.202.11.157';
+  const { baseURI } = store.getState().display;
 
   switch (action.type) {
     case LOGIN_ATTEMPT: {
@@ -85,8 +85,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
     }
     case CHANGE_PASSWORD_ATTEMPT: {
       const {
-        nicknameValue,
-        emailValue,
         passwordValue,
         newPasswordValue,
         newPasswordConfirmValue,
@@ -94,9 +92,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
 
       if (newPasswordValue === newPasswordConfirmValue) {
         // api's url so that we can connect back and front together
-        axios.post(`${baseURI}/api/v1/account/changepassword`, {
-          name: nicknameValue,
-          email: emailValue,
+        axios.patch(`${baseURI}/api/v1/account/changepassword`, {
           old_password: passwordValue,
           new_password: newPasswordValue,
         }).then(
@@ -104,7 +100,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
             console.log(response);
 
           // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
+            store.dispatch(setCurrentUser(response.data));
           },
         ).catch(
           (error) => console.log(error.toJSON()),

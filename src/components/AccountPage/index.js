@@ -65,8 +65,8 @@ const AccountPage = () => {
         </label>
 
         <p className="account-page__password">
-          <Link to="/">
-            pour changer votre mot de passe, clickez ici
+          <Link to="/mon-compte/mot-de-passe">
+            pour changer votre mot de passe, cliquez ici
           </Link>
         </p>
       </form>
