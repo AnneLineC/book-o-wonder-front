@@ -171,19 +171,49 @@ export const setMediaPlayerDisplay = (property, value) => ({
 // BOOKS
 // ===============
 
-export const SET_PINNEDPAGE = 'SET_PINNEDPAGE';
+export const SET_NEW_PINNEDPAGE = 'SET_NEW_PINNEDPAGE';
 
-export const setPinnedPage = (id, location) => ({
-  type: SET_PINNEDPAGE,
-  id,
+export const setNewPinnedPage = (data) => ({
+  type: SET_NEW_PINNEDPAGE,
+  data,
+});
+
+export const UPDATE_PINNEDPAGE = 'UPDATE_PINNDEDPAGE';
+
+export const updatePinnedpage = (data) => ({
+  type: UPDATE_PINNEDPAGE,
+  data,
+});
+
+export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
+
+export const postNewPinnedpageToBDD = (userId, bookId, location) => ({
+  type: POST_NEW_PINNEDPAGE_TO_BDD,
+  userId,
+  bookId,
   location,
 });
 
-// export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
+export const UPDATE_PINNEDPAGE_IN_BDD = 'UPDATE_PINNEDPAGE_IN_BDD';
 
-// export const postNewPinnedpageToBDD = (userId, bookId, location) => ({
-//   type: POST_NEW_PINNEDPAGE_TO_BDD,
-//   userId,
-//   bookId,
-//   location,
-// });
+export const updatePinnepageInBDD = (pinnedpageId, userId, bookId, location) => ({
+  type: UPDATE_PINNEDPAGE_IN_BDD,
+  pinnedpageId,
+  userId,
+  bookId,
+  location,
+});
+
+export const DELETE_PINNEDPAGE_IN_BDD = 'DELETE_PINNEDPAGE_IN_BDD';
+
+export const deletePinnedpageInBDD = (pinnedpageId) => ({
+  type: DELETE_PINNEDPAGE_IN_BDD,
+  pinnedpageId,
+});
+
+export const REMOVE_PINNEDPAGE = 'REMOVE_PINNEDPAGE';
+
+export const removePinnedpage = (pinnedpageId) => ({
+  type: REMOVE_PINNEDPAGE,
+  pinnedpageId,
+});

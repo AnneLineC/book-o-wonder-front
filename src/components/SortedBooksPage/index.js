@@ -2,11 +2,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { loadBooksByCategoryFromAPI } from '../../actions';
 import BookCard from '../BookCard';
 
 import './styles.scss';
-import { Link } from 'react-router-dom';
 
 const SortedBooksPage = () => {
   const { id } = useParams();

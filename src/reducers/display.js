@@ -1,7 +1,6 @@
 import { SET_CATEGORIES, SET_DISPLAY, SET_MEDIA_PLAYER_DISPLAY } from '../actions';
 
 export const initialState = {
-
   baseURI: 'http://54.166.50.166',
   categoriesList: [],
   connexionMenu: false,

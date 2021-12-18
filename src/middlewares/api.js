@@ -17,6 +17,12 @@ import {
   setSounds,
   LOAD_SOUND_FROM_API,
   setCurrentSound,
+  POST_NEW_PINNEDPAGE_TO_BDD,
+  UPDATE_PINNEDPAGE_IN_BDD,
+  setNewPinnedPage,
+  updatePinnedpage,
+  DELETE_PINNEDPAGE_IN_BDD,
+  removePinnedpage,
   CHANGE_PASSWORD_ATTEMPT,
 } from '../actions';
 
@@ -90,11 +96,13 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
       const formData = new FormData();
       const fileInput = document.querySelector('#profilePic');
-      formData.append('profilePic', fileInput.files[0], 'profile.jpg');
-      console.log(formData);
+      formData.append('profilePic', fileInput.files[0]);
+      for (const [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
 
       // api's url so that we can connect back and front together
-      axios.patch(`${baseURI}/api/v1/user/1`, {
+      axios.patch(`${baseURI}/api/v1/user/profilpic/4`, {
         data: formData,
         headers: { 'Content-Type': 'multipart/form-data' },
       }).then(
@@ -163,7 +171,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(setCategories(response.data));
         },
       ).catch(
@@ -190,7 +198,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_SOUNDS_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio`).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(setSounds(response.data));
         },
       ).catch(
@@ -202,7 +210,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_SOUND_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
         (response) => {
-          console.log(response);
+          // console.log(response);
           store.dispatch(setCurrentSound(response.data));
         },
       ).catch(
@@ -215,9 +223,63 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_BOOK_FROM_API: {
       axios.get(`${baseURI}/api/v1/book/${action.id}`).then(
         (response) => {
-          console.log('test');
           console.log(response);
           store.dispatch(setBook(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case POST_NEW_PINNEDPAGE_TO_BDD: {
+      axios.post(`${baseURI}/api/v1/pinnedpage`, {
+        page: action.location,
+        book: action.bookId,
+        user: action.userId,
+      }).then(
+        (response) => {
+          console.log('ceci est un appel pour créer un marque page');
+          console.log(response);
+          store.dispatch(setNewPinnedPage(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case UPDATE_PINNEDPAGE_IN_BDD: {
+      console.log('update demandé !!');
+      axios.put(`${baseURI}/api/v1/pinnedpage/${action.pinnedpageId}`, {
+        page: action.location,
+        book: action.bookId,
+        user: action.userId,
+      }).then(
+        (response) => {
+          console.log('ceci est un appel pour updater un marque page');
+          console.log(response);
+          store.dispatch(updatePinnedpage(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case DELETE_PINNEDPAGE_IN_BDD: {
+      console.log('delete demandé !!');
+      axios.delete(`${baseURI}/api/v1/pinnedpage/${action.pinnedpageId}`).then(
+        (response) => {
+          console.log('ceci est un appel pour supprimer un marque page');
+          console.log(response);
+          store.dispatch(removePinnedpage(action.pinnedpageId));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

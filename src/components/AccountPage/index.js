@@ -45,7 +45,7 @@ const AccountPage = () => {
         <div className="account-page__avatar-button">
           <i className="account-page__avatar fas fa-upload" />
 
-          <label className="custom-file-upload">
+          <label className="account-page__upload">
             <span className="sr-only">changement d'avatar</span>
             <input
               type="file"
@@ -54,7 +54,6 @@ const AccountPage = () => {
               ref={avatarInput}
               onChange={onChangeHandler}
             />
-
           </label>
         </div>
 
