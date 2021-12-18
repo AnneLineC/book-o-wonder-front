@@ -10,9 +10,14 @@ import {
   LOAD_SOUNDS_FROM_API,
   setBooksListByCategory,
   LOAD_BOOKS_BY_CATEGORY_FROM_API,
+  LOAD_BOOK_FROM_API,
+  setBook,
   setSounds,
   LOAD_SOUND_FROM_API,
   setCurrentSound,
+  CHANGE_PASSWORD_ATTEMPT,
+  ASK_RESET_ATTEMPT,
+  RESET_PASSWORD_ATTEMPT,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -82,6 +87,80 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+    case ASK_RESET_ATTEMPT: {
+      const {
+        emailValue,
+      } = store.getState().user;
+
+      // api's url so that we can connect back and front together
+      axios.post(`${baseURI}/api/v1/forgottenpassword`, {
+        email: emailValue,
+      }).then(
+        (response) => {
+          console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+    case RESET_PASSWORD_ATTEMPT: {
+      const {
+        newPasswordValue,
+        newPasswordConfirmValue,
+      } = store.getState().user;
+
+      if (newPasswordValue === newPasswordConfirmValue) {
+        // api's url so that we can connect back and front together
+        axios.patch(`${baseURI}/api/v1/resetpassword/${token}`, {
+          password: newPasswordValue,
+        }).then(
+          (response) => {
+            console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+          },
+        ).catch(
+          (error) => console.log(error.toJSON()),
+        );
+      }
+
+      next(action);
+      break;
+    }
+    case CHANGE_PASSWORD_ATTEMPT: {
+      const {
+        passwordValue,
+        newPasswordValue,
+        newPasswordConfirmValue,
+      } = store.getState().user;
+
+      if (newPasswordValue === newPasswordConfirmValue) {
+        // api's url so that we can connect back and front together
+        axios.patch(`${baseURI}/api/v1/account/changepassword`, {
+          old_password: passwordValue,
+          new_password: newPasswordValue,
+        }).then(
+          (response) => {
+            console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+          },
+        ).catch(
+          (error) => console.log(error.toJSON()),
+        );
+      }
+
+      next(action);
+      break;
+    }
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
@@ -95,6 +174,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_BOOKS_BY_CATEGORY_FROM_API: {
       axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
         (response) => {
@@ -129,6 +209,21 @@ const apiMiddleWare = (store) => (next) => (action) => {
       ).catch(
         (error) => console.log(error.toJSON()),
       );
+      next(action);
+      break;
+    }
+
+    case LOAD_BOOK_FROM_API: {
+      axios.get(`${baseURI}/api/v1/book/${action.id}`).then(
+        (response) => {
+          console.log('test');
+          console.log(response);
+          store.dispatch(setBook(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
       next(action);
       break;
     }

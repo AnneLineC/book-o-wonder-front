@@ -56,6 +56,20 @@ export const setBooksListByCategory = (booksList) => ({
   booksList,
 });
 
+export const LOAD_BOOK_FROM_API = 'LOAD_BOOK_FROM_API';
+
+export const loadBookFromAPI = (id) => ({
+  type: LOAD_BOOK_FROM_API,
+  id,
+});
+
+export const SET_BOOK = 'SET_BOOK';
+
+export const setBook = (data) => ({
+  type: SET_BOOK,
+  data,
+});
+
 // ===============
 // FORMS
 // ===============
@@ -70,6 +84,24 @@ export const REGISTER_ATTEMPT = 'REGISTER_ATTEMPT';
 
 export const registerAttempt = () => ({
   type: REGISTER_ATTEMPT,
+});
+
+export const ASK_RESET_ATTEMPT = 'ASK_RESET_ATTEMPT';
+
+export const askResetAttempt = () => ({
+  type: ASK_RESET_ATTEMPT,
+});
+
+export const RESET_PASSWORD_ATTEMPT = 'RESET_PASSWORD_ATTEMPT';
+
+export const ResetPasswordAttempt = () => ({
+  type: RESET_PASSWORD_ATTEMPT,
+});
+
+export const CHANGE_PASSWORD_ATTEMPT = 'CHANGE_PASSWORD_ATTEMPT';
+
+export const changePasswordAttempt = () => ({
+  type: CHANGE_PASSWORD_ATTEMPT,
 });
 
 export const SET_CURRENT_USER_JWT = 'SET_CURRENT_USER';
@@ -99,6 +131,12 @@ export const setFieldValue = (name, value) => ({
   type: SET_FIELD_VALUE,
   name,
   value,
+});
+
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => ({
+  type: LOGOUT,
 });
 
 // ===============
@@ -131,3 +169,12 @@ export const setPinnedPage = (id, location) => ({
   id,
   location,
 });
+
+// export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
+
+// export const postNewPinnedpageToBDD = (userId, bookId, location) => ({
+//   type: POST_NEW_PINNEDPAGE_TO_BDD,
+//   userId,
+//   bookId,
+//   location,
+// });

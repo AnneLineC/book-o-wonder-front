@@ -1,17 +1,27 @@
 @use './../../styles/vars';
 @use "sass:color";
 
-.nav--list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: vars.$gutter*5;
-    justify-content: center;
+.nav {
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: vars.$gutter*5;
+        justify-content: center;
+    }
+    
+    &__listItem {
+        text-decoration: underline;
+        color: white;
+        font-family: vars.$main-font;
+        margin: vars.$gutter;
+    }
+
 }
 
-.nav--listItem {
-    text-decoration: underline;
-    color: white;
-    font-family: vars.$main-font;
-    margin: vars.$gutter;
+.reading-page {
+    .app-footer {
+        display: none;
+    }
 }

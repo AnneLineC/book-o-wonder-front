@@ -7,14 +7,17 @@ import HeaderApp from '../HeaderApp';
 import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
-import ResetPage from '../ResetPage';
+import AskReset from '../AskResetPage';
+import ResetPassword from '../ResetPasswordPage';
 import AccountPage from '../AccountPage';
+import ChangePassword from '../ChangePasswordPage';
 import ContactPage from '../ContactPage';
 import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
 import ConnectedMenu from '../ConnectedMenu';
 import CategoriesMenu from '../CategoriesMenu';
 import MediaPlayer from '../MediaPlayer';
+import SynopsisPage from '../SynopsisPage';
 import SortedBooksPage from '../SortedBooksPage';
 import BookReadingPage from '../BookReadingPage';
 import MentionsLegales from '../MentionsLegales';
@@ -55,10 +58,13 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/connexion" element={<LoginPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
-        <Route path="/reinitialisation" element={<ResetPage />} />
-        <Route path="mon-compte" element={<AccountPage />} />
+        <Route path="/mon-compte" element={<AccountPage />} />
+        <Route path="/mon-compte/mot-de-passe" element={<ChangePassword />} />
+        <Route path="/reinitialisation" element={<AskReset />} />
+        <Route path="/reinitialisation/mot-de-passe" element={<ResetPassword />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
+        <Route path="/livre/:id" element={<SynopsisPage />} />
         <Route path="/livre/:id/lecture" element={<BookReadingPage />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/notre-equipe" element={<TeamPage />} />
