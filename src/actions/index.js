@@ -56,6 +56,20 @@ export const setBooksListByCategory = (booksList) => ({
   booksList,
 });
 
+export const LOAD_BOOK_FROM_API = 'LOAD_BOOK_FROM_API';
+
+export const loadBookFromAPI = (id) => ({
+  type: LOAD_BOOK_FROM_API,
+  id,
+});
+
+export const SET_BOOK = 'SET_BOOK';
+
+export const setBook = (data) => ({
+  type: SET_BOOK,
+  data,
+});
+
 // ===============
 // FORMS
 // ===============
@@ -83,6 +97,12 @@ export const EDIT_PICTURE_ACCOUNT_ATTEMPT = 'EDIT_PICTURE_ACCOUNT_ATTEMPT';
 export const editPictureAccountAttempt = (picture) => ({
   type: EDIT_PICTURE_ACCOUNT_ATTEMPT,
   picture,
+});
+
+export const CHANGE_PASSWORD_ATTEMPT = 'CHANGE_PASSWORD_ATTEMPT';
+
+export const changePasswordAttempt = () => ({
+  type: CHANGE_PASSWORD_ATTEMPT,
 });
 
 export const SET_CURRENT_USER_JWT = 'SET_CURRENT_USER';
@@ -122,6 +142,12 @@ export const setAccountPicture = (id, picture) => ({
   picture,
 });
 
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
 // ===============
 // DISPLAY ACTIONS
 // ===============
@@ -152,3 +178,12 @@ export const setPinnedPage = (id, location) => ({
   id,
   location,
 });
+
+// export const POST_NEW_PINNEDPAGE_TO_BDD = 'POST_NEW_PINNEDPAGE_TO_BDD';
+
+// export const postNewPinnedpageToBDD = (userId, bookId, location) => ({
+//   type: POST_NEW_PINNEDPAGE_TO_BDD,
+//   userId,
+//   bookId,
+//   location,
+// });

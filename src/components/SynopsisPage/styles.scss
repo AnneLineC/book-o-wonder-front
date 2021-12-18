@@ -1,0 +1,52 @@
+@use './../../styles/vars';
+
+.synopsis-page {
+  padding: vars.$gutter*5 vars.$gutter*2;
+
+  &__cover {
+    background-color: rgb(72, 128, 161);
+    width: 20rem;
+    height: 32rem;
+    margin: auto;
+    border-radius: vars.$radius;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-family: vars.$title-font;
+    font-size: 2.5rem;
+    margin: vars.$gutter;
+  }
+
+  &__recommandations {
+    display: flex;
+    justify-content: center;
+
+    &-item {
+      margin: vars.$gutter;
+    }
+
+    &-number {
+      margin-left: vars.$gutter;
+    }
+  }
+
+  &__reading {
+    background-color: vars.$color--blue-light;
+    padding: vars.$gutter;
+    border-radius: vars.$radius;
+    margin: vars.$gutter*2;
+    font-weight: bold;
+  }
+}
+
+.item {
+  &--up {
+    color: vars.$color--green-light;
+  }
+  &--down {
+    color: vars.$color--orange-medium;
+  }
+}

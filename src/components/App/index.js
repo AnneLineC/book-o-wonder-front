@@ -8,12 +8,14 @@ import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
 import AccountPage from '../AccountPage';
+import ChangePassword from '../ChangePassword';
 import ContactPage from '../ContactPage';
 import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
 import ConnectedMenu from '../ConnectedMenu';
 import CategoriesMenu from '../CategoriesMenu';
 import MediaPlayer from '../MediaPlayer';
+import SynopsisPage from '../SynopsisPage';
 import SortedBooksPage from '../SortedBooksPage';
 import BookReadingPage from '../BookReadingPage';
 import MentionsLegales from '../MentionsLegales';
@@ -55,8 +57,10 @@ const App = () => {
         <Route path="/connexion" element={<LoginPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/mon-compte" element={<AccountPage />} />
+        <Route path="/mon-compte/mot-de-passe" element={<ChangePassword />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
+        <Route path="/livre/:id" element={<SynopsisPage />} />
         <Route path="/livre/:id/lecture" element={<BookReadingPage />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/notre-equipe" element={<TeamPage />} />

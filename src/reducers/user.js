@@ -4,6 +4,7 @@ import {
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
   SET_ACCOUNT_PICTURE,
+  LOGOUT,
 } from '../actions';
 
 export const initialState = {
@@ -15,6 +16,8 @@ export const initialState = {
   passwordConfirmValue: '',
   selectedFile: null,
   loaded: 0,
+  newPasswordValue: '',
+  newPasswordConfirmValue: '',
   pinnedPages: [
     {
       bookId: 1,
@@ -62,6 +65,11 @@ const reducer = (state = initialState, action = {}) => {
         pinnedPages: [
           ...pinnedPages,
         ],
+      };
+    }
+    case LOGOUT: {
+      return {
+        ...initialState,
       };
     }
     default:
