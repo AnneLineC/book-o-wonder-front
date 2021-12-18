@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  setFieldValue, sendContactFormAttempt,
+  setFieldValue, contactFormAttempt,
 } from '../../actions';
 import './styles.scss';
 
@@ -30,7 +30,8 @@ const ContactPage = () => {
 
   const handleSendFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(sendContactFormAttempt());
+    console.log(contactFormAttempt);
+    dispatch(contactFormAttempt());
   };
 
   return (

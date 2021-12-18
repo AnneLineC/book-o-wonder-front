@@ -92,6 +92,12 @@ export const changePasswordAttempt = () => ({
   type: CHANGE_PASSWORD_ATTEMPT,
 });
 
+export const CONTACT_FORM_ATTEMPT = 'CONTACT_FORM_ATTEMPT';
+
+export const contactFormAttempt = () => ({
+  type: CONTACT_FORM_ATTEMPT,
+});
+
 export const SET_CURRENT_USER_JWT = 'SET_CURRENT_USER';
 
 export const setCurrentUserJWT = (token) => ({
