@@ -176,3 +176,10 @@ export const updatePinnepageInBDD = (pinnedpageId, userId, bookId, location) => 
   bookId,
   location,
 });
+
+export const DELETE_PINNEDPAGE_IN_BDD = 'DELETE_PINNEDPAGE_IN_BDD';
+
+export const deletePinnedpageInBDD = (pinnedpageId) => ({
+  type: DELETE_PINNEDPAGE_IN_BDD,
+  pinnedpageId,
+});

@@ -1,18 +1,24 @@
 import { Carousel } from 'react-responsive-carousel';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 // eslint-disable-next-line no-unused-vars
 import ReactDOM from 'react-dom';
 import BookCard from '../BookCard';
+import { deletePinnedpageInBDD } from '../../actions';
 import './styles.scss';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.user.logged);
   const nickname = useSelector((state) => state.user.name);
   const pinnedpages = useSelector((state) => state.user.pinnedpages);
-  const baseURI = useSelector((state) => (state.display.baseURI));
+
+  const handleDeleteButtonClick = (id) => {
+    dispatch(deletePinnedpageInBDD(id));
+    console.log('Clic sur le bouton Retirer');
+  };
 
   return (
     <div className="home-page-main">
@@ -24,11 +30,26 @@ const HomePage = () => {
           <p className="home-page__pinnedpaged-title">Reprendre une lecture en cours</p>
           <div className="pinnedpaged-books">
             {pinnedpages.map((pinnedpage) => (
-              <Link key={pinnedpage.book.id} to={`/livre/${pinnedpage.book.id}/lecture`}>
-                <div className="pinnedpaged-books__card">
-                  <BookCard picture={pinnedpage.book.picture} />
+              <div className="pinnedpaged-book">
+                <div className="pinnedpaged-book__card">
+                  <Link key={pinnedpage.book.id} to={`/livre/${pinnedpage.book.id}/lecture`}>
+                    <BookCard picture={pinnedpage.book.picture} />
+                  </Link>
+                  <button
+                    className="pinnedpaged-book__delete"
+                    type="button"
+                    onClick={
+                      (event) => {
+                        event.stopPropagation();
+                        // console.log(pinnedpage);
+                        handleDeleteButtonClick(pinnedpage.id);
+                      }
+                    }
+                  >
+                    Retirer
+                  </button>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </>
@@ -67,7 +88,6 @@ const HomePage = () => {
         <div className="home-page__test">
           <img src="https://i.postimg.cc/BbpCMQ48/alice.jpg" alt="alice" border="0" />
         </div>
-
         <div className="home-page__test">
           <img src="https://i.postimg.cc/g07PQbSc/alacrois-edesmondes.jpg" alt="croiseedesmondes" border="0" />
         </div>

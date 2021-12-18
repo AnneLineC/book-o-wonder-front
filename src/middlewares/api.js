@@ -19,6 +19,7 @@ import {
   UPDATE_PINNEDPAGE_IN_BDD,
   setNewPinnedPage,
   updatePinnedpage,
+  DELETE_PINNEDPAGE_IN_BDD,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -184,6 +185,21 @@ const apiMiddleWare = (store) => (next) => (action) => {
           console.log('ceci est un appel pour updater un marque page');
           console.log(response);
           store.dispatch(updatePinnedpage(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case DELETE_PINNEDPAGE_IN_BDD: {
+      console.log('delete demandé !!');
+      axios.delete(`${baseURI}/api/v1/pinnedpage/${action.pinnedpageId}`).then(
+        (response) => {
+          console.log('ceci est un appel pour supprimer un marque page');
+          console.log(response);
         },
       ).catch(
         (error) => console.log(error.toJSON()),
