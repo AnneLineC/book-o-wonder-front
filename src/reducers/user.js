@@ -1,9 +1,11 @@
 import {
   SET_FIELD_VALUE,
-  SET_PINNEDPAGE,
+  SET_NEW_PINNEDPAGE,
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
   LOGOUT,
+  UPDATE_PINNEDPAGE,
+  REMOVE_PINNEDPAGE,
 } from '../actions';
 
 export const initialState = {
@@ -13,18 +15,9 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
+  pinnedpages: [],
   newPasswordValue: '',
   newPasswordConfirmValue: '',
-  pinnedPages: [
-    {
-      bookId: 1,
-      location: 'test1',
-    },
-    {
-      bookId: 2,
-      location: 'test2',
-    },
-  ],
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -45,17 +38,42 @@ const reducer = (state = initialState, action = {}) => {
         logged: true,
         ...action.data,
       };
-    case SET_PINNEDPAGE: {
-      const pinnedPageIndex = state.pinnedPages.findIndex(
-        (pinnedPage) => (pinnedPage.bookId === parseInt(action.id, 10)),
+    case SET_NEW_PINNEDPAGE: {
+      return {
+        ...state,
+        pinnedpages: [
+          ...state.pinnedpages,
+          action.data,
+        ],
+      };
+    }
+    case UPDATE_PINNEDPAGE: {
+      const pinnedPageIndex = state.pinnedpages.findIndex(
+        (pinnedPage) => (pinnedPage.book.id === parseInt(action.data.book.id, 10)),
       );
-      const { pinnedPages } = state;
-      pinnedPages[pinnedPageIndex].location = action.location;
+      // console.log(pinnedPageIndex);
+      const { pinnedpages } = state;
+      pinnedpages[pinnedPageIndex] = action.data;
+      // console.log(pinnedpages);
 
       return {
         ...state,
-        pinnedPages: [
-          ...pinnedPages,
+        pinnedpages: [
+          ...pinnedpages,
+        ],
+      };
+    }
+    case REMOVE_PINNEDPAGE: {
+      const pinnedPageIndex = state.pinnedpages.findIndex(
+        (pinnedPage) => (pinnedPage.id === parseInt(action.pinnedpageId, 10)),
+      );
+      const { pinnedpages } = state;
+      pinnedpages.splice(pinnedPageIndex, 1);
+
+      return {
+        ...state,
+        pinnedpages: [
+          ...pinnedpages,
         ],
       };
     }
