@@ -21,6 +21,7 @@ import {
   updatePinnedpage,
   DELETE_PINNEDPAGE_IN_BDD,
   removePinnedpage,
+  CHANGE_PASSWORD_ATTEMPT,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -75,6 +76,33 @@ const apiMiddleWare = (store) => (next) => (action) => {
           name: nicknameValue,
           email: emailValue,
           password: passwordValue,
+        }).then(
+          (response) => {
+            console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+          },
+        ).catch(
+          (error) => console.log(error.toJSON()),
+        );
+      }
+
+      next(action);
+      break;
+    }
+    case CHANGE_PASSWORD_ATTEMPT: {
+      const {
+        passwordValue,
+        newPasswordValue,
+        newPasswordConfirmValue,
+      } = store.getState().user;
+
+      if (newPasswordValue === newPasswordConfirmValue) {
+        // api's url so that we can connect back and front together
+        axios.patch(`${baseURI}/api/v1/account/changepassword`, {
+          old_password: passwordValue,
+          new_password: newPasswordValue,
         }).then(
           (response) => {
             console.log(response);
