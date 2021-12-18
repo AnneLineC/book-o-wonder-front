@@ -7,6 +7,8 @@ import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import ReactDOM from 'react-dom';
 import BookCard from '../BookCard';
 import { deletePinnedpageInBDD } from '../../actions';
+
+import logo from './logo-book-o-wonder-sans-titre.png';
 import './styles.scss';
 
 const HomePage = () => {
@@ -21,6 +23,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
+      
 
       {isLogged
       && (
@@ -56,7 +59,10 @@ const HomePage = () => {
       {!isLogged
       && (
       <>
-        <h1 className="home-page__title">Book'O'Wonder, c'est quoi ?</h1>
+        <div className="home-page__intro">
+          <img className="home-page__logo" src={logo} alt="Book'O'Wonder" />
+          <h1 className="home-page__title"><span className="home-page__title-sitename">Book'O'Wonder</span>,<br /> c'est quoi ?</h1>
+        </div>
         <div className="home-page__container">
           <div className="home-page__highlight">
             <i className="home-page__avatar fas fa-book" />

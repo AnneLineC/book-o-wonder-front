@@ -2,12 +2,13 @@
 @use "sass:color";
 
 .nav {
+    background-color: vars.$color--grey-very-dark;
 
     &__list {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin: vars.$gutter*5;
+        padding: vars.$gutter*4;
         justify-content: center;
     }
     
