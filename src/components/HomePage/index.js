@@ -17,7 +17,6 @@ const HomePage = () => {
 
   const handleDeleteButtonClick = (id) => {
     dispatch(deletePinnedpageInBDD(id));
-    console.log('Clic sur le bouton Retirer');
   };
 
   return (

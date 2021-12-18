@@ -1,20 +1,18 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
-import { setMediaPlayerDisplay, loadSoundFromAPI } from '../../actions';
+import { setMediaPlayerDisplay, loadSoundFromAPI, loadSoundsFromAPI } from '../../actions';
 import Modal from '../Modal';
 import './styles.scss';
 import MusicPreview from './MusicPreview';
 
 const MediaPlayer = () => {
   const dispatch = useDispatch();
+  const baseURI = useSelector((state) => (state.display.baseURI));
+
   const isMediaPlayerOpen = useSelector((state) => state.display.mediaPlayer);
   const playing = useSelector((state) => state.display.mediaPlayerDisplay.playing);
   const volume = useSelector((state) => state.display.mediaPlayerDisplay.volume);
-
-  useEffect(() => {
-    dispatch(loadSoundFromAPI(1));
-  }, []);
 
   // Current music
   const musicTitle = useSelector((state) => state.sounds.currentMusic.name);
@@ -25,25 +23,27 @@ const MediaPlayer = () => {
   // Musics list
   const musicsList = useSelector((state) => state.sounds.musicsList);
 
+  useEffect(() => {
+    dispatch(loadSoundsFromAPI());
+    // Load the first music of the full list in the player
+    dispatch(loadSoundFromAPI(4));
+  }, []);
+
   // Handlers
   const handleSetMusic = (id) => {
-    console.log(`En avant la musique !${id}`);
     dispatch(loadSoundFromAPI(id));
   };
 
   const handlePlayPause = () => {
-    console.log('onPlay');
     dispatch(setMediaPlayerDisplay('playing', !playing));
   };
 
   const handlePlay = () => { // Allow to change the playing status when autoplay is activated
-    console.log('onPlay');
     dispatch(setMediaPlayerDisplay('playing', true));
   };
 
   const handleVolumeChange = (event) => {
-    // console.log('volumeChange');
-    // console.log(event.currentTarget.value);
+    // consolog(event.currentTarget.value);
     dispatch(setMediaPlayerDisplay('volume', parseFloat(event.currentTarget.value)));
   };
 
@@ -70,7 +70,7 @@ const MediaPlayer = () => {
           <div className="infos">
             <div
               className="infos__picture"
-              style={{ backgroundImage: 'url("https://www.ladn.eu/wp-content/uploads/2021/09/lofi-girl-1200x630.jpg")' }}
+              style={{ backgroundImage: `url("${baseURI}/images_audio_folder/${musicImage}")` }}
             >
               <div className="infos__content">
                 <div className="infos__left">
