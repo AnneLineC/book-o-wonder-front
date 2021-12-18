@@ -51,9 +51,9 @@ export const loadBooksByCategoryFromAPI = (id) => ({
 
 export const SET_BOOKS_LIST_BY_CATEGORY = 'SET_BOOKS_LIST_BY_CATEGORY';
 
-export const setBooksListByCategory = (booksList) => ({
+export const setBooksListByCategory = (data) => ({
   type: SET_BOOKS_LIST_BY_CATEGORY,
-  booksList,
+  data,
 });
 
 export const LOAD_BOOK_FROM_API = 'LOAD_BOOK_FROM_API';
