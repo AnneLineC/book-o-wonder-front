@@ -91,15 +91,15 @@
   &::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
   }
-  
+
   &::-webkit-scrollbar-track {
-    background: vars.$color--blue-light;        /* color of the tracking area */
+      background: #1d1d1d;        /* color of the tracking area */
   }
-  
+
   &::-webkit-scrollbar-thumb {
-    background-color: vars.$color--grey-dark;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid vars.$color--blue-light;  /* creates padding around scroll thumb */
+      background-color: #575757;    /* color of the scroll thumb */
+      border-radius: 20px;       /* roundness of the scroll thumb */
+      border: 3px solid #1d1d1d ;  /* creates padding around scroll thumb */
   }
 }
 

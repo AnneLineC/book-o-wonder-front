@@ -26,11 +26,7 @@ const HomePage = () => {
             {pinnedpages.map((pinnedpage) => (
               <Link key={pinnedpage.book.id} to={`/livre/${pinnedpage.book.id}/lecture`}>
                 <div className="pinnedpaged-books__card">
-                  {/* <BookCard picture={pinnedpage.book.picture} /> */}
-                  <div
-                    className="bookcard"
-                    style={{ backgroundImage: `url("${baseURI}/images_book_folder/${pinnedpage.book.picture}")` }}
-                  />
+                  <BookCard picture={pinnedpage.book.picture} />
                 </div>
               </Link>
             ))}
