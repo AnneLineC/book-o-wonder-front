@@ -136,7 +136,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
         (response) => {
           console.log(response);
-          store.dispatch(setBooksListByCategory(response.data.books));
+          store.dispatch(setBooksListByCategory(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
