@@ -79,9 +79,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         }).then(
           (response) => {
             console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
           },
         ).catch(
           (error) => console.log(error.toJSON()),
@@ -106,9 +103,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         }).then(
           (response) => {
             console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
           },
         ).catch(
           (error) => console.log(error.toJSON()),
@@ -121,7 +115,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
-          // console.log(response);
           store.dispatch(setCategories(response.data));
         },
       ).catch(
@@ -146,7 +139,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       break;
     }
     case LOAD_SOUNDS_FROM_API: {
-      axios.get(`${baseURI}/api/v1/audio`).then(
+      axios.get(`${baseURI}/api/v1/audio/category`).then(
         (response) => {
           // console.log(response);
           store.dispatch(setSounds(response.data));

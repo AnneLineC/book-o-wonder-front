@@ -1,6 +1,5 @@
 // eslint-disable no-debugger, no-console
 import { useLocation, Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import HeaderApp from '../HeaderApp';
@@ -21,20 +20,9 @@ import BookReadingPage from '../BookReadingPage';
 import MentionsLegales from '../MentionsLegales';
 import TeamPage from '../TeamPage';
 import Error404 from '../Error404';
-import { loadCategoriesFromAPI, loadSoundsFromAPI } from '../../actions';
 import './styles.scss';
 
 const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(
-    () => {
-      dispatch(loadCategoriesFromAPI());
-      dispatch(loadSoundsFromAPI());
-    },
-    [],
-  );
-
   // React router dom hook allowing to know the  currentlocation
   const location = useLocation();
   // Allow scrolling at the top of the page when navigating
