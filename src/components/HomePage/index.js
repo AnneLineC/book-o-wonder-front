@@ -20,7 +20,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="home-page-main">
+    <div className="home-page">
 
       {isLogged
       && (
@@ -56,26 +56,26 @@ const HomePage = () => {
       {!isLogged
       && (
       <>
-        <p className="home-page__title">Book'O'Wonder, c'est quoi ?</p>
+        <h1 className="home-page__title">Book'O'Wonder, c'est quoi ?</h1>
         <div className="home-page__container">
           <div className="home-page__highlight">
             <i className="home-page__avatar fas fa-book" />
             <p className="home-page__content">
               {/* eslint-disable-next-line max-len */}
-              Un lecteur de livre intéractif vous permettant de vivre une aventure parmi une ludothèque fournie
+              <span className="home-page__highlight-title">Un lecteur de livre intéractif</span><br />vous permettant de vivre une aventure parmi une ludothèque fournie
             </p>
           </div>
           <div className="home-page__highlight">
             <i className="home-page__avatar fas fa-headphones" />
             <p className="home-page__content">
               {/* eslint-disable-next-line max-len */}
-              Un lecteur audio vous permettant mettre une ambiance sonore afin de savourer votre lecture
+              <span className="home-page__highlight-title">Un lecteur audio</span><br /> vous permettant mettre une ambiance sonore afin de savourer votre lecture
             </p>
           </div>
           <div className="home-page__highlight">
             <i className="home-page__avatar fas fa-bookmark" />
             <p className="home-page__content">
-              Un système de marque-page vous permettant de reprendre votre dernière lecture en cours
+              <span className="home-page__highlight-title">Un système de marque-page</span><br /> vous permettant de reprendre votre dernière lecture en cours
             </p>
           </div>
         </div>
