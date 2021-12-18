@@ -151,10 +151,10 @@ export const setNewPinnedPage = (data) => ({
   data,
 });
 
-export const UPDATE_PINNDEDPAGE = 'UPDATE_PINNDEDPAGE';
+export const UPDATE_PINNEDPAGE = 'UPDATE_PINNDEDPAGE';
 
 export const updatePinnedpage = (data) => ({
-  type: UPDATE_PINNDEDPAGE,
+  type: UPDATE_PINNEDPAGE,
   data,
 });
 
@@ -181,5 +181,12 @@ export const DELETE_PINNEDPAGE_IN_BDD = 'DELETE_PINNEDPAGE_IN_BDD';
 
 export const deletePinnedpageInBDD = (pinnedpageId) => ({
   type: DELETE_PINNEDPAGE_IN_BDD,
+  pinnedpageId,
+});
+
+export const REMOVE_PINNEDPAGE = 'REMOVE_PINNEDPAGE';
+
+export const removePinnedpage = (pinnedpageId) => ({
+  type: REMOVE_PINNEDPAGE,
   pinnedpageId,
 });

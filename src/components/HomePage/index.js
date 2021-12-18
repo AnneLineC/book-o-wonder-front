@@ -41,7 +41,6 @@ const HomePage = () => {
                     onClick={
                       (event) => {
                         event.stopPropagation();
-                        // console.log(pinnedpage);
                         handleDeleteButtonClick(pinnedpage.id);
                       }
                     }

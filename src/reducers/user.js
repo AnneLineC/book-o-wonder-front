@@ -4,7 +4,8 @@ import {
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
   LOGOUT,
-  UPDATE_PINNDEDPAGE,
+  UPDATE_PINNEDPAGE,
+  REMOVE_PINNEDPAGE,
 } from '../actions';
 
 export const initialState = {
@@ -44,7 +45,7 @@ const reducer = (state = initialState, action = {}) => {
         ],
       };
     }
-    case UPDATE_PINNDEDPAGE: {
+    case UPDATE_PINNEDPAGE: {
       const pinnedPageIndex = state.pinnedpages.findIndex(
         (pinnedPage) => (pinnedPage.book.id === parseInt(action.data.book.id, 10)),
       );
@@ -52,6 +53,20 @@ const reducer = (state = initialState, action = {}) => {
       const { pinnedpages } = state;
       pinnedpages[pinnedPageIndex] = action.data;
       // console.log(pinnedpages);
+
+      return {
+        ...state,
+        pinnedpages: [
+          ...pinnedpages,
+        ],
+      };
+    }
+    case REMOVE_PINNEDPAGE: {
+      const pinnedPageIndex = state.pinnedpages.findIndex(
+        (pinnedPage) => (pinnedPage.id === parseInt(action.pinnedpageId, 10)),
+      );
+      const { pinnedpages } = state;
+      pinnedpages.splice(pinnedPageIndex, 1);
 
       return {
         ...state,

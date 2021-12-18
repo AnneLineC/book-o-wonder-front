@@ -20,6 +20,7 @@ import {
   setNewPinnedPage,
   updatePinnedpage,
   DELETE_PINNEDPAGE_IN_BDD,
+  removePinnedpage,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -200,6 +201,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (response) => {
           console.log('ceci est un appel pour supprimer un marque page');
           console.log(response);
+          store.dispatch(removePinnedpage(action.pinnedpageId));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
