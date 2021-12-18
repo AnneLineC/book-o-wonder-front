@@ -4,6 +4,7 @@ import {
   LOGIN_ATTEMPT,
   setCurrentUserJWT,
   REGISTER_ATTEMPT,
+  CONTACT_FORM_ATTEMPT,
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
@@ -108,10 +109,31 @@ const apiMiddleWare = (store) => (next) => (action) => {
           (error) => console.log(error.toJSON()),
         );
       }
+      next(action);
+      break;
+    }
+    case CONTACT_FORM_ATTEMPT: {
+      const {
+        emailValue, nicknameValue, objectValue, contentValue,
+      } = store.getState().user;
+
+      axios.post(`${baseURI}/api/v1/contact`, {
+        username: nicknameValue,
+        email: emailValue,
+        content: contentValue,
+        object: objectValue,
+      }).then(
+        (response) => {
+          console.log(response);
+        },
+      ).catch(
+        (error) => console.log(error),
+      );
 
       next(action);
       break;
     }
+
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
