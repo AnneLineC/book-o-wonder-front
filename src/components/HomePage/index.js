@@ -26,7 +26,6 @@ const HomePage = () => {
   const highlightedBooks = useSelector((state) => state.books.highlightedBooks);
   const mostPinnedBook = useSelector((state) => state.books.mostPinnedBook);
   const mostReadCategory = useSelector((state) => state.books.mostReadCategory);
-  console.log(mostReadCategory);
 
   const handleDeleteButtonClick = (id) => {
     dispatch(deletePinnedpageInBDD(id));
@@ -38,7 +37,7 @@ const HomePage = () => {
     dispatch(loadMostReadCategoryFromAPI());
   }, []);
 
-  const hasPinnedpages = pinnedpages !== [];
+  const hasPinnedpages = pinnedpages.length !== 0;
 
   return (
     <div className="home-page">
