@@ -28,14 +28,21 @@ const HomePage = () => {
     },
   );
 
+  const hasPinnedpages = pinnedpages !== [];
+
   return (
     <div className="home-page">
 
       {isLogged
       && (
         <>
-          <p className="home-page__title">Bienvenue {nickname} !</p>
-          {pinnedpages !== [] ?? '<p className="home-page__pinnedpaged-title">Reprendre une lecture en cours</p>'}
+          <div className="home-page__intro">
+            <img className="home-page__logo" src={logo} alt="Book'O'Wonder" />
+            <h1 className="home-page__title">
+              Bienvenue<br /> <span className="home-page__title-sitename">{nickname}</span> !
+            </h1>
+          </div>
+          {hasPinnedpages && <p className="home-page__pinnedpaged-title">Reprendre une lecture en cours</p>}
           <div className="pinnedpaged-books">
             {pinnedpages.map((pinnedpage) => (
               <div className="pinnedpaged-book">
