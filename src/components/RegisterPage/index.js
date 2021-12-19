@@ -37,8 +37,6 @@ const RegisterPage = () => {
     dispatch(registerAttempt());
   };
 
-  console.log(isSubmitted);
-
   return (
 
     <div className="register-page">

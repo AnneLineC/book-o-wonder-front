@@ -63,11 +63,17 @@ const apiMiddleWare = (store) => (next) => (action) => {
               store.dispatch(setCurrentUserData(result.data));
             },
           ).catch(
-            (error) => console.log(error),
+            (error) => {
+              console.log(error.toJSON());
+            },
           );
         },
       ).catch(
-        (error) => console.log(error),
+        (error) => {
+          console.log(error);
+          console.log('erreur de connexion');
+          store.dispatch(setFormErrorState('connexionForm', true));
+        }
       );
 
       next(action);

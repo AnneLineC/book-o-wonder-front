@@ -17,6 +17,10 @@ export const initialState = {
     sent: false,
     error: false,
   },
+  connexionForm: {
+    sent: false,
+    error: false,
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -47,7 +51,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state[action.formName],
         sent: action.sent,
       };
-      console.log(newState);
       return {
         ...state,
         [action.formName]: {
@@ -60,7 +63,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state[action.formName],
         error: action.error,
       };
-      console.log(newState);
       return {
         ...state,
         [action.formName]: {
