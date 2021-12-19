@@ -8,7 +8,7 @@ import BookReview from '../BookReview';
 import './styles.scss';
 
 const AccountPage = () => {
-  const avatarInput = useRef(null);
+  // const avatarInput = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -18,29 +18,34 @@ const AccountPage = () => {
   const handleInputNicknameChange = (event) => {
     dispatch(setFieldValue('nicknameValue', event.target.value));
   };
+
   const handleInputEmailChange = (event) => {
     dispatch(setFieldValue('emailValue', event.target.value));
   };
-  const handleEditPictureAccountFormSubmit = (event) => {
-    event.preventDefault();
-    console.log('picture OK');
-    console.log(avatarInput.current.value);
-    dispatch(editPictureAccountAttempt(avatarInput.current.value));
-  };
+
+  // const handleEditPictureAccountFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log('picture OK');
+  //   console.log(avatarInput.current.value);
+  //   dispatch(editPictureAccountAttempt(avatarInput.current.value));
+  // };
+
+  // const onChangeHandler = (event) => {
+  //   console.log(event.target.files[0]);
+  // };
+
   const handleEditAccountFormSubmit = (event) => {
     event.preventDefault();
     console.log('handler OK');
     dispatch(editAccountAttempt());
   };
-  const onChangeHandler = (event) => {
-    console.log(event.target.files[0]);
-  };
+
 
   return (
 
     <div className="account-page">
 
-      <form autoComplete="off" className="account-page__form-top" onSubmit={handleEditPictureAccountFormSubmit}>
+      {/* <form autoComplete="off" className="account-page__form-top" onSubmit={handleEditPictureAccountFormSubmit}>
 
         <div className="account-page__avatar-button">
           <i className="account-page__avatar fas fa-upload" />
@@ -64,10 +69,10 @@ const AccountPage = () => {
         >
           Envoyer
         </button>
-      </form>
+      </form> */}
 
-      <form autoComplete="off" className="account-page__form-bottom" onSubmit={handleEditAccountFormSubmit}>
-        <p> Inscrit depuis le </p>
+      {/* <form autoComplete="off" className="account-page__form-bottom" onSubmit={handleEditAccountFormSubmit}>
+        <p>Inscrit depuis le </p>
         <label className="account-page__label" htmlFor="pseudo">
           <span className="sr-only">Pseudo</span>
           <input
@@ -96,8 +101,29 @@ const AccountPage = () => {
         <p>
           Pour changer votre mot de passe, <span className="account-page__password"><Link to="/mon-compte/mot-de-passe">cliquez ici</Link></span>
         </p>
-      </form>
-      <BookReview />
+      </form> */}
+
+      <h1 className="account-page__title">Paramètres du compte</h1>
+
+      <div className="account-page__infos">
+        <div className="account-page__entry">
+          <p className="account-page__label">Pseudo :</p>
+          <p>MonPseudo
+            {/* <i className="fas fa-pencil-alt" /> */}
+          </p>
+        </div>
+        <div className="account-page__entry">
+          <p className="account-page__label">Adresse mail :</p>
+          <p>monadresse@gmail.com
+            {/* <i className="fas fa-pencil-alt" /> */}
+          </p>
+        </div>
+        <div className="account-page__entry account-page__entry--password">
+          <Link to="/mon-compte/mot-de-passe">Modifier le mot de passe</Link>
+        </div>
+      </div>
+
+
     </div>
   );
 };
