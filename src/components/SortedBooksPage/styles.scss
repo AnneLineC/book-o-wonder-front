@@ -1,10 +1,22 @@
 @use '../../styles/vars';
 
 .sortedbookspage {
-  padding: vars.$gutter * 2;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+
+  &__title {
+    margin: 4rem 0 2rem;
+    font-size: 3rem;
+  }
+
+  &__subtitle {
+    font-size: 0.5em;
+  }
+
+  &__content {
+    padding: vars.$gutter * 2;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
   &__card {
     display: flex;
@@ -13,14 +25,18 @@
     width: 14rem;
   }
 
-  &__title {
+  &__book-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin: vars.$gutter * 0.5;
   }
 
   &__author {
-    font-size: 1rem;
-    margin: vars.$gutter * 0.5;
+    display: block;
+    background-color: #292929;
+    color: vars.$color--blue-light;
+    padding: vars.$gutter * 0.5;
+    border-radius: vars.$radius;
+    font-size: 1.2rem;
   }
 }

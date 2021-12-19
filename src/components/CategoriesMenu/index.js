@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { setDisplay } from '../../actions';
+import { useEffect } from 'react';
+import { setDisplay, loadCategoriesFromAPI } from '../../actions';
 
 import Modal from '../Modal';
 
@@ -10,6 +11,13 @@ const CategoriesMenu = () => {
   const dispatch = useDispatch();
   const isCategoriesMenuOpen = useSelector((state) => state.display.categoriesMenu);
   const categoriesList = useSelector((state) => state.display.categoriesList);
+
+  useEffect(
+    () => {
+      dispatch(loadCategoriesFromAPI());
+    },
+    [],
+  );
 
   const handleLinkClick = () => {
     dispatch(setDisplay('categoriesMenu'));

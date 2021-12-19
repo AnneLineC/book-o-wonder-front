@@ -6,6 +6,7 @@ import {
   REGISTER_ATTEMPT,
   EDIT_ACCOUNT_ATTEMPT,
   EDIT_PICTURE_ACCOUNT_ATTEMPT,
+  CONTACT_FORM_ATTEMPT,
   LOAD_CATEGORIES_FROM_API,
   setCategories,
   setCurrentUserData,
@@ -81,9 +82,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         }).then(
           (response) => {
             console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
           },
         ).catch(
           (error) => console.log(error.toJSON()),
@@ -157,9 +155,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         }).then(
           (response) => {
             console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
           },
         ).catch(
           (error) => console.log(error.toJSON()),
@@ -168,10 +163,31 @@ const apiMiddleWare = (store) => (next) => (action) => {
     }
       next(action);
       break;
+    }
+    case CONTACT_FORM_ATTEMPT: {
+      const {
+        emailValue, nicknameValue, objectValue, contentValue,
+      } = store.getState().user;
+
+      axios.post(`${baseURI}/api/v1/contact`, {
+        username: nicknameValue,
+        email: emailValue,
+        content: contentValue,
+        object: objectValue,
+      }).then(
+        (response) => {
+          console.log(response);
+        },
+      ).catch(
+        (error) => console.log(error),
+      );
+
+      next(action);
+      break;
+    }
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
-          // console.log(response);
           store.dispatch(setCategories(response.data));
         },
       ).catch(
@@ -181,12 +197,11 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-
     case LOAD_BOOKS_BY_CATEGORY_FROM_API: {
       axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
         (response) => {
           console.log(response);
-          store.dispatch(setBooksListByCategory(response.data.books));
+          store.dispatch(setBooksListByCategory(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
@@ -196,7 +211,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       break;
     }
     case LOAD_SOUNDS_FROM_API: {
-      axios.get(`${baseURI}/api/v1/audio`).then(
+      axios.get(`${baseURI}/api/v1/audio/category`).then(
         (response) => {
           // console.log(response);
           store.dispatch(setSounds(response.data));

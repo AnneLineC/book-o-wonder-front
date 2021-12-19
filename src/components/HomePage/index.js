@@ -17,7 +17,6 @@ const HomePage = () => {
 
   const handleDeleteButtonClick = (id) => {
     dispatch(deletePinnedpageInBDD(id));
-    console.log('Clic sur le bouton Retirer');
   };
 
   return (
@@ -27,7 +26,7 @@ const HomePage = () => {
       && (
         <>
           <p className="home-page__title">Bienvenue {nickname} !</p>
-          <p className="home-page__pinnedpaged-title">Reprendre une lecture en cours</p>
+          {pinnedpages !== [] ?? '<p className="home-page__pinnedpaged-title">Reprendre une lecture en cours</p>'}
           <div className="pinnedpaged-books">
             {pinnedpages.map((pinnedpage) => (
               <div className="pinnedpaged-book">

@@ -21,6 +21,8 @@ export const initialState = {
   pinnedpages: [],
   newPasswordValue: '',
   newPasswordConfirmValue: '',
+  objectValue: '',
+  contentValue: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
