@@ -22,9 +22,9 @@ const AskReset = () => {
       <h1 className="ask-reset-page__title">Demande de réinitialisation de mot de passe</h1>
       <p className="ask-reset-page__content">Un email vous sera envoyé (si vous êtes inscrit) pour réinitialiser votre mot de passe.</p>
 
-      <form autoComplete="off" className="register-page__form" onSubmit={handleAskResetPasswordFormSubmit}>
+      <form autoComplete="off" className="ask-reset-page__form" onSubmit={handleAskResetPasswordFormSubmit}>
 
-        <label className="ask-reset-page__label" htmlFor="newPassword-confirm">
+        <label className="ask-reset-page__label" htmlFor="email">
           <span className="sr-only">Votre adresse mail</span>
           <input
             className="ask-reset-page__input"

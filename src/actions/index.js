@@ -94,7 +94,7 @@ export const askResetAttempt = () => ({
 
 export const RESET_PASSWORD_ATTEMPT = 'RESET_PASSWORD_ATTEMPT';
 
-export const ResetPasswordAttempt = () => ({
+export const resetPasswordAttempt = () => ({
   type: RESET_PASSWORD_ATTEMPT,
 });
 

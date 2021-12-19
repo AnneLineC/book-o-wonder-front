@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setFieldValue, ResetPasswordAttempt } from '../../actions';
+import { setFieldValue, resetPasswordAttempt } from '../../actions';
 
 import './styles.scss';
 
-const ResetPassword = () => {
+const ResetPassword = (props) => {
   const dispatch = useDispatch();
 
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
@@ -22,20 +22,23 @@ const ResetPassword = () => {
     dispatch(resetPasswordAttempt());
   };
 
-  const token = props.location.search;
+  const URLToken = props.location.search;
 
-  const extractParamsUrl = (get) => {
-    get = get.split('&');
+  const extractParamsUrl = (token) => {
+    const get = token.split('&');
     const result = {};
 
     get.forEach((el) => {
-      const param = el.split('=');
+      const param = el.split('?');
       param[0] = param[0].replace('?', '');
       result[param[0]] = param[1];
     });
 
     return result;
   };
+
+  const token = extractParamsUrl(URLToken);
+  console.log(token);
 
   return (
     <div className="reset-password-page">
