@@ -35,6 +35,7 @@ import {
   setMostReadCategory,
   setFormSentState,
   setFormErrorState,
+  setHighlightedBooksAreLoaded,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -154,55 +155,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-    // case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
-    //   const formData = new FormData();
-    //   const fileInput = document.querySelector('#profilePic');
-    //   formData.append('profilePic', fileInput.files[0]);
-    //   for (const [key, value] of formData.entries()) {
-    //     console.log(key, value);
-    //   }
-
-    //   // api's url so that we can connect back and front together
-    //   axios.patch(`${baseURI}/api/v1/user/profilpic/4`, {
-    //     data: formData,
-    //     headers: { 'Content-Type': 'multipart/form-data' },
-    //   }).then(
-    //     (response) => {
-    //       console.log(response);
-
-    //       // dispatch to log the user
-    //       // store.dispatch(setCurrentUser(response.data));
-    //     },
-    //   ).catch(
-    //     (error) => console.log(error.toJSON()),
-    //   );
-
-    //   next(action);
-    //   break;
-    // }
-    // case EDIT_ACCOUNT_ATTEMPT: {
-    //   const {
-    //     nicknameValue,
-    //     emailValue,
-    //   } = store.getState().user;
-
-    //   // api's url so that we can connect back and front together
-    //   axios.post(`${baseURI}/api/v1/user`, {
-    //     name: nicknameValue,
-    //     email: emailValue,
-    //   }).then(
-    //     (response) => {
-    //       console.log(response);
-
-    //       // dispatch to log the user
-    //       // store.dispatch(setCurrentUser(response.data));
-    //     },
-    //   ).catch(
-    //     (error) => console.log(error.toJSON()),
-    //   );
-    //   next(action);
-    //   break;
-    // }
     case CHANGE_PASSWORD_ATTEMPT: {
       const {
         passwordValue,
@@ -373,6 +325,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // console.log('Livres mis en avant :');
           // console.log(response);
           store.dispatch(setHighlightedBooks(response.data));
+          store.dispatch(setHighlightedBooksAreLoaded(true));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -19,11 +19,12 @@ import './styles.scss';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const baseURI = useSelector((state) => (state.display.baseURI));
+  const baseURI = useSelector((state) => state.display.baseURI);
   const isLogged = useSelector((state) => state.user.logged);
   const nickname = useSelector((state) => state.user.name);
   const pinnedpages = useSelector((state) => state.user.pinnedpages);
   const highlightedBooks = useSelector((state) => state.books.highlightedBooks);
+  const highlightedBooksAreLoaded = useSelector((state) => state.books.highlightedBooksAreLoaded);
   const mostPinnedBook = useSelector((state) => state.books.mostPinnedBook);
   const mostReadCategory = useSelector((state) => state.books.mostReadCategory);
   console.log(mostReadCategory);
@@ -111,6 +112,7 @@ const HomePage = () => {
       </>
       )}
 
+      {highlightedBooksAreLoaded && (
       <Carousel autoPlay infiniteLoop useKeyboardArrows autoFocus showThumbs={false}>
         {highlightedBooks.map(
           (book) => (
@@ -122,6 +124,7 @@ const HomePage = () => {
           ),
         )}
       </Carousel>
+      )}
 
       <div className="highlighted-books">
         <div className="highlighted-books__card">
@@ -136,7 +139,10 @@ const HomePage = () => {
           <h2 className="highlighted-books__title">Catégorie la plus lue en ce moment</h2>
           <div className="highlighted-books__book-card">
             <Link to={`categorie/${mostReadCategory.id}`}>
-              <BookCard picture={mostReadCategory.image} />
+              <div
+                className="bookcard"
+                style={{ backgroundImage: `url("${baseURI}/images_category_folder/${mostReadCategory.image}")` }}
+              />
             </Link>
           </div>
         </div>

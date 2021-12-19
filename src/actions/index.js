@@ -240,6 +240,13 @@ export const setFormErrorState = (formName, error) => ({
   error,
 });
 
+export const SET_HIGHLIGHTED_BOOKS_ARE_LOADED = 'SET_HIGHLIGHTED_BOOKS_ARE_LOADED';
+
+export const setHighlightedBooksAreLoaded = (value) => ({
+  type: SET_HIGHLIGHTED_BOOKS_ARE_LOADED,
+  value,
+});
+
 // ===============
 // BOOKS
 // ===============
