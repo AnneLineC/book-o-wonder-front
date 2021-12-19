@@ -70,6 +70,12 @@ export const setBook = (data) => ({
   data,
 });
 
+export const LOAD_HIGHLIGHTED_BOOKS_FROM_API = 'LOAD_HIGHLIGHTED_BOOKS_FROM_API';
+
+export const loadHighlightedBooksFromAPI = () => ({
+  type: LOAD_HIGHLIGHTED_BOOKS_FROM_API,
+});
+
 // ===============
 // FORMS
 // ===============

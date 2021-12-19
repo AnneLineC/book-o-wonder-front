@@ -23,6 +23,7 @@ import {
   DELETE_PINNEDPAGE_IN_BDD,
   removePinnedpage,
   CHANGE_PASSWORD_ATTEMPT,
+  LOAD_HIGHLIGHTED_BOOKS_FROM_API,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -172,6 +173,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_SOUND_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
         (response) => {
@@ -245,6 +247,20 @@ const apiMiddleWare = (store) => (next) => (action) => {
           console.log('ceci est un appel pour supprimer un marque page');
           console.log(response);
           store.dispatch(removePinnedpage(action.pinnedpageId));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case LOAD_HIGHLIGHTED_BOOKS_FROM_API: {
+      axios.get(`${baseURI}/api/v1/book/ishome`).then(
+        (response) => {
+          console.log(response);
+          // store.dispatch(setBook(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

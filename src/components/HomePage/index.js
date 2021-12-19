@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -6,9 +7,9 @@ import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 // eslint-disable-next-line no-unused-vars
 import ReactDOM from 'react-dom';
 import BookCard from '../BookCard';
-import { deletePinnedpageInBDD } from '../../actions';
+import { deletePinnedpageInBDD, loadHighlightedBooksFromAPI } from '../../actions';
 
-import logo from './logo-book-o-wonder-sans-titre.png';
+import logo from './logo-book-o-wonder-colore.png';
 import './styles.scss';
 
 const HomePage = () => {
@@ -21,9 +22,14 @@ const HomePage = () => {
     dispatch(deletePinnedpageInBDD(id));
   };
 
+  useEffect(
+    () => {
+      dispatch(loadHighlightedBooksFromAPI());
+    },
+  );
+
   return (
     <div className="home-page">
-      
 
       {isLogged
       && (
