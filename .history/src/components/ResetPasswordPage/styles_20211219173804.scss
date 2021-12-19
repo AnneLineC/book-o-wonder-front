@@ -36,3 +36,37 @@
   }
 
 }
+
+@media only screen and (max-width: 768px) {
+  .reset-password {
+
+    
+
+    &__reset-password {
+      background-color: vars.$color--green-light;
+      border-radius: vars.$radius;
+      color: darkgray;
+      width: 150px;
+      height: 40px;
+      margin: auto;
+      margin-top: 1.5rem;
+    }
+  }
+
+}
+
+@media screen and (max-width: 1440px) {
+  .reset-password {
+
+    
+
+    &__reset-password {
+      background-color: vars.$color--green-light;
+      border-radius: vars.$radius;
+      width: 150px;
+      height: 40px;
+      margin: auto;
+      margin-top: 1.5rem;
+    }
+  }
+}
