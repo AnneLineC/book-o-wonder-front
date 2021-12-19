@@ -1,0 +1,38 @@
+@use "../../styles/vars";
+
+.reset-password-page {
+  span {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  &__title {
+    margin-top: 3rem;
+    font-size: 3rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: vars.$gutter;
+    margin-top: 10rem;
+  }
+
+  &__input {
+    border-radius: vars.$radius;
+    margin-bottom: 1rem;
+    text-align: center;
+    height: 30px;
+    width: 250px;
+    margin: 0rem auto 2rem auto;
+  }
+
+  &__reset-password {
+    background-color: vars.$color--green-light;
+    border-radius: vars.$radius;
+    width: 150px;
+    height: 30px;
+    margin: auto;
+  }
+
+}
