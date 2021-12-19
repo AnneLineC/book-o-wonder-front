@@ -4,8 +4,8 @@ import {
   LOGIN_ATTEMPT,
   setCurrentUserJWT,
   REGISTER_ATTEMPT,
-  EDIT_ACCOUNT_ATTEMPT,
-  EDIT_PICTURE_ACCOUNT_ATTEMPT,
+  // EDIT_ACCOUNT_ATTEMPT,
+  // EDIT_PICTURE_ACCOUNT_ATTEMPT,
   CONTACT_FORM_ATTEMPT,
   LOAD_CATEGORIES_FROM_API,
   setCategories,
@@ -31,6 +31,8 @@ import {
   setMostPinnedBook,
   LOAD_MOST_READ_CATEGORY_FROM_API,
   setMostReadCategory,
+  setFormSentState,
+  setFormErrorState,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -80,7 +82,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       } = store.getState().user;
 
       if (passwordValue === passwordConfirmValue) {
-        // api's url so that we can connect back and front together
         axios.post(`${baseURI}/api/v1/register`, {
           name: nicknameValue,
           email: emailValue,
@@ -88,64 +89,71 @@ const apiMiddleWare = (store) => (next) => (action) => {
         }).then(
           (response) => {
             console.log(response);
+            store.dispatch(setFormSentState('registerForm', true));
           },
         ).catch(
-          (error) => console.log(error.toJSON()),
+          (error) => {
+            console.log(error.toJSON());
+            store.dispatch(setFormErrorState('registerForm', true));
+          },
         );
       }
-
-      next(action);
-      break;
-    }
-    case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
-      const formData = new FormData();
-      const fileInput = document.querySelector('#profilePic');
-      formData.append('profilePic', fileInput.files[0]);
-      for (const [key, value] of formData.entries()) {
-        console.log(key, value);
+      else {
+        store.dispatch(setFormErrorState('registerForm', true));
       }
 
-      // api's url so that we can connect back and front together
-      axios.patch(`${baseURI}/api/v1/user/profilpic/4`, {
-        data: formData,
-        headers: { 'Content-Type': 'multipart/form-data' },
-      }).then(
-        (response) => {
-          console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
-        },
-      ).catch(
-        (error) => console.log(error.toJSON()),
-      );
-
       next(action);
       break;
     }
-    case EDIT_ACCOUNT_ATTEMPT: {
-      const {
-        nicknameValue,
-        emailValue,
-      } = store.getState().user;
+    // case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
+    //   const formData = new FormData();
+    //   const fileInput = document.querySelector('#profilePic');
+    //   formData.append('profilePic', fileInput.files[0]);
+    //   for (const [key, value] of formData.entries()) {
+    //     console.log(key, value);
+    //   }
 
-      // api's url so that we can connect back and front together
-      axios.post(`${baseURI}/api/v1/user`, {
-        name: nicknameValue,
-        email: emailValue,
-      }).then(
-        (response) => {
-          console.log(response);
+    //   // api's url so that we can connect back and front together
+    //   axios.patch(`${baseURI}/api/v1/user/profilpic/4`, {
+    //     data: formData,
+    //     headers: { 'Content-Type': 'multipart/form-data' },
+    //   }).then(
+    //     (response) => {
+    //       console.log(response);
 
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
-        },
-      ).catch(
-        (error) => console.log(error.toJSON()),
-      );
-      next(action);
-      break;
-    }
+    //       // dispatch to log the user
+    //       // store.dispatch(setCurrentUser(response.data));
+    //     },
+    //   ).catch(
+    //     (error) => console.log(error.toJSON()),
+    //   );
+
+    //   next(action);
+    //   break;
+    // }
+    // case EDIT_ACCOUNT_ATTEMPT: {
+    //   const {
+    //     nicknameValue,
+    //     emailValue,
+    //   } = store.getState().user;
+
+    //   // api's url so that we can connect back and front together
+    //   axios.post(`${baseURI}/api/v1/user`, {
+    //     name: nicknameValue,
+    //     email: emailValue,
+    //   }).then(
+    //     (response) => {
+    //       console.log(response);
+
+    //       // dispatch to log the user
+    //       // store.dispatch(setCurrentUser(response.data));
+    //     },
+    //   ).catch(
+    //     (error) => console.log(error.toJSON()),
+    //   );
+    //   next(action);
+    //   break;
+    // }
     case CHANGE_PASSWORD_ATTEMPT: {
       const {
         passwordValue,

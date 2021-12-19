@@ -114,7 +114,7 @@ const HomePage = () => {
       <Carousel infiniteLoop useKeyboardArrows autoPlay autoFocus showThumbs={false}>
         {highlightedBooks.map(
           (book) => (
-            <Link to={`livre/${book.id}`}>
+            <Link key={book.id} to={`livre/${book.id}`}>
               <div key={book.id} className="home-page__test">
                 <img src={`${baseURI}/images_bookfront_folder/${book.frontPic}`} alt="alice" border="0" />
               </div>

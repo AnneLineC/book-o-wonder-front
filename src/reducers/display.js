@@ -1,4 +1,6 @@
-import { SET_CATEGORIES, SET_DISPLAY, SET_MEDIA_PLAYER_DISPLAY } from '../actions';
+import {
+  SET_CATEGORIES, SET_DISPLAY, SET_MEDIA_PLAYER_DISPLAY, SET_FORM_SENT_STATE, SET_FORM_ERROR_STATE,
+} from '../actions';
 
 export const initialState = {
   baseURI: 'http://3.90.50.127',
@@ -10,6 +12,10 @@ export const initialState = {
   mediaPlayerDisplay: {
     playing: false,
     volume: 0.8,
+  },
+  registerForm: {
+    sent: false,
+    error: false,
   },
 };
 
@@ -36,6 +42,32 @@ const reducer = (state = initialState, action = {}) => {
           [action.property]: action.value,
         },
       };
+    case SET_FORM_SENT_STATE: {
+      const newState = {
+        ...state[action.formName],
+        sent: action.sent,
+      };
+      console.log(newState);
+      return {
+        ...state,
+        [action.formName]: {
+          ...newState,
+        },
+      };
+    }
+    case SET_FORM_ERROR_STATE: {
+      const newState = {
+        ...state[action.formName],
+        error: action.error,
+      };
+      console.log(newState);
+      return {
+        ...state,
+        [action.formName]: {
+          ...newState,
+        },
+      };
+    }
     default:
       return state;
   }
