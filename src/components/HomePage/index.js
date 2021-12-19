@@ -7,26 +7,36 @@ import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 // eslint-disable-next-line no-unused-vars
 import ReactDOM from 'react-dom';
 import BookCard from '../BookCard';
-import { deletePinnedpageInBDD, loadHighlightedBooksFromAPI } from '../../actions';
+import {
+  deletePinnedpageInBDD,
+  loadHighlightedBooksFromAPI,
+  loadMostPinnedBookFromAPI,
+  loadMostReadCategoryFromAPI,
+} from '../../actions';
 
 import logo from './logo-book-o-wonder-colore.png';
 import './styles.scss';
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const baseURI = useSelector((state) => (state.display.baseURI));
   const isLogged = useSelector((state) => state.user.logged);
   const nickname = useSelector((state) => state.user.name);
   const pinnedpages = useSelector((state) => state.user.pinnedpages);
+  const highlightedBooks = useSelector((state) => state.books.highlightedBooks);
+  const mostPinnedBook = useSelector((state) => state.books.mostPinnedBook);
+  const mostReadCategory = useSelector((state) => state.books.mostReadCategory);
+  console.log(mostReadCategory);
 
   const handleDeleteButtonClick = (id) => {
     dispatch(deletePinnedpageInBDD(id));
   };
 
-  useEffect(
-    () => {
-      dispatch(loadHighlightedBooksFromAPI());
-    },
-  );
+  useEffect(() => {
+    dispatch(loadHighlightedBooksFromAPI());
+    dispatch(loadMostPinnedBookFromAPI());
+    dispatch(loadMostReadCategoryFromAPI());
+  }, []);
 
   const hasPinnedpages = pinnedpages !== [];
 
@@ -45,9 +55,9 @@ const HomePage = () => {
           {hasPinnedpages && <p className="home-page__pinnedpaged-title">Reprendre une lecture en cours</p>}
           <div className="pinnedpaged-books">
             {pinnedpages.map((pinnedpage) => (
-              <div className="pinnedpaged-book">
+              <div key={pinnedpage.book.id} className="pinnedpaged-book">
                 <div className="pinnedpaged-book__card">
-                  <Link key={pinnedpage.book.id} to={`/livre/${pinnedpage.book.id}/lecture`}>
+                  <Link to={`/livre/${pinnedpage.book.id}/lecture`}>
                     <BookCard picture={pinnedpage.book.picture} />
                   </Link>
                   <button
@@ -101,17 +111,36 @@ const HomePage = () => {
       </>
       )}
 
-      <Carousel infiniteLoop useKeyboardArrows autoPlay autoFocus>
-        <div className="home-page__test">
-          <img src="https://i.postimg.cc/BbpCMQ48/alice.jpg" alt="alice" border="0" />
-        </div>
-        <div className="home-page__test">
-          <img src="https://i.postimg.cc/g07PQbSc/alacrois-edesmondes.jpg" alt="croiseedesmondes" border="0" />
-        </div>
-        <div className="home-page__test">
-          <img src="https://i.postimg.cc/z3YBgpxn/template.jpg" alt="template" border="0" />
-        </div>
+      <Carousel infiniteLoop useKeyboardArrows autoPlay autoFocus showThumbs={false}>
+        {highlightedBooks.map(
+          (book) => (
+            <Link to={`livre/${book.id}`}>
+              <div key={book.id} className="home-page__test">
+                <img src={`${baseURI}/images_bookfront_folder/${book.frontPic}`} alt="alice" border="0" />
+              </div>
+            </Link>
+          ),
+        )}
       </Carousel>
+
+      <div className="highlighted-books">
+        <div className="highlighted-books__card">
+          <h2 className="highlighted-books__title">Livre le plus lu en ce moment</h2>
+          <div className="highlighted-books__book-card">
+            <Link to={`livre/${mostPinnedBook.id}`}>
+              <BookCard picture={mostPinnedBook.picture} />
+            </Link>
+          </div>
+        </div>
+        <div className="highlighted-books__card">
+          <h2 className="highlighted-books__title">Catégorie la plus lue en ce moment</h2>
+          <div className="highlighted-books__book-card">
+            <Link to={`categorie/${mostReadCategory.id}`}>
+              <BookCard picture={mostReadCategory.image} />
+            </Link>
+          </div>
+        </div>
+      </div>
 
     </div>
   );

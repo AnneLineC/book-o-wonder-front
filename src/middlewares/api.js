@@ -24,6 +24,11 @@ import {
   removePinnedpage,
   CHANGE_PASSWORD_ATTEMPT,
   LOAD_HIGHLIGHTED_BOOKS_FROM_API,
+  setHighlightedBooks,
+  LOAD_MOST_PINNED_BOOK_FROM_API,
+  setMostPinnedBook,
+  LOAD_MOST_READ_CATEGORY_FROM_API,
+  setMostReadCategory,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -259,8 +264,39 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_HIGHLIGHTED_BOOKS_FROM_API: {
       axios.get(`${baseURI}/api/v1/book/ishome`).then(
         (response) => {
-          console.log(response);
-          // store.dispatch(setBook(response.data));
+          // console.log('Livres mis en avant :');
+          // console.log(response);
+          store.dispatch(setHighlightedBooks(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case LOAD_MOST_PINNED_BOOK_FROM_API: {
+      axios.get(`${baseURI}/api/v1/pinnedpage/mostpinned`).then(
+        (response) => {
+          // console.log('Livre le plus mis en marque page :');
+          // console.log(response.data[0]);
+          store.dispatch(setMostPinnedBook(response.data[0].book));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case LOAD_MOST_READ_CATEGORY_FROM_API: {
+      axios.get(`${baseURI}/api/v1/category/mostread`).then(
+        (response) => {
+          // console.log('Livre le plus mis en marque page :');
+          console.log(response.data[0]);
+          store.dispatch(setMostReadCategory(response.data[0]));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

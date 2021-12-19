@@ -67,8 +67,31 @@
     &__container {
         margin-right: 1rem;
         margin-left: 1rem;
-        margin-bottom: 8rem;
+        margin-bottom: 6rem;
     }    
+}
+
+.highlighted-books {
+    padding: vars.$gutter;
+    margin-top: 4rem;
+    display: flex;
+    
+    &__card {
+        display: flex;
+        flex: 1;
+        margin: vars.$gutter;
+        flex-direction: column;
+        align-items: center;
+        width: 20rem;
+        background-color: #3C3C3C;
+        padding: vars.$gutter*2;
+        border-radius: vars.$radius;
+    }
+
+    &__title {
+        margin-bottom: vars.$gutter;
+        font-weight: bold;
+    }
 }
 
 .pinnedpaged-books {
@@ -114,11 +137,6 @@
 .carousel-root {
     margin: auto;
     margin-bottom: 5rem;
-}
-
-.carousel:last-child {
-    z-index: -1;
-    position: absolute;
 }
 
 .thumbs-wrapper {
@@ -171,6 +189,11 @@
         }
     }
 
+    .highlighted-books {
+        max-width: 73rem;
+        margin: auto;
+    }
+
     .carousel-root {
         max-width: 70rem;
         margin: auto;
@@ -179,7 +202,7 @@
     .pinnedpaged-books {
         max-width: 70rem;
         margin: auto;
-        margin-bottom: vars.$gutter*3;
+        // margin-bottom: vars.$gutter*3;
     }
 }
 
@@ -187,7 +210,7 @@
 @media screen and (min-width: vars.$desktop) {
     
     .home-page {
-        max-width: 92rem;
+        max-width: 82rem;
         margin: auto;
 
         &__title {
@@ -200,7 +223,7 @@
     }
     
     .carousel-root {
-        width: 90rem;
+        max-width: 80rem;
     }
 
     .carousel {
@@ -210,7 +233,7 @@
     }
 
     .pinnedpaged-books {
-        width: 80rem;
+        max-width: 90rem;
         overflow-x: auto;
     }
 }

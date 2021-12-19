@@ -76,6 +76,39 @@ export const loadHighlightedBooksFromAPI = () => ({
   type: LOAD_HIGHLIGHTED_BOOKS_FROM_API,
 });
 
+export const SET_HIGHLIGHTED_BOOKS = 'SET_HIGHLIGHTED_BOOKS';
+
+export const setHighlightedBooks = (data) => ({
+  type: SET_HIGHLIGHTED_BOOKS,
+  data,
+});
+
+export const LOAD_MOST_PINNED_BOOK_FROM_API = 'LOAD_MOST_PINNED_BOOK_FROM_API';
+
+export const loadMostPinnedBookFromAPI = () => ({
+  type: LOAD_MOST_PINNED_BOOK_FROM_API,
+});
+
+export const SET_MOST_PINNED_BOOK = 'SET_MOST_PINNED_BOOK';
+
+export const setMostPinnedBook = (data) => ({
+  type: SET_MOST_PINNED_BOOK,
+  data,
+});
+
+export const LOAD_MOST_READ_CATEGORY_FROM_API = 'LOAD_MOST_READ_CATEGORY_FROM_API';
+
+export const loadMostReadCategoryFromAPI = () => ({
+  type: LOAD_MOST_READ_CATEGORY_FROM_API,
+});
+
+export const SET_MOST_READ_CATEGORY = 'SET_MOST_READ_CATEGORY';
+
+export const setMostReadCategory = (data) => ({
+  type: SET_MOST_READ_CATEGORY,
+  data,
+});
+
 // ===============
 // FORMS
 // ===============
