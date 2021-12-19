@@ -25,6 +25,12 @@ import {
   DELETE_PINNEDPAGE_IN_BDD,
   removePinnedpage,
   CHANGE_PASSWORD_ATTEMPT,
+  LOAD_HIGHLIGHTED_BOOKS_FROM_API,
+  setHighlightedBooks,
+  LOAD_MOST_PINNED_BOOK_FROM_API,
+  setMostPinnedBook,
+  LOAD_MOST_READ_CATEGORY_FROM_API,
+  setMostReadCategory,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -222,6 +228,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_SOUND_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
         (response) => {
@@ -295,6 +302,51 @@ const apiMiddleWare = (store) => (next) => (action) => {
           console.log('ceci est un appel pour supprimer un marque page');
           console.log(response);
           store.dispatch(removePinnedpage(action.pinnedpageId));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case LOAD_HIGHLIGHTED_BOOKS_FROM_API: {
+      axios.get(`${baseURI}/api/v1/book/ishome`).then(
+        (response) => {
+          // console.log('Livres mis en avant :');
+          // console.log(response);
+          store.dispatch(setHighlightedBooks(response.data));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case LOAD_MOST_PINNED_BOOK_FROM_API: {
+      axios.get(`${baseURI}/api/v1/pinnedpage/mostpinned`).then(
+        (response) => {
+          // console.log('Livre le plus mis en marque page :');
+          // console.log(response.data[0]);
+          store.dispatch(setMostPinnedBook(response.data[0].book));
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+
+    case LOAD_MOST_READ_CATEGORY_FROM_API: {
+      axios.get(`${baseURI}/api/v1/category/mostread`).then(
+        (response) => {
+          // console.log('Livre le plus mis en marque page :');
+          console.log(response.data[0]);
+          store.dispatch(setMostReadCategory(response.data[0]));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
