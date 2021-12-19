@@ -25,6 +25,8 @@ import {
   DELETE_PINNEDPAGE_IN_BDD,
   removePinnedpage,
   CHANGE_PASSWORD_ATTEMPT,
+  ASK_RESET_ATTEMPT,
+  RESET_PASSWORD_ATTEMPT,
   LOAD_HIGHLIGHTED_BOOKS_FROM_API,
   setHighlightedBooks,
   LOAD_MOST_PINNED_BOOK_FROM_API,
@@ -71,9 +73,8 @@ const apiMiddleWare = (store) => (next) => (action) => {
       ).catch(
         (error) => {
           console.log(error);
-          console.log('erreur de connexion');
           store.dispatch(setFormErrorState('connexionForm', true));
-        }
+        },
       );
 
       next(action);
@@ -107,7 +108,49 @@ const apiMiddleWare = (store) => (next) => (action) => {
       else {
         store.dispatch(setFormErrorState('registerForm', true));
       }
+      next(action);
+      break;
+    }
+    case ASK_RESET_ATTEMPT: {
+      const {
+        emailValue,
+      } = store.getState().user;
 
+      // api's url so that we can connect back and front together
+      axios.post(`${baseURI}/api/v1/forgottenpassword`, {
+        email: emailValue,
+      }).then(
+        (response) => {
+          console.log(response);
+        },
+      ).catch(
+        (error) => console.log(error.toJSON()),
+      );
+
+      next(action);
+      break;
+    }
+    case RESET_PASSWORD_ATTEMPT: {
+      const {
+        newPasswordValue,
+        newPasswordConfirmValue,
+      } = store.getState().user;
+
+      if (newPasswordValue === newPasswordConfirmValue) {
+        // api's url so that we can connect back and front together
+        axios.post(`${baseURI}/api/v1/resetpassword/${action.token}`, {
+          password: newPasswordValue,
+        }).then(
+          (response) => {
+            console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
+          },
+        ).catch(
+          (error) => console.log(error.toJSON()),
+        );
+      }
       next(action);
       break;
     }

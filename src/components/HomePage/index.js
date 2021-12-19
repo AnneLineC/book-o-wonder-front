@@ -26,6 +26,7 @@ const HomePage = () => {
   const highlightedBooks = useSelector((state) => state.books.highlightedBooks);
   const mostPinnedBook = useSelector((state) => state.books.mostPinnedBook);
   const mostReadCategory = useSelector((state) => state.books.mostReadCategory);
+  console.log(mostReadCategory);
 
   const handleDeleteButtonClick = (id) => {
     dispatch(deletePinnedpageInBDD(id));
@@ -110,12 +111,12 @@ const HomePage = () => {
       </>
       )}
 
-      <Carousel infiniteLoop useKeyboardArrows autoPlay autoFocus showThumbs={false}>
+      <Carousel autoPlay infiniteLoop useKeyboardArrows autoFocus showThumbs={false}>
         {highlightedBooks.map(
           (book) => (
             <Link key={book.id} to={`livre/${book.id}`}>
               <div key={book.id} className="home-page__test">
-                <img src={`${baseURI}/images_bookfront_folder/${book.frontPic}`} alt="alice" border="0" />
+                <img src={`${baseURI}/images_bookfront_folder/${book.frontPic}`} alt="" border="0" />
               </div>
             </Link>
           ),

@@ -1,15 +1,16 @@
 // eslint-disable no-debugger, no-console
 import { useLocation, Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import HeaderApp from '../HeaderApp';
 import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
-import AskResetPage from '../AskResetPage';
-import ResetPasswordPage from '../ResetPasswordPage';
+import AskReset from '../AskResetPage';
+import ResetPassword from '../ResetPasswordPage';
 import AccountPage from '../AccountPage';
-import ChangePasswordPage from '../ChangePasswordPage';
+import ChangePassword from '../ChangePasswordPage';
 import ContactPage from '../ContactPage';
 import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
@@ -22,9 +23,20 @@ import BookReadingPage from '../BookReadingPage';
 import MentionsLegales from '../MentionsLegales';
 import TeamPage from '../TeamPage';
 import Error404 from '../Error404';
+import { loadCategoriesFromAPI, loadSoundsFromAPI } from '../../actions';
 import './styles.scss';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(
+    () => {
+      dispatch(loadCategoriesFromAPI());
+      dispatch(loadSoundsFromAPI());
+    },
+    [],
+  );
+
   // React router dom hook allowing to know the  currentlocation
   const location = useLocation();
   // Allow scrolling at the top of the page when navigating
@@ -47,9 +59,9 @@ const App = () => {
         <Route path="/connexion" element={<LoginPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/mon-compte" element={<AccountPage />} />
-        <Route path="/mon-compte/mot-de-passe" element={<ChangePasswordPage />} />
-        <Route path="/reinitialisation" element={<AskResetPage />} />
-        <Route path="/reinitialisation/mot-de-passe/:token" element={<ResetPasswordPage />} />
+        <Route path="/mon-compte/mot-de-passe" element={<ChangePassword />} />
+        <Route path="/reinitialisation" element={<AskReset />} />
+        <Route path="/reinitialisation/mot-de-passe/:token" element={<ResetPassword />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
         <Route path="/livre/:id" element={<SynopsisPage />} />

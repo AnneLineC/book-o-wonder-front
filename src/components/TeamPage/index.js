@@ -10,6 +10,7 @@ const Team = () => (
     <main className="team">
 
         <section className="team__presentation">
+            <h1 className="team__presentation-title">Notre équipe</h1>
             <h1 className="team__presentation-title">Qui sommes-nous ?</h1>
             <p className="team__content-presentation"> Nous sommes tout les 5 des élèves de l'école <a href="https://oclock.io/" className="team__link">O'Clock</a>. Nous faisons parti de la promotion "Wonderland", qui a débuté en 12 juillet 2021, et fini le 24 décembre 2021.</p>
         </section>

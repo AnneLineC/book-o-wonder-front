@@ -69,7 +69,7 @@ const LoginPage = () => {
       </form>
 
       <p className="login-page__forgotten">
-        <Link to="/contact">Mot de passe oublié</Link>
+        <Link to="/reinitialisation">Mot de passe oublié</Link>
       </p>
 
       <p className="login-page__account">
@@ -88,15 +88,5 @@ const LoginPage = () => {
     </div>
   );
 };
-
-// LoginPage.defaultProps = {
-//     type: 'text',
-// }
-
-// LoginPage.propTypes = {
-//     type: PropTypes.string,
-//     placeholder: PropTypes.string.isRequired,
-//     name: PropTypes.string.isRequired,
-// }
 
 export default LoginPage;

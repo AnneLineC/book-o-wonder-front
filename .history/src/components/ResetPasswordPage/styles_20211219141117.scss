@@ -1,9 +1,14 @@
 @use "../../styles/vars";
 
-.login-page {
+.reset-password-page {
   span {
     color: blue;
     text-decoration: underline;
+  }
+
+  &__title {
+    margin-top: 3rem;
+    font-size: 3rem;
   }
 
   &__form {
@@ -22,7 +27,7 @@
     margin: 0rem auto 2rem auto;
   }
 
-  &__connexion {
+  &__reset-password {
     background-color: vars.$color--green-light;
     border-radius: vars.$radius;
     width: 150px;
@@ -30,26 +35,10 @@
     margin: auto;
   }
 
-  &__subscription {
-    background-color: vars.$color--green-light;
-    border-radius: vars.$radius;
-    width: 150px;
-    height: 30px;
-    margin-top: 2rem;
-  }
-
-  &__forgotten {
-    margin-top: 5rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    text-decoration: underline;
-  }
-
 }
 
 @media only screen and (max-width: 768px) {
-  .login-page {
-    
+  .reset-password {
 
     &__input {
       border-radius: vars.$radius;
@@ -61,7 +50,7 @@
       margin: 0rem auto 2rem auto;
     }
 
-    &__connexion {
+    &__reset-password {
       background-color: vars.$color--green-light;
       border-radius: vars.$radius;
       color: darkgray;
@@ -69,35 +58,14 @@
       height: 40px;
       margin: auto;
       margin-top: 1.5rem;
-    }
-
-    &__subscription {
-      background-color: vars.$color--green-light;
-      border-radius: vars.$radius;
-      color: darkgray;
-      width: 150px;
-      height: 40px;
-      margin-top: 2rem;
-    }
-
-    &__forgotten {
-      margin-top: 5rem;
-      margin-left: 5rem;
-      margin-right: 5rem;
-    }
-
-    &__account {
-      margin-top: 10rem;
-      margin-left: 5rem;
-      margin-right: 5rem;
     }
   }
 
 }
 
 @media screen and (max-width: 1440px) {
-  .login-page {
-  
+  .reset-password {
+
     &__input {
       border-radius: vars.$radius;
       margin-bottom: 1rem;
@@ -108,29 +76,13 @@
       margin: 0rem auto 2rem auto;
     }
 
-    &__connexion {
+    &__reset-password {
       background-color: vars.$color--green-light;
       border-radius: vars.$radius;
       width: 150px;
       height: 40px;
       margin: auto;
       margin-top: 1.5rem;
-    }
-
-    &__subscription {
-      background-color: vars.$color--green-light;
-      border-radius: vars.$radius;
-      width: 150px;
-      height: 40px;
-      margin-top: 2rem;
-    }
-
-    &__forgotten {
-      margin-top: 5rem;
-    }
-
-    &__account {
-      margin-top: 10rem;
     }
   }
 }
