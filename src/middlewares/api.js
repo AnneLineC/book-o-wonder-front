@@ -149,7 +149,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         newPasswordValue,
         newPasswordConfirmValue,
       } = store.getState().user;
-      
 
       if (newPasswordValue === newPasswordConfirmValue) {
         // api's url so that we can connect back and front together
@@ -166,6 +165,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
           (error) => console.log(error.toJSON()),
         );
       }
+      next(action);
+      break;
+    }
     case EDIT_ACCOUNT_ATTEMPT: {
       const {
         nicknameValue,
