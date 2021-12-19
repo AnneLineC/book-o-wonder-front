@@ -115,7 +115,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
 
       if (newPasswordValue === newPasswordConfirmValue) {
         // api's url so that we can connect back and front together
-        axios.post(`${baseURI}/api/v1/resetpassword/${action.token}`, {
+        axios.patch(`${baseURI}/api/v1/resetpassword/`, {
           password: newPasswordValue,
         }).then(
           (response) => {

@@ -98,6 +98,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
       }).then(
         (response) => {
           console.log(response);
+
+          // dispatch to log the user
+          // store.dispatch(setCurrentUser(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
@@ -111,11 +114,10 @@ const apiMiddleWare = (store) => (next) => (action) => {
         newPasswordValue,
         newPasswordConfirmValue,
       } = store.getState().user;
-      
 
       if (newPasswordValue === newPasswordConfirmValue) {
         // api's url so that we can connect back and front together
-        axios.post(`${baseURI}/api/v1/resetpassword/${action.token}`, {
+        axios.patch(`${baseURI}/api/v1/resetpassword/${token}`, {
           password: newPasswordValue,
         }).then(
           (response) => {

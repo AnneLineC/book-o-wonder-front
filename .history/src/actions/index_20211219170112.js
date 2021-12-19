@@ -96,7 +96,6 @@ export const RESET_PASSWORD_ATTEMPT = 'RESET_PASSWORD_ATTEMPT';
 
 export const resetPasswordAttempt = (token) => ({
   type: RESET_PASSWORD_ATTEMPT,
-  token,
 });
 
 export const CHANGE_PASSWORD_ATTEMPT = 'CHANGE_PASSWORD_ATTEMPT';

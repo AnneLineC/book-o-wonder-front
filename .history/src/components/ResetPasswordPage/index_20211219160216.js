@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
+import { useEffect } from 'react';
 import { setFieldValue, resetPasswordAttempt } from '../../actions';
 
 import './styles.scss';
 
 const ResetPassword = (props) => {
-  const { token } = useParams();
-  
   const dispatch = useDispatch();
 
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
@@ -22,9 +21,11 @@ const ResetPassword = (props) => {
 
   const handleChangePasswordFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(resetPasswordAttempt(token));
+    dispatch(resetPasswordAttempt());
   };
 
+  const { token } = useParams();
+  const location = useLocation();
 
   // const URLToken = props.location.search;
 

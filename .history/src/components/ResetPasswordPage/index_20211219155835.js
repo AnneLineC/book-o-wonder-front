@@ -1,12 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
+import { useLocation } from 'react-router-dom';
 import { setFieldValue, resetPasswordAttempt } from '../../actions';
 
 import './styles.scss';
 
 const ResetPassword = (props) => {
-  const { token } = useParams();
-  
   const dispatch = useDispatch();
 
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
@@ -22,9 +20,15 @@ const ResetPassword = (props) => {
 
   const handleChangePasswordFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(resetPasswordAttempt(token));
+    dispatch(resetPasswordAttempt());
   };
 
+  const useQuery = () => {
+    const { search } = useLocation();
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  };
+  const query =useQuery();
+  const token = query.get('token');
 
   // const URLToken = props.location.search;
 
@@ -42,7 +46,7 @@ const ResetPassword = (props) => {
   // };
 
   // const token = extractParamsUrl(URLToken);
-  // console.log(token);
+  console.log(props.location.search);
 
   return (
     <div className="reset-password-page">
@@ -55,8 +59,8 @@ const ResetPassword = (props) => {
           <input
             className="reset-password-page__input"
             type="password"
-            name="newPassword"
-            id="newPassword"
+            name="newPasswordconfirm"
+            id="newPasswordconfirm"
             placeholder="Nouveau mot de passe"
             value={newPasswordValue}
             onChange={handleInputNewPasswordReset}

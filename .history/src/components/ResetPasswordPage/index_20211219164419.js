@@ -5,8 +5,6 @@ import { setFieldValue, resetPasswordAttempt } from '../../actions';
 import './styles.scss';
 
 const ResetPassword = (props) => {
-  const { token } = useParams();
-  
   const dispatch = useDispatch();
 
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
@@ -22,9 +20,10 @@ const ResetPassword = (props) => {
 
   const handleChangePasswordFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(resetPasswordAttempt(token));
+    dispatch(resetPasswordAttempt());
   };
 
+  const { token } = useParams();
 
   // const URLToken = props.location.search;
 

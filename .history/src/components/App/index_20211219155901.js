@@ -61,7 +61,7 @@ const App = () => {
         <Route path="/mon-compte" element={<AccountPage />} />
         <Route path="/mon-compte/mot-de-passe" element={<ChangePassword />} />
         <Route path="/reinitialisation" element={<AskReset />} />
-        <Route path="/reinitialisation/mot-de-passe/:token" element={<ResetPassword />} />
+        <Route path="/reinitialisation/mot-de-passe/:toekn" element={<ResetPassword />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
         <Route path="/livre/:id" element={<SynopsisPage />} />

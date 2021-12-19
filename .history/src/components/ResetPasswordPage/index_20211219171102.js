@@ -6,7 +6,7 @@ import './styles.scss';
 
 const ResetPassword = (props) => {
   const { token } = useParams();
-  
+  console.log
   const dispatch = useDispatch();
 
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
@@ -22,7 +22,7 @@ const ResetPassword = (props) => {
 
   const handleChangePasswordFormSubmit = (event) => {
     event.preventDefault();
-    dispatch(resetPasswordAttempt(token));
+    dispatch(resetPasswordAttempt());
   };
 
 
@@ -46,6 +46,7 @@ const ResetPassword = (props) => {
 
   return (
     <div className="reset-password-page">
+      <p>{token} </p>
       <h1 className="reset-password-page__title">Réinitialisation du mot de passe</h1>
 
       <form autoComplete="off" className="register-page__form" onSubmit={handleChangePasswordFormSubmit}>

@@ -9,7 +9,7 @@ const AskReset = () => {
   const emailValue = useSelector((state) => state.user.emailValue);
 
   const handleInputEmail = (event) => {
-    dispatch(setFieldValue('emailValue', event.target.value));
+    dispatch(setFieldValue('email', event.target.value));
   };
 
   const handleAskResetPasswordFormSubmit = (event) => {
@@ -41,7 +41,7 @@ const AskReset = () => {
           type="submit"
           className="ask-reset-page__ask-reset"
         >
-          Envoyer
+          Sauvegarder
         </button>
       </form>
     </div>

@@ -41,7 +41,7 @@ const AskReset = () => {
           type="submit"
           className="ask-reset-page__ask-reset"
         >
-          Envoyer
+          Sauvegarder
         </button>
       </form>
     </div>
