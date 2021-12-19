@@ -45,5 +45,22 @@
         margin: 2rem auto 2rem auto;
         border-radius: vars.$radius;
     }
+
+    &__validation {
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &-title {
+            font-size: 2em;
+            margin: vars.$gutter*2;
+        }
+
+        &-mail {
+            font-weight: bold;
+        }
+    }
 }
 

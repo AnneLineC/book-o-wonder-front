@@ -1,43 +1,78 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useRef } from 'react';
+
 import { Link } from 'react-router-dom';
-import { setFieldValue } from '../../actions';
+import { editPictureAccountAttempt, editAccountAttempt, setFieldValue } from '../../actions';
 import BookReview from '../BookReview';
 
 import './styles.scss';
 
 const AccountPage = () => {
-  const dispatch = useDispatch();
+  // const avatarInput = useRef(null);
 
-  const nicknameValue = useSelector((state) => state.user.nicknameValue);
-  const emailValue = useSelector((state) => state.user.emailValue);
+  // const dispatch = useDispatch();
 
-  const handleInputNicknameChange = (event) => {
-    dispatch(setFieldValue('nicknameValue', event.target.value));
+  const nickname = useSelector((state) => state.user.name);
+  const email = useSelector((state) => state.user.email);
+
+  // const handleInputNicknameChange = (event) => {
+  //   dispatch(setFieldValue('nicknameValue', event.target.value));
+  // };
+
+  // const handleInputEmailChange = (event) => {
+  //   dispatch(setFieldValue('emailValue', event.target.value));
+  // };
+
+  // const handleEditPictureAccountFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log('picture OK');
+  //   console.log(avatarInput.current.value);
+  //   dispatch(editPictureAccountAttempt(avatarInput.current.value));
+  // };
+
+  // const onChangeHandler = (event) => {
+  //   console.log(event.target.files[0]);
+  // };
+
+  const handleEditAccountFormSubmit = (event) => {
+    event.preventDefault();
+    console.log('handler OK');
+    dispatch(editAccountAttempt());
   };
-  const handleInputEmailChange = (event) => {
-    dispatch(setFieldValue('emailValue', event.target.value));
-  };
+
 
   return (
 
     <div className="account-page">
 
-      <form autoComplete="off" className="account-page__form">
+      {/* <form autoComplete="off" className="account-page__form-top" onSubmit={handleEditPictureAccountFormSubmit}>
 
         <div className="account-page__avatar-button">
           <i className="account-page__avatar fas fa-upload" />
 
-          <label className="custom-file-upload">
+          <label className="account-page__upload">
             <span className="sr-only">changement d'avatar</span>
             <input
               type="file"
-              name="file"
-              id="file"
+              name="profilePic"
+              id="profilePic"
+              ref={avatarInput}
+              onChange={onChangeHandler}
             />
           </label>
         </div>
 
-        <p> Inscrit depuis le </p>
+        <button
+          type="submit"
+          className="account-page__button"
+
+        >
+          Envoyer
+        </button>
+      </form> */}
+
+      {/* <form autoComplete="off" className="account-page__form-bottom" onSubmit={handleEditAccountFormSubmit}>
+        <p>Inscrit depuis le </p>
         <label className="account-page__label" htmlFor="pseudo">
           <span className="sr-only">Pseudo</span>
           <input
@@ -45,7 +80,6 @@ const AccountPage = () => {
             type="text"
             name="nickname"
             id="nickname"
-            placeholder="Pseudo"
             value={nicknameValue}
             onChange={handleInputNicknameChange}
           />
@@ -67,9 +101,29 @@ const AccountPage = () => {
         <p>
           Pour changer votre mot de passe, <span className="account-page__password"><Link to="/mon-compte/mot-de-passe">cliquez ici</Link></span>
         </p>
-      </form>
+      </form> */}
 
-      <BookReview />
+      <h1 className="account-page__title">Paramètres du compte</h1>
+
+      <div className="account-page__infos">
+        <div className="account-page__entry">
+          <p className="account-page__label">Pseudo :</p>
+          <p>{nickname}
+            {/* <i className="fas fa-pencil-alt" /> */}
+          </p>
+        </div>
+        <div className="account-page__entry">
+          <p className="account-page__label">Adresse mail :</p>
+          <p>{email}
+            {/* <i className="fas fa-pencil-alt" /> */}
+          </p>
+        </div>
+        <div className="account-page__entry account-page__entry--password">
+          <Link to="/mon-compte/mot-de-passe">Modifier le mot de passe</Link>
+        </div>
+      </div>
+
+
     </div>
   );
 };

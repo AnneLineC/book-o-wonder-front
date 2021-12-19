@@ -2,20 +2,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { loadBooksByCategoryFromAPI } from '../../actions';
 import BookCard from '../BookCard';
 
 import './styles.scss';
-import { Link } from 'react-router-dom';
 
 const SortedBooksPage = () => {
   const { id } = useParams();
   const location = useLocation();
-  const booksList = useSelector((state) => state.books.booksList);
+  const booksList = useSelector((state) => state.books.books);
+  console.log(booksList);
+  const categoryName = useSelector((state) => state.books.name);
   const dispatch = useDispatch();
-
-  // console.log(booksList);
-  // const CategoryChosen = useSelector((state) => state.book.picture);
 
   useEffect(
     () => {
@@ -27,15 +26,21 @@ const SortedBooksPage = () => {
 
   return (
     <div className="sortedbookspage">
-      {booksList.map((book) => (
-        <Link to={`/livre/${book.id}`}>
+      <h1 className="sortedbookspage__title">
+        <span className="sortedbookspage__subtitle">Livres de la catégorie</span><br />
+        {categoryName}
+      </h1>
+      <div className="sortedbookspage__content">
+        {booksList.map((book) => (
           <div key={book.id} className="sortedbookspage__card">
-            <BookCard picture={book.picture} />
-            <h3 className="sortedbookspage__title">{book.title}</h3>
-            {/* <p className-="sortedbookspage__author">{book.author.firstname} {book.author.lastname}</p> */}
+            <Link to={`/livre/${book.id}`}>
+              <BookCard picture={book.picture} />
+            </Link>
+            <h3 className="sortedbookspage__book-title">{book.title}</h3>
+            <p className="sortedbookspage__author">{book.author.firstname} {book.author.lastname}</p>
           </div>
-        </Link>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

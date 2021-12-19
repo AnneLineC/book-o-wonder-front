@@ -1,16 +1,16 @@
-import { SET_SOUNDS, SET_CURRENT_SOUND } from "../actions";
+import { SET_SOUNDS, SET_CURRENT_SOUND } from '../actions';
 
 export const initialState = {
   musicsList: [],
   currentMusic: {
     id: 1,
-    name: 'Lofi pour bien bosser',
+    name: 'Lofi',
     music: 'https:/www.youtube.com/watch?v=5qap5aO4i9A',
     image: null,
     categories: [
       {
         id: 1,
-        name: 'Science-Fiction',
+        name: 'Fantasy',
       },
     ],
   },

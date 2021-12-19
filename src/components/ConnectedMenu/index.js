@@ -25,7 +25,6 @@ const ConnexionMenu = () => {
   let isAdmin = false;
   if (userRoles) {
     isAdmin = userRoles.includes('ROLE_ADMIN');
-    console.log(isAdmin);
   }
 
   return (
@@ -47,7 +46,6 @@ const ConnexionMenu = () => {
             Deconnexion
           </NavLink>
         </li>
-        {console.log(isAdmin)}
         {isAdmin && (
           <li className="connected-menu__item">
             <a

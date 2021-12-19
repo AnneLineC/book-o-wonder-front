@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ReactReader, ReactReaderStyle } from 'react-reader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { setPinnedPage, loadBookFromAPI, postNewPinnedpageToBDD } from '../../actions';
+import { updatePinnepageInBDD, loadBookFromAPI, postNewPinnedpageToBDD } from '../../actions';
 import BookReadingFooter from './BookReadingFooter';
 import './styles.scss';
 
@@ -11,31 +11,33 @@ const BookReadingPage = () => {
   const { id } = useParams();
 
   const isLogged = useSelector((state) => state.user.logged);
+  const userId = useSelector((state) => state.user.id);
+  const pinnedPages = useSelector((state) => state.user.pinnedpages);
 
-  let pageLocation;
+  let pageLocation = null;
 
   if (isLogged) {
-    const userId = useSelector((state) => state.user.id);
-    const pinnedPages = useSelector((state) => state.user.pinnedPages);
     pinnedPages.forEach((pinnedPage) => {
-      if (parseInt(pinnedPage.bookId, 10) === parseInt(id, 10)) {
-        pageLocation = pinnedPage.location;
-      }
-      else {
-        // dispatch(postNewPinnedpageToBDD(userId, id, 'epubcfi(/6/8[chapter_001]!/4/2/26/1:0)'));
+      if (parseInt(pinnedPage.book.id, 10) === parseInt(id, 10)) {
+        pageLocation = pinnedPage.page;
+        console.log(`Le marque page existe déjà et vaut : ${pageLocation}`);
       }
     });
   }
 
-  const locationChanged = (epubcifi) => {
-    if (isLogged) {
-      dispatch(setPinnedPage(id, epubcifi));
-    }
-  };
+  useEffect(
+    () => {
+      if (isLogged) {
+        if (pageLocation === null) {
+          dispatch(postNewPinnedpageToBDD(userId, id, null));
+        }
+      }
+    },
+    [],
+  );
 
   useEffect(
     () => {
-      console.log(id);
       dispatch(loadBookFromAPI(id));
 
       const bodyElement = document.querySelector('body');
@@ -47,10 +49,22 @@ const BookReadingPage = () => {
     },
   );
 
+  const locationChanged = (epubcifi) => {
+    if (isLogged) {
+      console.log(epubcifi);
+      console.log(pinnedPages);
+      pinnedPages.forEach((pinnedPage) => {
+        if (parseInt(pinnedPage.book.id, 10) === parseInt(id, 10)) {
+          dispatch(updatePinnepageInBDD(pinnedPage.id, userId, id, epubcifi));
+        }
+      });
+    }
+  };
+
   const epub = useSelector((state) => state.books.book.epub);
   const baseURI = useSelector((state) => (state.display.baseURI));
   const epubURI = `${baseURI}/epub_folder/${epub}`;
-  console.log(epubURI);
+  // console.log(epubURI);
 
   const [size, setSize] = useState(100);
   const renditionRef = useRef(null);
