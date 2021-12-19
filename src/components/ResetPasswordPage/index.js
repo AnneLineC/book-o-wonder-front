@@ -4,9 +4,9 @@ import { setFieldValue, resetPasswordAttempt } from '../../actions';
 
 import './styles.scss';
 
-const ResetPassword = (props) => {
+const ResetPassword = () => {
   const { token } = useParams();
-  
+
   const dispatch = useDispatch();
 
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
@@ -24,25 +24,6 @@ const ResetPassword = (props) => {
     event.preventDefault();
     dispatch(resetPasswordAttempt(token));
   };
-
-
-  // const URLToken = props.location.search;
-
-  // const extractParamsUrl = (chaineGET) => {
-  //   chaineGET = chaineGET.split('&');
-  //   const result = {};
-
-  //   chaineGET.forEach((el) => {
-  //     const param = el.split('=');
-  //     param[0] = param[0].replace('?', '');
-  //     result[param[0]] = param[1];
-  //   });
-
-  //   return result;
-  // };
-
-  // const token = extractParamsUrl(URLToken);
-  // console.log(token);
 
   return (
     <div className="reset-password-page">

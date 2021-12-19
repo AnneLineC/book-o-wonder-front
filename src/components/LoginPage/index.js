@@ -10,6 +10,8 @@ const LoginPage = () => {
   const isLogged = useSelector((state) => state.user.logged);
   const emailValue = useSelector((state) => state.user.emailValue);
   const passwordValue = useSelector((state) => state.user.passwordValue);
+  const isError = useSelector((state) => state.display.connexionForm.error);
+  console.log(isError);
 
   const dispatch = useDispatch();
 
@@ -23,7 +25,6 @@ const LoginPage = () => {
 
   const handleConnexionFormSubmit = (event) => {
     event.preventDefault();
-    console.log('handler OK');
     dispatch(loginAttempt());
   };
 
@@ -57,6 +58,8 @@ const LoginPage = () => {
           />
         </label>
 
+        {isError && <p className="register-page__error">Erreur dans votre email ou votre mot de passe</p>}
+
         <button
           type="submit"
           className="login-page__connexion"
@@ -66,9 +69,7 @@ const LoginPage = () => {
       </form>
 
       <p className="login-page__forgotten">
-        Si vous avez oublié votre mot de passe,
-        <br />
-        <Link to="/reinitialisation">cliquez ici.</Link>
+        <Link to="/reinitialisation">Mot de passe oublié</Link>
       </p>
 
       <p className="login-page__account">
@@ -87,15 +88,5 @@ const LoginPage = () => {
     </div>
   );
 };
-
-// LoginPage.defaultProps = {
-//     type: 'text',
-// }
-
-// LoginPage.propTypes = {
-//     type: PropTypes.string,
-//     placeholder: PropTypes.string.isRequired,
-//     name: PropTypes.string.isRequired,
-// }
 
 export default LoginPage;

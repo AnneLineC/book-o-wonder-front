@@ -183,7 +183,6 @@ export const sendContactFormAttempt = () => ({
   type: SEND_CONTACT_FORM_ATTEMPT,
 });
 
-// Contains the values of the fields (type + name and value)
 export const SET_FIELD_VALUE = 'SET_FIELD_VALUE';
 
 export const setFieldValue = (name, value) => ({
@@ -222,6 +221,29 @@ export const SET_MEDIA_PLAYER_DISPLAY = 'SET_MEDIA_PLAYER_DISPLAY';
 export const setMediaPlayerDisplay = (property, value) => ({
   type: SET_MEDIA_PLAYER_DISPLAY,
   property,
+  value,
+});
+
+export const SET_FORM_SENT_STATE = 'SET_FORM_SENT_STATE';
+
+export const setFormSentState = (formName, sent) => ({
+  type: SET_FORM_SENT_STATE,
+  formName,
+  sent,
+});
+
+export const SET_FORM_ERROR_STATE = 'SET_FORM_ERROR_STATE';
+
+export const setFormErrorState = (formName, error) => ({
+  type: SET_FORM_ERROR_STATE,
+  formName,
+  error,
+});
+
+export const SET_HIGHLIGHTED_BOOKS_ARE_LOADED = 'SET_HIGHLIGHTED_BOOKS_ARE_LOADED';
+
+export const setHighlightedBooksAreLoaded = (value) => ({
+  type: SET_HIGHLIGHTED_BOOKS_ARE_LOADED,
   value,
 });
 

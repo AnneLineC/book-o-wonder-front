@@ -6,10 +6,10 @@ import HeaderApp from '../HeaderApp';
 import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
-import AskReset from '../AskResetPage';
-import ResetPassword from '../ResetPasswordPage';
+import AskResetPage from '../AskResetPage';
+import ResetPasswordPage from '../ResetPasswordPage';
 import AccountPage from '../AccountPage';
-import ChangePassword from '../ChangePasswordPage';
+import ChangePasswordPage from '../ChangePasswordPage';
 import ContactPage from '../ContactPage';
 import FooterApp from '../FooterApp';
 import ConnexionMenu from '../ConnexionMenu';
@@ -47,9 +47,9 @@ const App = () => {
         <Route path="/connexion" element={<LoginPage />} />
         <Route path="/inscription" element={<RegisterPage />} />
         <Route path="/mon-compte" element={<AccountPage />} />
-        <Route path="/mon-compte/mot-de-passe" element={<ChangePassword />} />
-        <Route path="/reinitialisation" element={<AskReset />} />
-        <Route path="/reinitialisation/mot-de-passe/:token" element={<ResetPassword />} />
+        <Route path="/mon-compte/mot-de-passe" element={<ChangePasswordPage />} />
+        <Route path="/reinitialisation" element={<AskResetPage />} />
+        <Route path="/reinitialisation/mot-de-passe/:token" element={<ResetPasswordPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/categorie/:id" element={<SortedBooksPage />} />
         <Route path="/livre/:id" element={<SynopsisPage />} />

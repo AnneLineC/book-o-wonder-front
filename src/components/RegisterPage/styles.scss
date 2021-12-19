@@ -11,7 +11,9 @@
     }
 
     &__label {
+        margin: auto;
         margin-bottom: 1rem;
+        max-width: 40rem;
     }
 
     &__input {
@@ -19,17 +21,21 @@
         border-radius: vars.$radius;
         margin-bottom: 1rem;
         text-align: center;
-        height: 30px;
-        width: 250px;
+        width: 25rem;
+        height: 3rem;
         margin: 0rem auto 2rem auto;
     }
 
     &__register {
         background-color: vars.$color--green-light;
-        height: 30px;
-        width: 150px;
+        height: 3rem;
+        width: 15rem;
         margin: 2rem auto 2rem auto;
         border-radius: vars.$radius;
+    }
+
+    &__error {
+        color: rgb(243, 104, 104);
     }
 
     &__connect {
@@ -40,8 +46,8 @@
 
     &__connexion {
         background-color: vars.$color--green-light;
-        height: 30px;
-        width: 150px;
+        height: 3rem;
+        width: 15rem;
         margin: 2rem auto 2rem auto;
         border-radius: vars.$radius;
     }

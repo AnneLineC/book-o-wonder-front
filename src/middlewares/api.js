@@ -4,8 +4,8 @@ import {
   LOGIN_ATTEMPT,
   setCurrentUserJWT,
   REGISTER_ATTEMPT,
-  EDIT_ACCOUNT_ATTEMPT,
-  EDIT_PICTURE_ACCOUNT_ATTEMPT,
+  // EDIT_ACCOUNT_ATTEMPT,
+  // EDIT_PICTURE_ACCOUNT_ATTEMPT,
   CONTACT_FORM_ATTEMPT,
   LOAD_CATEGORIES_FROM_API,
   setCategories,
@@ -33,6 +33,9 @@ import {
   setMostPinnedBook,
   LOAD_MOST_READ_CATEGORY_FROM_API,
   setMostReadCategory,
+  setFormSentState,
+  setFormErrorState,
+  setHighlightedBooksAreLoaded,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -63,11 +66,16 @@ const apiMiddleWare = (store) => (next) => (action) => {
               store.dispatch(setCurrentUserData(result.data));
             },
           ).catch(
-            (error) => console.log(error),
+            (error) => {
+              console.log(error.toJSON());
+            },
           );
         },
       ).catch(
-        (error) => console.log(error),
+        (error) => {
+          console.log(error);
+          store.dispatch(setFormErrorState('connexionForm', true));
+        },
       );
 
       next(action);
@@ -82,7 +90,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       } = store.getState().user;
 
       if (passwordValue === passwordConfirmValue) {
-        // api's url so that we can connect back and front together
         axios.post(`${baseURI}/api/v1/register`, {
           name: nicknameValue,
           email: emailValue,
@@ -90,12 +97,18 @@ const apiMiddleWare = (store) => (next) => (action) => {
         }).then(
           (response) => {
             console.log(response);
+            store.dispatch(setFormSentState('registerForm', true));
           },
         ).catch(
-          (error) => console.log(error.toJSON()),
+          (error) => {
+            console.log(error.toJSON());
+            store.dispatch(setFormErrorState('registerForm', true));
+          },
         );
       }
-
+      else {
+        store.dispatch(setFormErrorState('registerForm', true));
+      }
       next(action);
       break;
     }
@@ -110,32 +123,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       }).then(
         (response) => {
           console.log(response);
-        },
-      ).catch(
-        (error) => console.log(error.toJSON()),
-      );
-
-      next(action);
-      break;
-    }
-    case EDIT_PICTURE_ACCOUNT_ATTEMPT: {
-      const formData = new FormData();
-      const fileInput = document.querySelector('#profilePic');
-      formData.append('profilePic', fileInput.files[0]);
-      for (const [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-
-      // api's url so that we can connect back and front together
-      axios.patch(`${baseURI}/api/v1/user/profilpic/4`, {
-        data: formData,
-        headers: { 'Content-Type': 'multipart/form-data' },
-      }).then(
-        (response) => {
-          console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
@@ -165,30 +152,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
           (error) => console.log(error.toJSON()),
         );
       }
-      next(action);
-      break;
-    }
-    case EDIT_ACCOUNT_ATTEMPT: {
-      const {
-        nicknameValue,
-        emailValue,
-      } = store.getState().user;
-
-      // api's url so that we can connect back and front together
-      axios.post(`${baseURI}/api/v1/user`, {
-        name: nicknameValue,
-        email: emailValue,
-      }).then(
-        (response) => {
-          console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
-        },
-      ).catch(
-        (error) => console.log(error.toJSON()),
-      );
-
       next(action);
       break;
     }
@@ -362,6 +325,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // console.log('Livres mis en avant :');
           // console.log(response);
           store.dispatch(setHighlightedBooks(response.data));
+          store.dispatch(setHighlightedBooksAreLoaded(true));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

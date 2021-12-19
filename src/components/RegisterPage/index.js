@@ -1,20 +1,19 @@
 /* eslint-disable max-len */
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { setFieldValue, loginAttempt, registerAttempt } from '../../actions';
+import { setFieldValue, registerAttempt } from '../../actions';
 
 import './styles.scss';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
   const nicknameValue = useSelector((state) => state.user.nicknameValue);
   const emailValue = useSelector((state) => state.user.emailValue);
   const passwordValue = useSelector((state) => state.user.passwordValue);
   const passwordConfirmValue = useSelector((state) => state.user.passwordConfirmValue);
+  const isSubmitted = useSelector((state) => state.display.registerForm.sent);
+  const isError = useSelector((state) => state.display.registerForm.error);
 
   const handleInputNicknameChange = (event) => {
     dispatch(setFieldValue('nicknameValue', event.target.value));
@@ -34,11 +33,8 @@ const RegisterPage = () => {
 
   const handleRegisterFormSubmit = (event) => {
     event.preventDefault();
-    setIsSubmitted(true);
     dispatch(registerAttempt());
   };
-
-  console.log(isSubmitted);
 
   return (
 
@@ -101,6 +97,8 @@ const RegisterPage = () => {
               onChange={handleInputPasswordConfirmChange}
             />
           </label>
+
+          {isError && <p className="register-page__error">Erreur survenue lors de l'envoi. Veillez vérifier vos champs.</p>}
 
           <button
             type="submit"

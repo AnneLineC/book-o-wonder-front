@@ -6,7 +6,7 @@ export const initialState = {
     id: 1,
     name: 'Lofi',
     music: 'https:/www.youtube.com/watch?v=5qap5aO4i9A',
-    image: null,
+    image: '',
     categories: [
       {
         id: 1,
