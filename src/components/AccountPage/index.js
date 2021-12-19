@@ -10,18 +10,18 @@ import './styles.scss';
 const AccountPage = () => {
   // const avatarInput = useRef(null);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const nicknameValue = useSelector((state) => state.user.nicknameValue);
-  const emailValue = useSelector((state) => state.user.emailValue);
+  const nickname = useSelector((state) => state.user.name);
+  const email = useSelector((state) => state.user.email);
 
-  const handleInputNicknameChange = (event) => {
-    dispatch(setFieldValue('nicknameValue', event.target.value));
-  };
+  // const handleInputNicknameChange = (event) => {
+  //   dispatch(setFieldValue('nicknameValue', event.target.value));
+  // };
 
-  const handleInputEmailChange = (event) => {
-    dispatch(setFieldValue('emailValue', event.target.value));
-  };
+  // const handleInputEmailChange = (event) => {
+  //   dispatch(setFieldValue('emailValue', event.target.value));
+  // };
 
   // const handleEditPictureAccountFormSubmit = (event) => {
   //   event.preventDefault();
@@ -108,13 +108,13 @@ const AccountPage = () => {
       <div className="account-page__infos">
         <div className="account-page__entry">
           <p className="account-page__label">Pseudo :</p>
-          <p>MonPseudo
+          <p>{nickname}
             {/* <i className="fas fa-pencil-alt" /> */}
           </p>
         </div>
         <div className="account-page__entry">
           <p className="account-page__label">Adresse mail :</p>
-          <p>monadresse@gmail.com
+          <p>{email}
             {/* <i className="fas fa-pencil-alt" /> */}
           </p>
         </div>
