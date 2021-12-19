@@ -166,7 +166,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
           (error) => console.log(error.toJSON()),
         );
       }
-    }
       next(action);
       break;
     }
