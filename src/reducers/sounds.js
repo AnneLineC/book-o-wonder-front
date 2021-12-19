@@ -1,4 +1,4 @@
-import { SET_SOUNDS, SET_CURRENT_SOUND } from "../actions";
+import { SET_SOUNDS, SET_CURRENT_SOUND } from '../actions';
 
 export const initialState = {
   musicsList: [],

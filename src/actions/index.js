@@ -86,6 +86,19 @@ export const registerAttempt = () => ({
   type: REGISTER_ATTEMPT,
 });
 
+export const EDIT_ACCOUNT_ATTEMPT = 'EDIT_ACCOUNT_ATTEMPT';
+
+export const editAccountAttempt = () => ({
+  type: EDIT_ACCOUNT_ATTEMPT,
+});
+
+export const EDIT_PICTURE_ACCOUNT_ATTEMPT = 'EDIT_PICTURE_ACCOUNT_ATTEMPT';
+
+export const editPictureAccountAttempt = (picture) => ({
+  type: EDIT_PICTURE_ACCOUNT_ATTEMPT,
+  picture,
+});
+
 export const CHANGE_PASSWORD_ATTEMPT = 'CHANGE_PASSWORD_ATTEMPT';
 
 export const changePasswordAttempt = () => ({
@@ -125,6 +138,14 @@ export const setFieldValue = (name, value) => ({
   type: SET_FIELD_VALUE,
   name,
   value,
+});
+
+export const SET_ACCOUNT_PICTURE = 'SET_ACCOUNT_PICTURE';
+
+export const setAccountPicture = (id, picture) => ({
+  type: SET_ACCOUNT_PICTURE,
+  id,
+  picture,
 });
 
 export const LOGOUT = 'LOGOUT';

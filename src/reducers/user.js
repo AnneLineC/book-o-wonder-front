@@ -3,6 +3,7 @@ import {
   SET_NEW_PINNEDPAGE,
   SET_CURRENT_USER_JWT,
   SET_CURRENT_USER_DATA,
+  SET_ACCOUNT_PICTURE,
   LOGOUT,
   UPDATE_PINNEDPAGE,
   REMOVE_PINNEDPAGE,
@@ -15,6 +16,8 @@ export const initialState = {
   emailValue: '',
   passwordValue: '',
   passwordConfirmValue: '',
+  selectedFile: '',
+  loaded: 0,
   pinnedpages: [],
   newPasswordValue: '',
   newPasswordConfirmValue: '',
@@ -28,6 +31,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case SET_ACCOUNT_PICTURE:
+      return {
+        ...state,
+        [action.name]: action.picture,
       };
     case SET_CURRENT_USER_JWT:
       return {
