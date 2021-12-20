@@ -157,7 +157,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     }
     case CHANGE_PASSWORD_ATTEMPT: {
       const {
-        passwordValue,
+        oldPasswordValue,
         newPasswordValue,
         newPasswordConfirmValue,
       } = store.getState().user;
@@ -165,7 +165,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       if (newPasswordValue === newPasswordConfirmValue) {
         // api's url so that we can connect back and front together
         axios.patch(`${baseURI}/api/v1/account/changepassword`, {
-          old_password: passwordValue,
+          old_password: oldPasswordValue,
           new_password: newPasswordValue,
         }).then(
           (response) => {

@@ -3,7 +3,7 @@ import {
 } from '../actions';
 
 export const initialState = {
-  baseURI: 'http://3.90.50.127',
+  baseURI: 'http://54.88.115.5',
   categoriesList: [],
   connexionMenu: false,
   connectedMenu: false,
