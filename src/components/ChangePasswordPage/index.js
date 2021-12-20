@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setFieldValue, changePasswordAttempt } from '../../actions';
+import { Link } from 'react-router-dom';
+import { setFieldValue, changePasswordAttempt, setFormSentState } from '../../actions';
 
 import './styles.scss';
 
@@ -9,6 +10,8 @@ const ChangePassword = () => {
   const oldPasswordValue = useSelector((state) => state.user.oldPasswordValue);
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
   const newPasswordConfirmValue = useSelector((state) => state.user.newPasswordConfirmValue);
+  const isSubmitted = useSelector((state) => state.display.changePasswordForm.sent);
+  const isError = useSelector((state) => state.display.changePasswordForm.error);
 
   const handleInputOldPasswordChange = (event) => {
     dispatch(setFieldValue('oldPasswordValue', event.target.value));
@@ -27,9 +30,15 @@ const ChangePassword = () => {
     dispatch(changePasswordAttempt());
   };
 
+  const handleAccountLinkClick = () => {
+    dispatch(setFormSentState('changePasswordForm', false));
+  };
+
   return (
     <div className="change-password-page">
 
+      {!isSubmitted
+      && (
       <form autoComplete="off" className="register-page__form" onSubmit={handleChangePasswordFormSubmit}>
 
         <label className="change-password-page__label" htmlFor="oldPassword">
@@ -72,12 +81,7 @@ const ChangePassword = () => {
           />
         </label>
 
-        <button
-          type="submit"
-          className="change-password-page__change-password"
-        >
-          Sauvegarder
-        </button>
+        {isError && <p className="change-password-page__error">Erreur survenue lors de l'envoi. Veillez vérifier vos champs.</p>}
 
         <button
           type="submit"
@@ -86,6 +90,28 @@ const ChangePassword = () => {
           Sauvegarder
         </button>
       </form>
+      )}
+
+      {isSubmitted
+        && (
+        <div className="change-password-page__validation">
+          <p className="change-password-page__validation-title">
+            Mot de passe modifié !
+          </p>
+          <p className="change-password-page__validation-subtext">
+            Votre mot de passe a bien été modifié.
+          </p>
+          <Link to="/mon-compte">
+            <button
+              type="submit"
+              className="change-password-page__account"
+              onClick={handleAccountLinkClick}
+            >
+              Retourner sur mon compte
+            </button>
+          </Link>
+        </div>
+        )}
     </div>
   );
 };
