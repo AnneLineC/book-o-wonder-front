@@ -1,7 +1,9 @@
 @use './../../styles/vars';
 
 .team {
-    margin: vars.$gutter;
+    margin: vars.$gutter auto;
+    max-width: 120rem;
+    line-height: 1.5;
 
     &__link {
         text-decoration: underline;
@@ -12,11 +14,21 @@
         color: vars.$color--blue-light;
     }
 
+    &__wonderland {
+        font-family: vars.$title-font;
+        font-size: 1.5em;
+    }
+
     &__presentation {
         margin: vars.$gutter*5 vars.$gutter;
     }
 
     &__presentation-title {
+        font-size: 3.5rem;
+        margin: vars.$gutter;
+    }
+
+    &__presentation-subtitle {
         font-size: 2.5rem;
         margin: vars.$gutter;
     }
@@ -69,12 +81,12 @@
     @media screen and (min-width: vars.$tablet) {
         .team {
             &__section-left {
-                max-width: 75%;
+                max-width: 70%;
             }
 
             &__section-right {
-                max-width: 75%;
-                margin-left: 25%;
+                max-width: 70%;
+                margin-left: 20%;
             }
         }
     }
@@ -82,12 +94,12 @@
     @media screen and (min-width: vars.$desktop) {
         .team {
             &__section-left {
-                max-width: 75%;
+                max-width: 70%;
             }
 
             &__section-right {
-                max-width: 75%;
-                margin-left: 25%;
+                max-width: 70%;
+                margin-left: 30%;
             }
         }
     }
