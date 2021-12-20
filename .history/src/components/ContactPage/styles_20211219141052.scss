@@ -1,0 +1,149 @@
+@use "../../styles/vars";
+
+.contact-page {
+  &__title {
+    margin-top: 3rem;
+    font-size: 3rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: vars.$gutter;
+    margin-top: 5rem;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__object {
+    border-radius: vars.$radius;
+    margin-bottom: 1rem;
+    text-align: center;
+    height: 30px;
+    width: 250px;
+    margin: 0rem auto 4rem auto;
+  }
+
+  &__label {
+    margin-bottom: 1rem;
+  }
+
+  &__input {
+    border-radius: vars.$radius;
+    margin-bottom: 1rem;
+    text-align: center;
+    height: 30px;
+    width: 250px;
+    margin: 0rem auto 4rem auto;
+  }
+
+  &__textarea {
+    height: 10rem;
+    width: 250px;
+    margin: auto;
+    border-radius: vars.$radius;
+    font-family: inherit;
+  }
+
+  &__contact {
+    margin-top: 10rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  &__required {
+    margin-top: 5rem;
+  }
+
+  &__send {
+    background-color: vars.$color--green-light;
+    height: 30px;
+    width: 150px;
+    margin: 2rem auto 2rem auto;
+    border-radius: vars.$radius;
+  }
+}
+
+@media screen and (min-width: vars.$tablet) {
+  .contact-page {
+    &__top {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__bottom {
+      margin-top: -3rem;
+    }
+
+    &__form {
+      display: flex;
+      align-items: center;
+      padding: vars.$gutter;
+      margin-top: 5rem;
+    }
+
+    &__input {
+      height: 30px;
+      width: 310px;
+      
+    }
+
+    &__object {
+      border-radius: vars.$radius;
+      margin-bottom: 1rem;
+      text-align: center;
+      height: 30px;
+      width: 620px;
+      margin: 0rem auto 1rem auto;
+    }
+
+    &__textarea {
+      height: 10rem;
+      width: 620px;
+      margin: auto;
+      border-radius: vars.$radius;
+    }
+  }
+}
+
+@media screen and (min-width: vars.$desktop) {
+  .contact-page {
+    &__object {
+      border-radius: vars.$radius;
+      margin-bottom: 1rem;
+      text-align: center;
+      height: 30px;
+      width: 750px;
+      margin: 0rem auto 1rem auto;
+    }
+
+    &__textarea {
+      height: 10rem;
+      width: 750px;
+      margin: auto;
+      border-radius: vars.$radius;
+    }
+
+    &__input {
+      width: 375px;
+    }
+
+    &__top {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__bottom {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
