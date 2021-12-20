@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -99,7 +99,7 @@ const HomePage = () => {
             <i className="home-page__avatar fas fa-headphones" />
             <p className="home-page__content">
               {/* eslint-disable-next-line max-len */}
-              <span className="home-page__highlight-title">Un lecteur audio</span><br /> vous permettant mettre une ambiance sonore afin de savourer votre lecture
+              <span className="home-page__highlight-title">Un lecteur audio</span><br /> vous permettant de mettre une ambiance sonore afin de savourer votre lecture
             </p>
           </div>
           <div className="home-page__highlight">
