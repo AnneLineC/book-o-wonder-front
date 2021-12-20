@@ -64,6 +64,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
             (result) => {
               console.log(result);
               store.dispatch(setCurrentUserData(result.data));
+              store.dispatch(setFormErrorState('connexionForm', false));
             },
           ).catch(
             (error) => {
@@ -98,6 +99,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           (response) => {
             console.log(response);
             store.dispatch(setFormSentState('registerForm', true));
+            store.dispatch(setFormErrorState('registerForm', false));
           },
         ).catch(
           (error) => {
@@ -116,8 +118,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
       const {
         emailValue,
       } = store.getState().user;
-
-      // api's url so that we can connect back and front together
       axios.post(`${baseURI}/api/v1/forgottenpassword`, {
         email: emailValue,
       }).then(
@@ -144,9 +144,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         }).then(
           (response) => {
             console.log(response);
-
-          // dispatch to log the user
-          // store.dispatch(setCurrentUser(response.data));
           },
         ).catch(
           (error) => console.log(error.toJSON()),
@@ -163,18 +160,26 @@ const apiMiddleWare = (store) => (next) => (action) => {
       } = store.getState().user;
 
       if (newPasswordValue === newPasswordConfirmValue) {
-        // api's url so that we can connect back and front together
         axios.patch(`${baseURI}/api/v1/account/changepassword`, {
           old_password: oldPasswordValue,
           new_password: newPasswordValue,
         }).then(
           (response) => {
             console.log(response);
+            store.dispatch(setFormSentState('changePasswordForm', true));
+            store.dispatch(setFormErrorState('changePasswordForm', false));
           },
         ).catch(
-          (error) => console.log(error.toJSON()),
+          (error) => {
+            console.log(error.toJSON());
+            store.dispatch(setFormErrorState('changePasswordForm', true));
+          },
         );
       }
+      else {
+        store.dispatch(setFormErrorState('changePasswordForm', true));
+      }
+
       next(action);
       break;
     }

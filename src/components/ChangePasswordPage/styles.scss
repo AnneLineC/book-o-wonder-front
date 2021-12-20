@@ -1,10 +1,6 @@
 @use "../../styles/vars";
 
 .change-password-page {
-  span {
-    color: blue;
-    text-decoration: underline;
-  }
 
   &__form {
     display: flex;
@@ -13,14 +9,19 @@
     margin-top: 10rem;
   }
 
+  &__label {
+    margin: auto;
+    max-width: 40rem;
+  }
+
   &__input {
     border-radius: vars.$radius;
     margin-bottom: 1rem;
     text-align: center;
-    height: 30px;
-    width: 250px;
+    width: 25rem;
+    height: 3rem;
     margin: 0rem auto 2rem auto;
-  }
+}
 
   &__save {
     background-color: vars.$color--green-light;
@@ -30,54 +31,32 @@
     margin: auto;
   }
 
-}
+  &__error {
+    color: rgb(243, 104, 104);
+    margin-bottom: 3rem;
+  }
 
-@media only screen and (max-width: 768px) {
-  .login-page {
+  &__validation {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    &__input {
-      border-radius: vars.$radius;
-      margin-bottom: 1rem;
-      text-align: center;
-      height: 30px;
-      width: 250px;
-      margin: auto;
-      margin: 0rem auto 2rem auto;
+    &-title {
+        font-size: 2em;
+        margin: vars.$gutter*2;
     }
 
-    &__connexion {
-      background-color: vars.$color--green-light;
-      border-radius: vars.$radius;
-      color: darkgray;
-      width: 150px;
-      height: 40px;
-      margin: auto;
-      margin-top: 1.5rem;
+    &-mail {
+        font-weight: bold;
     }
   }
 
-}
-
-@media screen and (max-width: 1440px) {
-  .login-page {
-
-    &__input {
-      border-radius: vars.$radius;
-      margin-bottom: 1rem;
-      text-align: center;
-      height: 30px;
-      width: 250px;
-      margin: auto;
-      margin: 0rem auto 2rem auto;
-    }
-
-    &__save {
-      background-color: vars.$color--green-light;
-      border-radius: vars.$radius;
-      width: 150px;
-      height: 40px;
-      margin: auto;
-      margin-top: 1.5rem;
-    }
+  &__account {
+    background-color: vars.$color--green-light;
+    border-radius: vars.$radius;
+    padding: vars.$gutter;
+    margin: 3rem auto;
   }
 }

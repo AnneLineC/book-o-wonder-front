@@ -17,7 +17,6 @@
     }
 
     &__input {
-        
         border-radius: vars.$radius;
         margin-bottom: 1rem;
         text-align: center;
@@ -36,6 +35,7 @@
 
     &__error {
         color: rgb(243, 104, 104);
+        margin-bottom: 3rem;
     }
 
     &__connect {
