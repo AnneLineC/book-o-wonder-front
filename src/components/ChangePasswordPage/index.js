@@ -6,12 +6,12 @@ import './styles.scss';
 const ChangePassword = () => {
   const dispatch = useDispatch();
 
-  const passwordValue = useSelector((state) => state.user.passwordValue);
+  const oldPasswordValue = useSelector((state) => state.user.oldPasswordValue);
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
   const newPasswordConfirmValue = useSelector((state) => state.user.newPasswordConfirmValue);
 
   const handleInputOldPasswordChange = (event) => {
-    dispatch(setFieldValue('passwordValue', event.target.value));
+    dispatch(setFieldValue('oldPasswordValue', event.target.value));
   };
 
   const handleInputNewPasswordChange = (event) => {
@@ -40,7 +40,7 @@ const ChangePassword = () => {
             name="password"
             id="password"
             placeholder="Ancien mot de passe"
-            value={passwordValue}
+            value={oldPasswordValue}
             onChange={handleInputOldPasswordChange}
           />
         </label>
