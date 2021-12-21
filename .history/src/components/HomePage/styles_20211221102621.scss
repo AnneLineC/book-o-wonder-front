@@ -1,0 +1,242 @@
+@use "../../styles/vars";
+@use "sass:color";
+
+.home-page {
+
+    &__intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5rem 0 3rem;
+    }
+
+    &__logo {
+        max-width: 15rem;
+    }
+    
+    &__title {
+        margin-top: 1rem;
+        font-size: 2rem;
+        
+        &-sitename {
+            color: vars.$color--yellow-light;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    }
+
+    &__pinnedpaged-title {
+        font-weight: bold;
+        margin-bottom: vars.$gutter;
+        text-align: left;
+        padding-left: vars.$gutter;
+        margin-top: vars.$gutter*4;
+    }
+
+    &__avatar {
+        background-color: vars.$color--orange-light;
+        display: block;
+        width: 6rem;
+        height: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: vars.$color--grey-dark;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+
+    &__highlight {
+        display:flex;
+        flex-direction: column;
+        align-items:center;  
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        text-align: center;
+        margin-left:1rem;
+        margin-right:1rem; 
+    }
+
+    &__highlight-title {
+        font-size: 1.8em;
+        font-family: vars.$title-font;
+        margin
+    }
+
+    &__container {
+        margin-right: 1rem;
+        margin-left: 1rem;
+        margin-bottom: 6rem;
+    }    
+}
+
+.highlighted-books {
+    padding: vars.$gutter;
+    margin-top: 4rem;
+    display: flex;
+    
+    &__card {
+        display: flex;
+        flex: 1;
+        margin: vars.$gutter;
+        flex-direction: column;
+        align-items: center;
+        width: 20rem;
+        background-color: #3C3C3C;
+        padding: vars.$gutter*2;
+        border-radius: vars.$radius;
+    }
+
+    &__title {
+        margin-bottom: vars.$gutter;
+        font-weight: bold;
+    }
+}
+
+.pinnedpaged-books {
+    overflow-x: auto;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5rem;
+
+    &::-webkit-scrollbar {
+        width: 12px;               /* width of the entire scrollbar */
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: #222222;        /* color of the tracking area */
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #575757;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 3px solid #222222 ;  /* creates padding around scroll thumb */
+    }
+}
+
+.pinnedpaged-book {
+    &__card {
+        margin: vars.$gutter;
+        position: relative;
+    }
+
+    &__delete {
+        background-color: #222222;
+        color: #fff;
+        padding: vars.$gutter*0.6;
+        border-radius: vars.$radius;
+        margin-bottom: vars.$gutter;
+        position: absolute;
+        bottom: 0;
+        right: vars.$gutter;
+        z-index: 2;
+    }
+}
+
+.carousel-root {
+    margin: auto;
+    margin-bottom: 4rem;
+}
+
+.thumbs-wrapper {
+    display:none;
+}
+
+.legend {
+    display: none;
+}
+
+.dots {
+    background-color:pink;
+}
+
+.carousel-status {
+    display:none;
+}
+
+@media screen and (min-width: vars.$tablet) {
+    .home-page {
+
+        &__intro {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        &__title {
+            font-size: 3rem;
+            margin-left: 3rem;
+        }
+
+        &__pinnedpaged-title {
+            max-width: 70rem;
+            margin: auto;
+            padding: vars.$gutter;
+        }
+        
+        &__container {
+            background-color: rgba(138, 138, 138, 0.144);
+            border-radius:vars.$radius;
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__avatar {
+            display:flex;
+            flex-direction: row;
+        }
+    }
+
+    .highlighted-books {
+        max-width: 73rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .carousel-root {
+        max-width: 70rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pinnedpaged-books {
+        max-width: 70rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+@media screen and (min-width: vars.$desktop) {
+    
+    .home-page {
+        max-width: 82rem;
+        margin: auto;
+
+        &__title {
+            font-size: 3rem;
+        }
+
+        &__content {
+            margin-left: 1rem;
+        }
+    }
+    
+    .carousel-root {
+        max-width: 80rem;
+    }
+
+    .carousel {
+        width:auto;
+        height: 30rem;
+        margin: auto;
+    }
+
+    .pinnedpaged-books {
+        max-width: 90rem;
+        overflow-x: auto;
+    }
+}
