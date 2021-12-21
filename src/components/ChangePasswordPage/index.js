@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFieldValue, changePasswordAttempt } from '../../actions';
 
@@ -6,6 +7,7 @@ import './styles.scss';
 const ChangePassword = () => {
   const dispatch = useDispatch();
 
+  const isLogged = useSelector((state) => state.user.logged);
   const passwordValue = useSelector((state) => state.user.passwordValue);
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
   const newPasswordConfirmValue = useSelector((state) => state.user.newPasswordConfirmValue);
@@ -29,6 +31,8 @@ const ChangePassword = () => {
 
   return (
     <div className="change-password-page">
+
+      {!isLogged && <Navigate to="/connexion" />}
 
       <form autoComplete="off" className="register-page__form" onSubmit={handleChangePasswordFormSubmit}>
 
