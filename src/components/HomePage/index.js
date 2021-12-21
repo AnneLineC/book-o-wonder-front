@@ -24,10 +24,9 @@ const HomePage = () => {
   const nickname = useSelector((state) => state.user.name);
   const pinnedpages = useSelector((state) => state.user.pinnedpages);
   const highlightedBooks = useSelector((state) => state.books.highlightedBooks);
-  const highlightedBooksAreLoaded = useSelector((state) => state.books.highlightedBooksAreLoaded);
+  const highlightedBooksAreLoaded = useSelector((state) => state.display.loaded.highlightedBooks);
   const mostPinnedBook = useSelector((state) => state.books.mostPinnedBook);
   const mostReadCategory = useSelector((state) => state.books.mostReadCategory);
-  console.log(mostReadCategory);
 
   const handleDeleteButtonClick = (id) => {
     dispatch(deletePinnedpageInBDD(id));

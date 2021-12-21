@@ -2,18 +2,8 @@ import { SET_SOUNDS, SET_CURRENT_SOUND } from '../actions';
 
 export const initialState = {
   musicsList: [],
-  currentMusic: {
-    id: 1,
-    name: 'Lofi',
-    music: 'https:/www.youtube.com/watch?v=5qap5aO4i9A',
-    image: '',
-    categories: [
-      {
-        id: 1,
-        name: 'Fantasy',
-      },
-    ],
-  },
+  musicsListIsLoaded: false,
+  currentMusic: {},
 };
 
 const reducer = (state = initialState, action = {}) => {

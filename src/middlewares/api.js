@@ -35,7 +35,8 @@ import {
   setMostReadCategory,
   setFormSentState,
   setFormErrorState,
-  setHighlightedBooksAreLoaded,
+  setElementIsLoaded,
+  loadSoundFromAPI,
 } from '../actions';
 
 const apiMiddleWare = (store) => (next) => (action) => {
@@ -230,6 +231,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
+          console.log(response);
           store.dispatch(setCategories(response.data));
         },
       ).catch(
@@ -257,8 +259,11 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_SOUNDS_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/category`).then(
         (response) => {
-          // console.log(response);
+          console.log(response);
           store.dispatch(setSounds(response.data));
+          store.dispatch(setElementIsLoaded('musicsList', true));
+          // Load the first music of the full list in the player
+          store.dispatch(loadSoundFromAPI(response.data[0].id));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
@@ -270,8 +275,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_SOUND_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
         (response) => {
-          // console.log(response);
+          console.log(response);
           store.dispatch(setCurrentSound(response.data));
+          store.dispatch(setElementIsLoaded('currentMusic', true));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
@@ -352,10 +358,8 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOAD_HIGHLIGHTED_BOOKS_FROM_API: {
       axios.get(`${baseURI}/api/v1/book/ishome`).then(
         (response) => {
-          // console.log('Livres mis en avant :');
-          // console.log(response);
           store.dispatch(setHighlightedBooks(response.data));
-          store.dispatch(setHighlightedBooksAreLoaded(true));
+          store.dispatch(setElementIsLoaded('highlightedBooks', true));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

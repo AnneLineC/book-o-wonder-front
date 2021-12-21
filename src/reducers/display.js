@@ -5,15 +5,21 @@ import {
   SET_FORM_SENT_STATE,
   SET_FORM_ERROR_STATE,
   SET_BOOK_READING_PAGE_DISPLAY,
+  SET_ELEMENT_IS_LOADED,
 } from '../actions';
 
 export const initialState = {
-  baseURI: 'http://3.86.145.162',
+  baseURI: 'http://107.22.132.113',
   categoriesList: [],
   connexionMenu: false,
   connectedMenu: false,
   categoriesMenu: false,
   mediaPlayer: false,
+  loaded: {
+    highlightedBooks: false,
+    musicsList: false,
+    currentMusic: false,
+  },
   mediaPlayerDisplay: {
     playing: false,
     volume: 0.8,
@@ -67,6 +73,16 @@ const reducer = (state = initialState, action = {}) => {
         bookReadingPageDisplay: {
           ...state.bookReadingPageDisplay,
           [action.property]: action.value,
+        },
+      };
+
+    case SET_ELEMENT_IS_LOADED:
+      console.log(`element : ${action.element} is loaded`);
+      return {
+        ...state,
+        loaded: {
+          ...state.loaded,
+          [action.element]: action.value,
         },
       };
 

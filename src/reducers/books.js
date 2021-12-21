@@ -4,7 +4,6 @@ import {
   SET_HIGHLIGHTED_BOOKS,
   SET_MOST_PINNED_BOOK,
   SET_MOST_READ_CATEGORY,
-  SET_HIGHLIGHTED_BOOKS_ARE_LOADED,
 } from '../actions';
 
 export const initialState = {
@@ -12,7 +11,6 @@ export const initialState = {
   book: {},
   books: [],
   highlightedBooks: [],
-  highlightedBooksAreLoaded: false,
   mostPinnedBook: {},
   mostReadCategory: {},
 };
@@ -49,11 +47,6 @@ const reducer = (state = initialState, action = {}) => {
         mostReadCategory: action.data,
       };
 
-    case SET_HIGHLIGHTED_BOOKS_ARE_LOADED:
-      return {
-        ...state,
-        highlightedBooksAreLoaded: action.value,
-      };
     default:
       return state;
   }

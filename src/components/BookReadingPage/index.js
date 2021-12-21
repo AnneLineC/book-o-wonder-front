@@ -42,7 +42,7 @@ const BookReadingPage = () => {
     [], // (only once)
   );
 
-  // Once the component is rendered, add a custom class to the body element 
+  // Once the component is rendered, add a custom class to the body element
   // (to manage footer display and page height)
   useEffect(
     () => {
