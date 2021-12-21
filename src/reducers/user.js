@@ -33,22 +33,26 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+
     case SET_ACCOUNT_PICTURE:
       return {
         ...state,
         [action.name]: action.picture,
       };
+
     case SET_CURRENT_USER_JWT:
       return {
         ...state,
         token: action.token,
       };
+
     case SET_CURRENT_USER_DATA:
       return {
         ...state,
         logged: true,
         ...action.data,
       };
+
     case SET_NEW_PINNEDPAGE: {
       return {
         ...state,
@@ -58,6 +62,7 @@ const reducer = (state = initialState, action = {}) => {
         ],
       };
     }
+
     case UPDATE_PINNEDPAGE: {
       const pinnedPageIndex = state.pinnedpages.findIndex(
         (pinnedPage) => (pinnedPage.book.id === parseInt(action.data.book.id, 10)),
@@ -74,6 +79,7 @@ const reducer = (state = initialState, action = {}) => {
         ],
       };
     }
+
     case REMOVE_PINNEDPAGE: {
       const pinnedPageIndex = state.pinnedpages.findIndex(
         (pinnedPage) => (pinnedPage.id === parseInt(action.pinnedpageId, 10)),
@@ -88,11 +94,13 @@ const reducer = (state = initialState, action = {}) => {
         ],
       };
     }
+
     case LOGOUT: {
       return {
         ...initialState,
       };
     }
+
     default:
       return state;
   }

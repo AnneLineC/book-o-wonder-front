@@ -42,6 +42,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         categoriesList: action.list,
       };
+
     case SET_DISPLAY:
       return {
         ...state,
@@ -50,6 +51,7 @@ const reducer = (state = initialState, action = {}) => {
         categoriesMenu: false,
         [action.name]: !state[action.name],
       };
+
     case SET_MEDIA_PLAYER_DISPLAY:
       return {
         ...state,
@@ -58,6 +60,7 @@ const reducer = (state = initialState, action = {}) => {
           [action.property]: action.value,
         },
       };
+
     case SET_BOOK_READING_PAGE_DISPLAY:
       return {
         ...state,
@@ -66,6 +69,7 @@ const reducer = (state = initialState, action = {}) => {
           [action.property]: action.value,
         },
       };
+
     case SET_FORM_SENT_STATE: {
       const newState = {
         ...state[action.formName],
@@ -78,6 +82,7 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
     }
+
     case SET_FORM_ERROR_STATE: {
       const newState = {
         ...state[action.formName],
