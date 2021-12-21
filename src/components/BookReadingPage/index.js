@@ -1,8 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { ReactReader, ReactReaderStyle } from 'react-reader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { updatePinnepageInBDD, loadBookFromAPI, postNewPinnedpageToBDD } from '../../actions';
+import {
+  updatePinnepageInBDD,
+  loadBookFromAPI,
+  postNewPinnedpageToBDD,
+  setBookReadingPageDisplay,
+} from '../../actions';
 import BookReadingFooter from './BookReadingFooter';
 import './styles.scss';
 
@@ -13,18 +18,19 @@ const BookReadingPage = () => {
   const isLogged = useSelector((state) => state.user.logged);
   const userId = useSelector((state) => state.user.id);
   const pinnedPages = useSelector((state) => state.user.pinnedpages);
+  const fontSize = useSelector((state) => state.display.bookReadingPageDisplay.fontSize);
 
+  // Check if a pinnedpage (pageLocation) exists for the current ebook
   let pageLocation = null;
-
   if (isLogged) {
     pinnedPages.forEach((pinnedPage) => {
       if (parseInt(pinnedPage.book.id, 10) === parseInt(id, 10)) {
         pageLocation = pinnedPage.page;
-        console.log(`Le marque page existe déjà et vaut : ${pageLocation}`);
       }
     });
   }
 
+  // If there is no pinnedpage, once the component is rendered, create a new one
   useEffect(
     () => {
       if (isLogged) {
@@ -33,9 +39,11 @@ const BookReadingPage = () => {
         }
       }
     },
-    [],
+    [], // (only once)
   );
 
+  // Once the component is rendered, add a custom class to the body element 
+  // (to manage footer display and page height)
   useEffect(
     () => {
       dispatch(loadBookFromAPI(id));
@@ -44,15 +52,14 @@ const BookReadingPage = () => {
       bodyElement.classList.add('reading-page');
 
       return () => {
-        bodyElement.classList.remove('reading-page');
+        bodyElement.classList.remove('reading-page'); // Remove the class when component is unmounted
       };
     },
   );
 
+  // When location inside the epub is modified, updates the existent pinnedpage
   const locationChanged = (epubcifi) => {
     if (isLogged) {
-      console.log(epubcifi);
-      console.log(pinnedPages);
       pinnedPages.forEach((pinnedPage) => {
         if (parseInt(pinnedPage.book.id, 10) === parseInt(id, 10)) {
           dispatch(updatePinnepageInBDD(pinnedPage.id, userId, id, epubcifi));
@@ -61,23 +68,25 @@ const BookReadingPage = () => {
     }
   };
 
+  // Generate epub URL
   const epub = useSelector((state) => state.books.book.epub);
   const baseURI = useSelector((state) => (state.display.baseURI));
   const epubURI = `${baseURI}/epub_folder/${epub}`;
-  // console.log(epubURI);
 
-  const [size, setSize] = useState(100);
+  // Used by the library to custom rendition
   const renditionRef = useRef(null);
-  const changeSize = (newSize) => {
-    setSize(newSize);
-  };
-
   useEffect(() => {
     if (renditionRef.current) {
-      renditionRef.current.themes.fontSize(`${size}%`);
+      renditionRef.current.themes.fontSize(`${fontSize}%`);
     }
-  }, [size]);
+  }, [fontSize]);
 
+  // Handler to change font size inside of the epub
+  const changeFontSize = (newSize) => {
+    dispatch(setBookReadingPageDisplay('fontSize', newSize));
+  };
+
+  // Custom CSS style for the *outside* of the epub
   const ownStyles = {
     ...ReactReaderStyle,
     readerArea: {
@@ -101,8 +110,6 @@ const BookReadingPage = () => {
   return (
     <div className="book-reading-page">
       <ReactReader
-        // url="https://gerhardsletten.github.io/react-reader/files/alice.epub" // Ebook d'exemple fourni avec la librairie, marche bien
-        // url="https://www.ebooksgratuits.com/newsendbook.php?id=457&format=epub" // Ebook pris au hasard sur le net pour tester
         url={epubURI}
         epubInitOptions={{
           openAs: 'epub',
@@ -113,8 +120,8 @@ const BookReadingPage = () => {
         styles={ownStyles}
         getRendition={(rendition) => {
           renditionRef.current = rendition;
-          renditionRef.current.themes.fontSize(`${size}%`);
-          rendition.themes.register('custom', {
+          renditionRef.current.themes.fontSize(`${fontSize}%`);
+          rendition.themes.register('custom', { // Custum CSS inside the epub
             body: {
               backgroundColor: '#2f2f2f !important',
             },
@@ -143,7 +150,7 @@ const BookReadingPage = () => {
           rendition.themes.select('custom');
         }}
       />
-      <BookReadingFooter changeSize={changeSize} size={size} />
+      <BookReadingFooter changeFontSize={changeFontSize} fontSize={fontSize} />
     </div>
   );
 };
