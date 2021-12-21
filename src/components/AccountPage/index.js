@@ -1,9 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useRef } from 'react';
-
+/* eslint-disable max-len */
+import {
+  useSelector,
+  // useDispatch
+} from 'react-redux';
+// import { useRef } from 'react';
+import { Navigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { editPictureAccountAttempt, editAccountAttempt, setFieldValue } from '../../actions';
-import BookReview from '../BookReview';
+// import { editPictureAccountAttempt, editAccountAttempt, setFieldValue } from '../../actions';
+// import BookReview from '../BookReview';
 
 import './styles.scss';
 
@@ -12,6 +16,7 @@ const AccountPage = () => {
 
   // const dispatch = useDispatch();
 
+  const isLogged = useSelector((state) => state.user.logged);
   const nickname = useSelector((state) => state.user.name);
   const email = useSelector((state) => state.user.email);
 
@@ -34,16 +39,17 @@ const AccountPage = () => {
   //   console.log(event.target.files[0]);
   // };
 
-  const handleEditAccountFormSubmit = (event) => {
-    event.preventDefault();
-    console.log('handler OK');
-    dispatch(editAccountAttempt());
-  };
-
+  // const handleEditAccountFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log('handler OK');
+  //   dispatch(editAccountAttempt());
+  // };
 
   return (
 
     <div className="account-page">
+
+      {!isLogged && <Navigate to="/connexion" />}
 
       {/* <form autoComplete="off" className="account-page__form-top" onSubmit={handleEditPictureAccountFormSubmit}>
 
@@ -122,7 +128,6 @@ const AccountPage = () => {
           <Link to="/mon-compte/mot-de-passe">Modifier le mot de passe</Link>
         </div>
       </div>
-
 
     </div>
   );
