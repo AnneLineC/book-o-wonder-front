@@ -11,7 +11,6 @@ const LoginPage = () => {
   const emailValue = useSelector((state) => state.user.emailValue);
   const passwordValue = useSelector((state) => state.user.passwordValue);
   const isError = useSelector((state) => state.display.connexionForm.error);
-  console.log(isError);
 
   const dispatch = useDispatch();
 

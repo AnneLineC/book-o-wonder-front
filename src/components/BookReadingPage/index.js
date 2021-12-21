@@ -19,6 +19,7 @@ const BookReadingPage = () => {
   const userId = useSelector((state) => state.user.id);
   const pinnedPages = useSelector((state) => state.user.pinnedpages);
   const fontSize = useSelector((state) => state.display.bookReadingPageDisplay.fontSize);
+  const currentBookIsLoaded = useSelector((state) => state.display.loaded.currentBook);
 
   // Check if a pinnedpage (pageLocation) exists for the current ebook
   let pageLocation = null;
@@ -30,9 +31,11 @@ const BookReadingPage = () => {
     });
   }
 
-  // If there is no pinnedpage, once the component is rendered, create a new one
   useEffect(
     () => {
+      dispatch(loadBookFromAPI(id));
+
+      // If there is no pinnedpage, once the component is rendered, create a new one
       if (isLogged) {
         if (pageLocation === null) {
           dispatch(postNewPinnedpageToBDD(userId, id, null));
@@ -46,8 +49,6 @@ const BookReadingPage = () => {
   // (to manage footer display and page height)
   useEffect(
     () => {
-      dispatch(loadBookFromAPI(id));
-
       const bodyElement = document.querySelector('body');
       bodyElement.classList.add('reading-page');
 
@@ -109,47 +110,49 @@ const BookReadingPage = () => {
 
   return (
     <div className="book-reading-page">
-      <ReactReader
-        url={epubURI}
-        epubInitOptions={{
-          openAs: 'epub',
-        }}
-        location={pageLocation}
-        locationChanged={locationChanged}
-        swipeable
-        styles={ownStyles}
-        getRendition={(rendition) => {
-          renditionRef.current = rendition;
-          renditionRef.current.themes.fontSize(`${fontSize}%`);
-          rendition.themes.register('custom', { // Custum CSS inside the epub
-            body: {
-              backgroundColor: '#2f2f2f !important',
-            },
-            img: {
-              border: '2px solid #e9ab9c',
-              borderRadius: '5px',
-            },
-            div: {
-              color: 'white',
-              backgroundColor: '#2f2f2f !important',
-            },
-            p: {
-              color: 'white',
-              backgroundColor: '#2f2f2f !important',
-            },
-            h1: {
-              color: 'white',
-            },
-            h2: {
-              color: 'white',
-            },
-            a: {
-              color: 'white',
-            },
-          });
-          rendition.themes.select('custom');
-        }}
-      />
+      {currentBookIsLoaded && (
+        <ReactReader
+          url={epubURI}
+          epubInitOptions={{
+            openAs: 'epub',
+          }}
+          location={pageLocation}
+          locationChanged={locationChanged}
+          swipeable
+          styles={ownStyles}
+          getRendition={(rendition) => {
+            renditionRef.current = rendition;
+            renditionRef.current.themes.fontSize(`${fontSize}%`);
+            rendition.themes.register('custom', { // Custum CSS inside the epub
+              body: {
+                backgroundColor: '#2f2f2f !important',
+              },
+              img: {
+                border: '2px solid #e9ab9c',
+                borderRadius: '5px',
+              },
+              div: {
+                color: 'white',
+                backgroundColor: '#2f2f2f !important',
+              },
+              p: {
+                color: 'white',
+                backgroundColor: '#2f2f2f !important',
+              },
+              h1: {
+                color: 'white',
+              },
+              h2: {
+                color: 'white',
+              },
+              a: {
+                color: 'white',
+              },
+            });
+            rendition.themes.select('custom');
+          }}
+        />
+      )}
       <BookReadingFooter changeFontSize={changeFontSize} fontSize={fontSize} />
     </div>
   );

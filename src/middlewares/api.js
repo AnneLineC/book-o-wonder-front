@@ -321,7 +321,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
     }
 
     case UPDATE_PINNEDPAGE_IN_BDD: {
-      console.log('update demandé !!');
       axios.put(`${baseURI}/api/v1/pinnedpage/${action.pinnedpageId}`, {
         page: action.location,
         book: action.bookId,
