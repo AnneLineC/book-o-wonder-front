@@ -7,6 +7,7 @@ import {
   LOGOUT,
   UPDATE_PINNEDPAGE,
   REMOVE_PINNEDPAGE,
+  RESET_INPUTS_VALUE,
 } from '../actions';
 
 export const initialState = {
@@ -98,6 +99,19 @@ const reducer = (state = initialState, action = {}) => {
     case LOGOUT: {
       return {
         ...initialState,
+      };
+    }
+
+    case RESET_INPUTS_VALUE: {
+      return {
+        ...state,
+        nicknameValue: '',
+        emailValue: '',
+        passwordValue: '',
+        passwordConfirmValue: '',
+        oldPasswordValue: '',
+        newPasswordValue: '',
+        newPasswordConfirmValue: '',
       };
     }
 

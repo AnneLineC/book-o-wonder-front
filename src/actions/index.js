@@ -113,6 +113,18 @@ export const setMostReadCategory = (data) => ({
 // FORMS
 // ===============
 
+export const RESET_INPUTS_VALUE = 'RESET_INPUTS_VALUE';
+
+export const resetInputsValue = () => ({
+  type: RESET_INPUTS_VALUE,
+});
+
+export const RESET_ALL_ERRORS = 'RESET_ALL_ERRORS';
+
+export const resetAllErrors = () => ({
+  type: RESET_ALL_ERRORS,
+});
+
 export const LOGIN_ATTEMPT = 'LOGIN_ATTEMPT';
 
 export const loginAttempt = () => ({

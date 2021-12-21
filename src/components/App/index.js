@@ -1,6 +1,8 @@
 // eslint-disable no-debugger, no-console
 import { useLocation, Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { resetAllErrors, resetInputsValue } from '../../actions';
 
 import HeaderApp from '../HeaderApp';
 import HomePage from '../HomePage';
@@ -25,12 +27,17 @@ import Error404 from '../Error404';
 import './styles.scss';
 
 const App = () => {
+  const dispatch = useDispatch();
+
   // React router dom hook allowing to know the  currentlocation
   const location = useLocation();
+
   // Allow scrolling at the top of the page when navigating
   useEffect(
     () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      dispatch(resetInputsValue());
+      dispatch(resetAllErrors());
     },
     [location],
   );

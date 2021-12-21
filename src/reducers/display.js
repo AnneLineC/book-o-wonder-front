@@ -6,6 +6,7 @@ import {
   SET_FORM_ERROR_STATE,
   SET_BOOK_READING_PAGE_DISPLAY,
   SET_ELEMENT_IS_LOADED,
+  RESET_ALL_ERRORS,
 } from '../actions';
 
 export const initialState = {
@@ -80,7 +81,6 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case SET_ELEMENT_IS_LOADED:
-      console.log(`element : ${action.element} is loaded`);
       return {
         ...state,
         loaded: {
@@ -111,6 +111,24 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.formName]: {
           ...newState,
+        },
+      };
+    }
+
+    case RESET_ALL_ERRORS: {
+      return {
+        ...state,
+        registerForm: {
+          sent: false,
+          error: false,
+        },
+        connexionForm: {
+          sent: false,
+          error: false,
+        },
+        changePasswordForm: {
+          sent: false,
+          error: false,
         },
       };
     }
