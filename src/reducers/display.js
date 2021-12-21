@@ -21,6 +21,10 @@ export const initialState = {
     sent: false,
     error: false,
   },
+  changePasswordForm: {
+    sent: false,
+    error: false,
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {

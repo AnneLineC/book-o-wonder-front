@@ -1,0 +1,70 @@
+@use "../../styles/vars";
+
+.reset-password-page {
+  span {
+    color: blue;
+    text-decoration: underline;
+  }
+
+  &__title {
+    margin-top: 3rem;
+    font-size: 3rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: vars.$gutter;
+    margin: 5rem;
+  }
+
+  &__input {
+    border-radius: vars.$radius;
+    margin-bottom: 1rem;
+    text-align: center;
+    height: 3rem;
+    width: 25rem;
+    margin: 0rem auto 2rem auto;
+  }
+
+  &__reset-password {
+    background-color: vars.$color--green-light;
+    border-radius: vars.$radius;
+    width: 15rem;
+    height: 3rem;
+    margin: auto;
+  }
+
+  &__error {
+    color: rgb(243, 104, 104);
+    margin-bottom: 3rem;
+}
+
+
+
+&__connexion {
+    background-color: vars.$color--green-light;
+    height: 3rem;
+    width: 15rem;
+    margin: 2rem auto 2rem auto;
+    border-radius: vars.$radius;
+}
+
+&__validation {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-title {
+        font-size: 2em;
+        margin: vars.$gutter*2;
+    }
+
+    &-mail {
+        font-weight: bold;
+    }
+}
+
+}
