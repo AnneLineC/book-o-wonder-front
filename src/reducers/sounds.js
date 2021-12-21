@@ -18,7 +18,6 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-
     case SET_SOUNDS:
       return {
         ...state,
@@ -30,7 +29,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currentMusic: action.data,
       };
-      
+
     default:
       return state;
   }

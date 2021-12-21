@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { setFieldValue, changePasswordAttempt, setFormSentState } from '../../actions';
@@ -7,6 +8,7 @@ import './styles.scss';
 const ChangePassword = () => {
   const dispatch = useDispatch();
 
+  const isLogged = useSelector((state) => state.user.logged);
   const oldPasswordValue = useSelector((state) => state.user.oldPasswordValue);
   const newPasswordValue = useSelector((state) => state.user.newPasswordValue);
   const newPasswordConfirmValue = useSelector((state) => state.user.newPasswordConfirmValue);
@@ -36,6 +38,8 @@ const ChangePassword = () => {
 
   return (
     <div className="change-password-page">
+
+      {!isLogged && <Navigate to="/connexion" />}
 
       {!isSubmitted
       && (

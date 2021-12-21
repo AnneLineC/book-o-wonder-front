@@ -29,13 +29,12 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-
     case SET_CATEGORIES:
       return {
         ...state,
         categoriesList: action.list,
       };
-      
+
     case SET_DISPLAY:
       return {
         ...state,

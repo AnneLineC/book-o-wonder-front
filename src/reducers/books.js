@@ -48,7 +48,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         mostReadCategory: action.data,
       };
-      
+
     case SET_HIGHLIGHTED_BOOKS_ARE_LOADED:
       return {
         ...state,

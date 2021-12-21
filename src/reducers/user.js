@@ -28,7 +28,6 @@ export const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-
     case SET_FIELD_VALUE:
       return {
         ...state,
@@ -101,7 +100,7 @@ const reducer = (state = initialState, action = {}) => {
         ...initialState,
       };
     }
-    
+
     default:
       return state;
   }

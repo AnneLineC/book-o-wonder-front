@@ -42,7 +42,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
   const { baseURI } = store.getState().display;
 
   switch (action.type) {
-
     case LOGIN_ATTEMPT: {
       const { emailValue, passwordValue } = store.getState().user;
 
@@ -131,11 +130,10 @@ const apiMiddleWare = (store) => (next) => (action) => {
         },
       ).catch(
         (error) => {
-        console.log(error.toJSON());
-        store.dispatch(setFormErrorState('registerForm', true));
+          console.log(error.toJSON());
+          store.dispatch(setFormErrorState('registerForm', true));
         },
       );
-      
       next(action);
       break;
     }
@@ -160,7 +158,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           (error) => {
             console.log(error.toJSON());
             store.dispatch(setFormErrorState('registerForm', true));
-          }
+          },
         );
       }
       else {
@@ -216,13 +214,13 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (response) => {
           console.log(response);
           store.dispatch(setFormSentState('registerForm', true));
-            store.dispatch(setFormErrorState('registerForm', false));
+          store.dispatch(setFormErrorState('registerForm', false));
         },
       ).catch(
         (error) => {
           console.log(error);
           store.dispatch(setFormErrorState('registerForm', true));
-        }
+        },
       );
 
       next(action);
@@ -381,7 +379,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
-    
+
     case LOAD_MOST_READ_CATEGORY_FROM_API: {
       axios.get(`${baseURI}/api/v1/category/mostread`).then(
         (response) => {

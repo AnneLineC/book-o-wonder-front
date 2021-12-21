@@ -17,7 +17,9 @@
     font-weight: bold;
     font-family: vars.$title-font;
     font-size: 2.5rem;
-    margin: vars.$gutter;
+    margin: vars.$gutter auto;
+    max-width: 30rem;
+    line-height: 1.5;
   }
 
   &__recommandations {
@@ -38,7 +40,17 @@
     padding: vars.$gutter;
     border-radius: vars.$radius;
     margin: vars.$gutter*2;
+    margin-bottom: 4rem;
     font-weight: bold;
+  }
+
+  &__extract {
+    max-width: 90rem;
+    margin: auto;
+    background-color: #3C3C3C;
+    padding: 2rem;
+    border-radius: vars.$radius;
+    line-height: 1.5;
   }
 }
 
