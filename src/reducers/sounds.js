@@ -23,11 +23,13 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         musicsList: action.data,
       };
+
     case SET_CURRENT_SOUND:
       return {
         ...state,
         currentMusic: action.data,
       };
+
     default:
       return state;
   }

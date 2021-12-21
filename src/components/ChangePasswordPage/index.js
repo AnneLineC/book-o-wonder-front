@@ -43,7 +43,7 @@ const ChangePassword = () => {
 
       {!isSubmitted
       && (
-      <form autoComplete="off" className="register-page__form" onSubmit={handleChangePasswordFormSubmit}>
+      <form autoComplete="off" className="change-password-page__form" onSubmit={handleChangePasswordFormSubmit}>
 
         <label className="change-password-page__label" htmlFor="oldPassword">
           <span className="sr-only">Ancien mot de passe</span>

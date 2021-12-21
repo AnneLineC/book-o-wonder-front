@@ -1,0 +1,106 @@
+@use './../../styles/vars';
+
+.team {
+    margin: vars.$gutter auto;
+    max-width: 120rem;
+    line-height: 1.5;
+
+    &__link {
+        text-decoration: underline;
+        color: #96BFFF;
+    }
+
+    &__link:hover {
+        color: vars.$color--blue-light;
+    }
+
+    &__wonderland {
+        font-family: vars.$title-font;
+        font-size: 1.5em;
+    }
+
+    &__presentation {
+        margin: vars.$gutter*5 vars.$gutter;
+    }
+
+    &__presentation-title {
+        font-size: 3.5rem;
+        margin: vars.$gutter;
+    }
+
+    &__presentation-subtitle {
+        font-size: 2.5rem;
+        margin: vars.$gutter;
+    }
+
+    &__section-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: vars.$gutter*3;
+    }
+
+    &__section-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: vars.$gutter*3;
+    }
+
+    &__container-photo-and-title-left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__container-photo-and-title-right {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    &__photo {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 50%;
+    }
+
+    &__container-title {
+        display: flex;
+        flex-direction: column;
+        margin: vars.$gutter*2;
+    }
+
+    &__name {
+        font-size: 2.5rem;
+    }
+
+    &__job {
+        font-size: 2rem,
+    }
+
+    @media screen and (min-width: vars.$tablet) {
+        .team {
+            &__section-left {
+                max-width: 70%;
+            }
+
+            &__section-right {
+                max-width: 70%;
+                margin-left: 20%;
+            }
+        }
+    }
+
+    @media screen and (min-width: vars.$desktop) {
+        .team {
+            &__section-left {
+                max-width: 70%;
+            }
+
+            &__section-right {
+                max-width: 70%;
+                margin-left: 30%;
+            }
+        }
+    }
+}

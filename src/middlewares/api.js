@@ -82,6 +82,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case REGISTER_ATTEMPT: {
       const {
         nicknameValue,
@@ -114,6 +115,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case ASK_RESET_ATTEMPT: {
       const {
         emailValue,
@@ -128,14 +130,14 @@ const apiMiddleWare = (store) => (next) => (action) => {
         },
       ).catch(
         (error) => {
-        console.log(error.toJSON());
-        store.dispatch(setFormErrorState('registerForm', true));
+          console.log(error.toJSON());
+          store.dispatch(setFormErrorState('registerForm', true));
         },
       );
-      
       next(action);
       break;
     }
+
     case RESET_PASSWORD_ATTEMPT: {
       const {
         newPasswordValue,
@@ -156,7 +158,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           (error) => {
             console.log(error.toJSON());
             store.dispatch(setFormErrorState('registerForm', true));
-          }
+          },
         );
       }
       else {
@@ -165,6 +167,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case CHANGE_PASSWORD_ATTEMPT: {
       const {
         oldPasswordValue,
@@ -196,6 +199,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case CONTACT_FORM_ATTEMPT: {
       const {
         emailValue, nicknameValue, objectValue, contentValue,
@@ -210,18 +214,19 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (response) => {
           console.log(response);
           store.dispatch(setFormSentState('registerForm', true));
-            store.dispatch(setFormErrorState('registerForm', false));
+          store.dispatch(setFormErrorState('registerForm', false));
         },
       ).catch(
         (error) => {
           console.log(error);
           store.dispatch(setFormErrorState('registerForm', true));
-        }
+        },
       );
 
       next(action);
       break;
     }
+
     case LOAD_CATEGORIES_FROM_API: {
       axios.get(`${baseURI}/api/v1/category`).then(
         (response) => {
@@ -234,6 +239,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_BOOKS_BY_CATEGORY_FROM_API: {
       axios.get(`${baseURI}/api/v1/category/${action.id}`).then(
         (response) => {
@@ -247,6 +253,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_SOUNDS_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/category`).then(
         (response) => {
@@ -259,6 +266,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_SOUND_FROM_API: {
       axios.get(`${baseURI}/api/v1/audio/${action.id}`).then(
         (response) => {
@@ -271,6 +279,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_BOOK_FROM_API: {
       axios.get(`${baseURI}/api/v1/book/${action.id}`).then(
         (response) => {
@@ -284,6 +293,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case POST_NEW_PINNEDPAGE_TO_BDD: {
       axios.post(`${baseURI}/api/v1/pinnedpage`, {
         page: action.location,
@@ -302,6 +312,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case UPDATE_PINNEDPAGE_IN_BDD: {
       console.log('update demandé !!');
       axios.put(`${baseURI}/api/v1/pinnedpage/${action.pinnedpageId}`, {
@@ -321,6 +332,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case DELETE_PINNEDPAGE_IN_BDD: {
       console.log('delete demandé !!');
       axios.delete(`${baseURI}/api/v1/pinnedpage/${action.pinnedpageId}`).then(
@@ -336,6 +348,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_HIGHLIGHTED_BOOKS_FROM_API: {
       axios.get(`${baseURI}/api/v1/book/ishome`).then(
         (response) => {
@@ -351,6 +364,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_MOST_PINNED_BOOK_FROM_API: {
       axios.get(`${baseURI}/api/v1/pinnedpage/mostpinned`).then(
         (response) => {
@@ -365,6 +379,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       next(action);
       break;
     }
+
     case LOAD_MOST_READ_CATEGORY_FROM_API: {
       axios.get(`${baseURI}/api/v1/category/mostread`).then(
         (response) => {

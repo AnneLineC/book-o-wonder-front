@@ -24,26 +24,31 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         ...action.data,
       };
+
     case SET_BOOK:
       return {
         ...state,
         book: { ...action.data },
       };
+
     case SET_HIGHLIGHTED_BOOKS:
       return {
         ...state,
         highlightedBooks: action.data,
       };
+
     case SET_MOST_PINNED_BOOK:
       return {
         ...state,
         mostPinnedBook: action.data,
       };
+
     case SET_MOST_READ_CATEGORY:
       return {
         ...state,
         mostReadCategory: action.data,
       };
+
     case SET_HIGHLIGHTED_BOOKS_ARE_LOADED:
       return {
         ...state,
