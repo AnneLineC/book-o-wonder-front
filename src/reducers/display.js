@@ -1,5 +1,10 @@
 import {
-  SET_CATEGORIES, SET_DISPLAY, SET_MEDIA_PLAYER_DISPLAY, SET_FORM_SENT_STATE, SET_FORM_ERROR_STATE,
+  SET_CATEGORIES,
+  SET_DISPLAY,
+  SET_MEDIA_PLAYER_DISPLAY,
+  SET_FORM_SENT_STATE,
+  SET_FORM_ERROR_STATE,
+  SET_BOOK_READING_PAGE_DISPLAY,
 } from '../actions';
 
 export const initialState = {
@@ -12,6 +17,9 @@ export const initialState = {
   mediaPlayerDisplay: {
     playing: false,
     volume: 0.8,
+  },
+  bookReadingPageDisplay: {
+    fontSize: 100,
   },
   registerForm: {
     sent: false,
@@ -47,6 +55,14 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         mediaPlayerDisplay: {
           ...state.mediaPlayerDisplay,
+          [action.property]: action.value,
+        },
+      };
+    case SET_BOOK_READING_PAGE_DISPLAY:
+      return {
+        ...state,
+        bookReadingPageDisplay: {
+          ...state.bookReadingPageDisplay,
           [action.property]: action.value,
         },
       };

@@ -224,6 +224,14 @@ export const setMediaPlayerDisplay = (property, value) => ({
   value,
 });
 
+export const SET_BOOK_READING_PAGE_DISPLAY = 'SET_BOOK_READING_PAGE_DISPLAY';
+
+export const setBookReadingPageDisplay = (property, value) => ({
+  type: SET_BOOK_READING_PAGE_DISPLAY,
+  property,
+  value,
+});
+
 export const SET_FORM_SENT_STATE = 'SET_FORM_SENT_STATE';
 
 export const setFormSentState = (formName, sent) => ({
@@ -246,6 +254,7 @@ export const setHighlightedBooksAreLoaded = (value) => ({
   type: SET_HIGHLIGHTED_BOOKS_ARE_LOADED,
   value,
 });
+
 
 // ===============
 // BOOKS
