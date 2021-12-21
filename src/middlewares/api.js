@@ -291,6 +291,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         (response) => {
           console.log(response);
           store.dispatch(setBook(response.data));
+          store.dispatch(setElementIsLoaded('currentBook', true));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
@@ -373,8 +374,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
       axios.get(`${baseURI}/api/v1/pinnedpage/mostpinned`).then(
         (response) => {
           // console.log('Livre le plus mis en marque page :');
-          // console.log(response.data[0]);
+          console.log(response.data[0]);
           store.dispatch(setMostPinnedBook(response.data[0].book));
+          store.dispatch(setElementIsLoaded('mostPinnedBook', true));
         },
       ).catch(
         (error) => console.log(error.toJSON()),
@@ -390,6 +392,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // console.log('Livre le plus mis en marque page :');
           console.log(response.data[0]);
           store.dispatch(setMostReadCategory(response.data[0]));
+          store.dispatch(setElementIsLoaded('mostReadCategory', true));
         },
       ).catch(
         (error) => console.log(error.toJSON()),

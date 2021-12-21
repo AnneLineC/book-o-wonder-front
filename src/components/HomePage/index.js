@@ -26,7 +26,9 @@ const HomePage = () => {
   const highlightedBooks = useSelector((state) => state.books.highlightedBooks);
   const highlightedBooksAreLoaded = useSelector((state) => state.display.loaded.highlightedBooks);
   const mostPinnedBook = useSelector((state) => state.books.mostPinnedBook);
+  const mostPinnedBookIsLoaded = useSelector((state) => state.display.loaded.mostPinnedBook);
   const mostReadCategory = useSelector((state) => state.books.mostReadCategory);
+  const mostReadCategoryIsLoaded = useSelector((state) => state.display.loaded.mostReadCategory);
 
   const handleDeleteButtonClick = (id) => {
     dispatch(deletePinnedpageInBDD(id));
@@ -126,6 +128,7 @@ const HomePage = () => {
       )}
 
       <div className="highlighted-books">
+        {mostPinnedBookIsLoaded && (
         <div className="highlighted-books__card">
           <h2 className="highlighted-books__title">Livre le plus lu en ce moment</h2>
           <div className="highlighted-books__book-card">
@@ -134,17 +137,20 @@ const HomePage = () => {
             </Link>
           </div>
         </div>
-        <div className="highlighted-books__card">
-          <h2 className="highlighted-books__title">Catégorie la plus lue en ce moment</h2>
-          <div className="highlighted-books__book-card">
-            <Link to={`categorie/${mostReadCategory.id}`}>
-              <div
-                className="bookcard"
-                style={{ backgroundImage: `url("${baseURI}/images_category_folder/${mostReadCategory.image}")` }}
-              />
-            </Link>
+        )}
+        {mostReadCategoryIsLoaded && (
+          <div className="highlighted-books__card">
+            <h2 className="highlighted-books__title">Catégorie la plus lue en ce moment</h2>
+            <div className="highlighted-books__book-card">
+              <Link to={`categorie/${mostReadCategory.id}`}>
+                <div
+                  className="bookcard"
+                  style={{ backgroundImage: `url("${baseURI}/images_category_folder/${mostReadCategory.image}")` }}
+                />
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
     </div>

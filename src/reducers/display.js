@@ -19,6 +19,9 @@ export const initialState = {
     highlightedBooks: false,
     musicsList: false,
     currentMusic: false,
+    mostPinnedBook: false,
+    mostReadCategory: false,
+    currentBook: false,
   },
   mediaPlayerDisplay: {
     playing: false,

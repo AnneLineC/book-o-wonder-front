@@ -12,7 +12,6 @@ const SortedBooksPage = () => {
   const { id } = useParams();
   const location = useLocation();
   const booksList = useSelector((state) => state.books.books);
-  console.log(booksList);
   const categoryName = useSelector((state) => state.books.name);
   const dispatch = useDispatch();
 

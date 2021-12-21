@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from 'react-player';
 import { setMediaPlayerDisplay, loadSoundFromAPI, loadSoundsFromAPI } from '../../actions';
