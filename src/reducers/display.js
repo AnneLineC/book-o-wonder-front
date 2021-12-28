@@ -10,7 +10,7 @@ import {
 } from '../actions';
 
 export const initialState = {
-  baseURI: 'http://107.22.132.113',
+  baseURI: 'http://localhost:8080',
   categoriesList: [],
   connexionMenu: false,
   connectedMenu: false,
